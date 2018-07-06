@@ -1,0 +1,6 @@
+/builds/*
+/node_modules/*
+/dist/*
+/dev/*
+/.idea/*
+/.temp/*

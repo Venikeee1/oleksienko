@@ -1,0 +1,64 @@
+$break-extra-small: 359px;
+$break-small-mobile: 576px;
+$break-mobile: 767x;
+$break-tablet: 1024px;
+$desk-middle: 1366px;
+$break-large: 1660px;
+$break-extra-large: 1900px;
+
+@mixin media($width) {
+	@media only screen and (max-width: $width) {
+		@content;
+	}
+}
+
+
+@mixin retina {
+	@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+		@content;
+	}
+}
+
+
+@mixin mediaWH($width, $height) {
+	@media only screen and (max-width: $width) and (max-height: $height){
+		@content;
+	}
+}
+
+
+@mixin calc-lh($fontSize, $lineHeight) {
+	line-height: $lineHeight / $fontSize;
+}
+
+@mixin input-placeholder( $color, $opacity: ".5" ) {
+	@if map_has_key($colors, $color) {
+		$color: map_get($colors, $color);
+		&:-moz-placeholder {
+			color: $color;
+			opacity: $opacity;
+		}
+		&::-moz-placeholder {
+			color: $color;
+			opacity: $opacity;
+		}
+		&:-ms-input-placeholder {
+			color: $color;
+			opacity: $opacity;
+		}
+		&::-ms-input-placeholder {
+			color: $color;
+			opacity: $opacity;
+		}
+		&::-webkit-input-placeholder {
+			color: $color;
+			opacity: $opacity;
+		}
+		&::placeholder {
+			color: $color;
+			opacity: $opacity;
+		}
+	}
+}
+
+
