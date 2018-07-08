@@ -3,7 +3,28 @@
 
 /* exmple for using font mixin*/
 
-/*$aileronSemibold: 'avenirNextCyrDemi';
-@include font-face("avenirNextCyrDemi", "../fonts/AvenirNextCyr-Demi/AvenirNextCyr-Demi");*/
+$exo2ExtraLight: 'exo2ExtraLight';
+$exo2Thin: 'exo2Thin';
+$exo2Bold: 'exo2Bold';
+$exo2Light: 'exo2Light';
+
+$uniSansBold: 'uniSansBold';
+$uniSansLight: 'uniSansLight';
+$uniSansSemiBold: 'uniSansSemiBold';
+$uniSansSemiLight: 'uniSansSemiLight';
+
+$openSansBold: 'openSansBold';
+
+
+@include font-face("exo2ExtraLight", "../fonts/Exo2/Exo2ExtraLight/Exo2ExtraLight");
+@include font-face("exo2Thin", "../fonts/Exo2/Exo2Thin/Exo2Thin");
+@include font-face("exo2Bold", "../fonts/Exo2/Exo2Bold/Exo2Bold");
+@include font-face("exo2Light", "../fonts/Exo2/Exo2Light/Exo2Light");
+
+@include font-face("openSansBold", "../fonts/OpenSans-Bold/OpenSans-Bold");
+
+@include font-face("uniSansBold", "../fonts/UniSans-Bold/UniSans-Bold");
+@include font-face("uniSansLight", "../fonts/UniSans-Light/UniSans-Light");
+@include font-face("uniSansSemiBold", "../fonts/UniSans-SemiBold/UniSans-SemiBold");
 
 

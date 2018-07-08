@@ -1,26 +1,14 @@
 header: {
     nav: [
 		{
-			link: "/about-us.html",
-			text: "About Us",
-			class: ""
+			link: "#",
+			text: "Video",
 		},
 		{
-			link: "/ico-services.html",
-			text: "ICO Services",
-			class: ""
+			link: "#",
+			text: "Blog",
 		},
-		{
-			link: "/investment-services.html",
-			text: "Investment Services",
-			class: ""
-		},
-		{
-			link: "/incubation.html",
-			text: "Incubation",
-			class: "active"
-		}
 	],
-	phone: "215-586-4111",
-    contact: '/contact.html'
+	lang: "215-586-4111",
+    menu: 'Menu'
 }

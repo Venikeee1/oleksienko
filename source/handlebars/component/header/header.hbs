@@ -1,5 +1,30 @@
 <header class="header">
     <div class="container header__inner">
+        <nav class="header__nav">
+            <ul class="header__list">
+                {{#each header.nav}}
+                    <li class="header__item">
+                        <a href="{{link}}" class="header__link">{{text}}</a>
+                    </li>
+                {{/each}}
+            </ul>
+        </nav>
+        <div class="header__lang">
+            <button class="header__lang-btn"><span class="header__active-item">En</span></button>
+            <div class="header__lang-list">
+                <a href=""><span class="header__lang-item">Рус</span></a>
+                <a href=""><span class="header__lang-item">Укр</span></a>
+            </div>
+        </div>
+        <div class="header__menu">
+            <span class="header__menu-text">{{header.menu}}</span>
+            <div class="burger">
+                <span class="burger__line burger__line--top"></span>
+                <span class="burger__line burger__line--center"></span>
+                <span class="burger__line burger__line--bottom"></span>
+            </div>
+            <button  class="header__menu-button"></button>
+        </div>
 
     </div>
 </header>

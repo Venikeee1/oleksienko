@@ -1,3 +1,21 @@
-<section class="homepage">
-
-</section>
+<div class="homepage" >
+    <div class="homepage__slides">
+        {{#each homepage.items}}
+            <section class="homepage__item" style="background-image: url('{{background}}')">
+                <div class="homepage__text">
+                    <h2 class="main-title main-title--light">{{title}}</h2>
+                    <h3 class="homepage__subtitle main-title main-title--semibold">{{titleBold}}<br>
+                    </h3>
+                    <h3 class="homepage__subtitle main-subtitle">{{subtitle}}</h3>
+                    <p class="slide__description">{{{description}}}</p>
+                </div>
+                <div class="slide__number">
+                    <span class="slide__value">{{number}}</span>
+                </div>
+            </section>
+        {{/each}}
+    </div>
+    <div class="scroll-more">
+        <span class="scroll-more__text exo--thin">Scroll <span class="scroll-more--bold exo--bold">Down</span></span>
+    </div>
+</div>

@@ -1,2 +1,15 @@
+.exo {
 
+  &--bold {
+    font-family: $exo2Bold;
+  }
+
+  &--thin {
+    font-family: $exo2Thin;
+  }
+
+  &--light {
+    font-family: $exo2Light;
+  }
+}
 

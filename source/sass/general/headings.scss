@@ -1,1 +1,21 @@
 //h1, h1 , h3 ... styles
+
+.main-title {
+  font-size: 72px;
+
+  &--semibold {
+    margin-top: -10px;
+    font-family: $uniSansSemiBold;
+  }
+
+  &--light {
+    font-family: $uniSansLight;
+  }
+}
+
+.main-subtitle {
+  font-size: 36px;
+  font-family: $uniSansBold;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
