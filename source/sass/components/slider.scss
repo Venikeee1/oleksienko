@@ -1,0 +1,154 @@
+.slider {
+
+    &__wrapper {
+        position: relative;
+
+        &.fadeIn {
+            .slider__item {
+                position: absolute;
+                top: 0;
+                left: 0;
+                opacity: 0;
+            }
+        }
+    }
+
+    &__item {
+
+    }
+
+    /*&__dots, &__nav {
+
+        left: 0;
+        right: 0;
+        z-index: 25;
+        max-width: 1366px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 30px;
+        pointer-events: none;
+    }*/
+
+    &__dots {
+        position: absolute;
+        left: 140px;
+        bottom: 25%;
+        width: 38px;
+        z-index: 25;
+    }
+
+    &__nav {
+        bottom: 30px;
+    }
+
+    &__dot {
+        position: relative;
+        width: 100%;
+        height: 1px;
+        margin-bottom: 16px;
+        display: inline-block;
+        cursor: pointer;
+
+        pointer-events: auto;
+
+        &.active {
+            transform: scale(1);
+
+            &:after {
+                height: 4px;
+            }
+        }
+
+        &:hover {
+            &:after {
+                animation: wider 0.3s;
+            }
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 18px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: #ffffff;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: height 0.2s;
+            transform-origin: 50% 50%;
+        }
+    }
+
+    @keyframes wider {
+        50%   { width: 120%; }
+        100% { width: 100%; }
+    }
+
+    &__button {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        background: none;
+        outline: none;
+        cursor: pointer;
+        transition: transform 0.4s, border 0.4s;
+        transform: scale(1);
+        pointer-events: auto;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 9px;
+            width: 8px;
+            height: 8px;
+            transition: border 0.4s;
+        }
+
+        &--left {
+            margin-right: 10px;
+
+            &:before {
+                transform: rotate(45deg);
+                left: 11px;
+            }
+        }
+
+        &--right {
+            margin-right: 10px;
+
+            &:before {
+                transform: rotate(-135deg);
+                right: 9px;
+            }
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+
+.white-theme {
+   .slider__button {
+       border-color: #fff;
+
+       &:before {
+           border-bottom-color: #fff;
+           border-left-color: #fff;
+       }
+   }
+
+    .slider__dot {
+        background: #fff;
+    }
+}

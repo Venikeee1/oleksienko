@@ -7,6 +7,8 @@ $exo2ExtraLight: 'exo2ExtraLight';
 $exo2Thin: 'exo2Thin';
 $exo2Bold: 'exo2Bold';
 $exo2Light: 'exo2Light';
+$exo2Regular: 'exo2Regular';
+$exo2SemiBold: 'exo2SemiBold';
 
 $uniSansBold: 'uniSansBold';
 $uniSansLight: 'uniSansLight';
@@ -20,6 +22,8 @@ $openSansBold: 'openSansBold';
 @include font-face("exo2Thin", "../fonts/Exo2/Exo2Thin/Exo2Thin");
 @include font-face("exo2Bold", "../fonts/Exo2/Exo2Bold/Exo2Bold");
 @include font-face("exo2Light", "../fonts/Exo2/Exo2Light/Exo2Light");
+@include font-face("exo2Regular", "../fonts/Exo2/Exo2Regular/Exo2Regular");
+@include font-face("exo2SemiBold", "../fonts/Exo2/Exo2SemiBold/Exo2SemiBold");
 
 @include font-face("openSansBold", "../fonts/OpenSans-Bold/OpenSans-Bold");
 

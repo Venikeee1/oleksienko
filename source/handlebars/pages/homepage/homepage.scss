@@ -6,6 +6,7 @@
     &__slides {
         width: 100%;
         height: 100%;
+        overflow: hidden;
     }
 
     &__item {
@@ -25,6 +26,58 @@
     &__subtitle {
         padding-left: 45px;
     }
+
+    &__play-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 15vw;
+        max-width: 360px;
+        height: 15vw;
+        max-height: 360px;
+        background: #e4e3e3;
+        border-radius: 50%;
+
+        &:before {
+            content: '';
+            position: absolute;
+            border: 16px solid transparent;
+            border-left: 28px solid $red-color;
+            top: 50%;
+            left: 50%;
+            margin-top: -17px;
+            margin-left: -8px;
+        }
+    }
+}
+
+.achievement {
+
+    &__list {
+        max-width: 510px;
+        position: absolute;
+        right: 115px;
+        bottom: 160px;
+    }
+
+    &__item {
+        font-family: $exo2SemiBold;
+        font-size: 48px;
+        margin-bottom: 45px;
+        display: flex;
+    }
+
+    &__quantity {
+
+    }
+
+    &__description {
+        font-family: $exo2Regular;
+        font-size: 24px;
+        margin-left: 40px;
+        padding-top: 22px;
+    }
 }
 
 .slide__description {
@@ -34,6 +87,7 @@
     width: 100%;
     margin-top: 5px;
     font-family: $exo2Light;
+    color: #dddddd;
 }
 
 .slide {
@@ -44,7 +98,7 @@
         flex-direction: column;
         justify-content: center;
         height: 100%;
-        left: 50px;
+        left: 40px;
         top: 0;
         font-family: $openSansBold;
     }
@@ -57,10 +111,11 @@
 }
 
 .scroll-more {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 150px;
     font-size: 12px;
+    z-index: 5;
 
     &__text {
         display: inline-block;

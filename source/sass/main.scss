@@ -52,14 +52,15 @@ select {
 @import "general/headings";
 @import "general/text-decoration";
 @import "grid/grid";
+@import "general/button";
 /* Import general styles end*/
 
 /* Import components*/
+@import "components/slider";
 @import "../handlebars/component/header/header";
 @import "../handlebars/component/footer/footer";
 @import "../handlebars/component/logo/logo";
 @import "../handlebars/component/preloader/preloader";
-@import "general/button";
 /* Import components end*/
 
 /* Import pages style*/

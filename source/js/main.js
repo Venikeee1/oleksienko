@@ -1,4 +1,5 @@
-//import { TimelineLite } from "gsap";
+import { TimelineLite } from "gsap";
+import { HomePage } from './pages/homepage/homepage';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -6,6 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener('load', () => {
+
+    if(document.querySelector('.homepage')) {
+        const activeScript = new HomePage();
+        activeScript.init();
+    }
 
 });
 
