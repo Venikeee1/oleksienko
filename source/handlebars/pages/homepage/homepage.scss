@@ -2,6 +2,7 @@
     width: 100%;
     height: 100%;
     position: relative;
+    overflow: hidden;
 
     &__slides {
         width: 100%;
@@ -31,7 +32,7 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%) scale(0);
         width: 15vw;
         max-width: 360px;
         height: 15vw;
@@ -110,6 +111,19 @@
     }
 }
 
+.red-squares {
+    position: absolute;
+    left: 140px;
+    bottom: 24%;
+    z-index: 55;
+}
+
+.red-square {
+    width: 10px;
+    height: 10px;
+    background: $red-color;
+}
+
 .scroll-more {
     position: fixed;
     bottom: 0;
@@ -132,6 +146,7 @@
             height: 1px;
             width: 40px;
             background: #fff;
+            animation: scroll-more 4s infinite ;
         }
 
     }
@@ -140,4 +155,88 @@
         display: inline-block;
         margin-left: 3px;
     }
+}
+
+.dila {
+    &__letters {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        height: 55%;
+        top: 30%;
+        justify-content: space-between;
+        font-size: 24px;
+        z-index: 55;
+        right: 53px;
+        font-family: $uniSans;
+    }
+
+    &__letter-container {
+        display: block;
+        position: relative;
+
+        &:hover, &.active {
+            .dila__word {
+                transform: translateX(0);
+                opacity: 1;
+
+                &:before {
+                    width: 40px;
+                }
+            }
+
+            .dila__letter {
+                opacity: 0;
+            }
+        }
+    }
+
+    &__letter {
+        text-decoration: none;
+        color: #fff;
+        display: block;
+        transition: opacity 0.4s;
+
+        span {
+            transform: rotate(-90deg);
+            display: inline-block;
+        }
+
+        &--i {
+            margin-left: 3px;
+        }
+    }
+
+    &__word {
+        position: absolute;
+        top: -3px;
+        right: 0;
+        text-decoration: none;
+        color: #fff;
+        white-space: nowrap;
+        font-size: 28px;
+        font-family: $uniSansBold;
+        transform: translateX(70px);
+        opacity: 0;
+        transition: transform 0.9s, opacity 0.6s;
+        display: block;
+
+        &:before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: $red-color;
+            left: 0;
+            bottom: -16px;
+            transition: width 0.9s;
+        }
+    }
+}
+
+
+@keyframes scroll-more {
+    50%   { transform: translateX(-30%); }
+    100% { transform: translateX(0); }
 }

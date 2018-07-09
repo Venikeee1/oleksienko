@@ -1,3 +1,3 @@
 head:{    
-    title: 'Blockchain Valley Ventures'
+    title: 'Oleksienko'
 }

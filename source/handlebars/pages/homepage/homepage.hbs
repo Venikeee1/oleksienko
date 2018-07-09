@@ -1,19 +1,40 @@
 <div class="homepage" >
+    <div class="red-squares">
+        <div class="red-square"></div>
+    </div>
+    <div class="dila__letters">
+        <span class="dila__letter-container" data-index="1">
+            <a href="#" class="dila__letter" ><span>A</span></a>
+            <a href="" class="dila__word" >Architecture</a>
+        </span>
+        <span class="dila__letter-container" data-index="2">
+            <a href="#" class="dila__letter"><span>L</span></a>
+            <a href="" class="dila__word" >Interior design</a>
+        </span>
+        <span class="dila__letter-container" data-index="3">
+            <a href="#" class="dila__letter dila__letter--i"><span>I</span></a>
+            <a href="" class="dila__word" >Landscape design</a>
+        </span>
+        <span class="dila__letter-container"  data-index="4">
+            <a href="#" class="dila__letter"><span>D</span></a>
+            <a href="" class="dila__word">Design</a>
+        </span>
+    </div>
     <div class="homepage__slides">
         {{#each homepage.items}}
             <section class="homepage__item" style="background-image: url('{{background}}')">
                 <div class="homepage__text">
                     {{#if title}}
-                        <h2 class="main-title main-title--light">{{title}}</h2>
+                        <h2 class="main-title main-title--light homepage__animation-title">{{title}}</h2>
                     {{/if}}
                     {{#if titleBold}}
-                        <h3 class="homepage__subtitle main-title main-title--semibold">{{titleBold}}</h3>
+                        <h3 class="homepage__subtitle main-title main-title--semibold homepage__animation-title">{{titleBold}}</h3>
                     {{/if}}
                     {{#if subtitle}}
-                        <h3 class="homepage__subtitle main-subtitle">{{subtitle}}</h3>
+                        <h3 class="homepage__subtitle main-subtitle homepage__animation-title">{{subtitle}}</h3>
                     {{/if}}
                     {{#if description}}
-                        <p class="slide__description">{{{description}}}</p>
+                        <p class="slide__description homepage__animation-title">{{{description}}}</p>
                     {{/if}}
                 </div>
                 <div class="slide__number">
@@ -23,8 +44,8 @@
         {{/each}}
         <section class="homepage__item" style="background-image: url('{{homepage.achievement.background}}')">
             <div class="homepage__text">
-                <h2 class="main-title main-title--light">{{homepage.achievement.title}}</h2>
-                <h3 class="homepage__subtitle main-title main-title--semibold">{{homepage.achievement.titleBold}}</h3>
+                <h2 class="main-title main-title--light homepage__animation-title">{{homepage.achievement.title}}</h2>
+                <h3 class="homepage__subtitle main-title main-title--semibold homepage__animation-title">{{homepage.achievement.titleBold}}</h3>
             </div>
             <div class="slide__number">
                 <span class="slide__value">{{homepage.achievement.number}}</span>
@@ -39,8 +60,8 @@
         </section>
         <section class="homepage__item" style="background-image: url('{{homepage.video.background}}')">
             <div class="homepage__text">
-                <h2 class="main-title main-title--light">{{homepage.video.title}}</h2>
-                <h3 class="homepage__subtitle main-title main-title--semibold">{{homepage.video.titleBold}}</h3>
+                <h2 class="main-title main-title--light homepage__animation-title">{{homepage.video.title}}</h2>
+                <h3 class="homepage__subtitle main-title main-title--semibold homepage__animation-title">{{homepage.video.titleBold}}</h3>
             </div>
             <div class="slide__number">
                 <span class="slide__value">{{homepage.video.number}}</span>

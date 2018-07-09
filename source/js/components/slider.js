@@ -19,7 +19,6 @@ export class Slider {
         if(this.settings) {
             this.sliderStyle = this.settings.sliderStyle;
         }
-        console.log( this.slides)
 
         /*this.hammer = new Hammer(document.querySelector('.collection__current-pict'));
         this.hammer.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL , pointers: 1});*/
@@ -53,7 +52,7 @@ export class Slider {
         this.prevIndex = this.currentIndex;
         this.currentIndex = this.currentIndex - 1 * direction;
         this.setActiveSlide();
-        this.settings.animateNextSlide( this.currentSlide );
+        this.settings.animateNextSlide( this.currentSlide, parseInt(this.currentIndex), parseInt(this.prevIndex) );
         this.selectAnimation(1);
     }
 
@@ -66,7 +65,7 @@ export class Slider {
             this.prevIndex = this.currentIndex;
             this.currentIndex = index;
             this.setActiveSlide();
-            this.settings.animateNextSlide( this.currentSlide );
+            this.settings.animateNextSlide( this.currentSlide, parseInt(this.currentIndex), parseInt(this.prevIndex) );
             this.selectAnimation(index);
         }
     }
@@ -86,7 +85,6 @@ export class Slider {
         } else {
             const animationLength = this.currentIndex * 100;
             const slideValue = `-${animationLength}%`;
-            console.log(animationLength)
 
             tl.to('.slider__wrapper', this.duration, {y: slideValue , onStart: ()=> {
                     this.changeHeaderStyle();
@@ -157,11 +155,14 @@ export class Slider {
 
     createDots() {
         const dotsContainer = createElement('div','slider__dots');
+        const dotsWrapper = createElement('div','slider__dots--wrapper');
+
+        dotsContainer.appendChild(dotsWrapper);
 
         Array.from(this.slides).forEach( (elem, index) => {
             const dot = this.createDot();
             dot.setAttribute('data-index',index);
-            dotsContainer.appendChild(dot);
+            dotsWrapper.appendChild(dot);
             this.dots.push(dot);
 
             this.addEventListenerToDots( dot );
