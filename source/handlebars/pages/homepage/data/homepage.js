@@ -67,7 +67,7 @@ homepage: {
                 zeroAmount: '0'
             },{
                 value: 16,
-                description: 'awards for achivements in the field of architecture and designe',
+                description: 'awards for achivements in the field of architecture and design',
                 zeroAmount: '00'
             }
         ]

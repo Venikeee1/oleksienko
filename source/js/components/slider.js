@@ -52,7 +52,7 @@ export class Slider {
         this.prevIndex = this.currentIndex;
         this.currentIndex = this.currentIndex - 1 * direction;
         this.setActiveSlide();
-        this.settings.animateNextSlide( this.currentSlide, parseInt(this.currentIndex), parseInt(this.prevIndex) );
+        this.settings.animateNextSlide( this.currentSlide, this.currentIndex, this.prevIndex );
         this.selectAnimation(1);
     }
 
@@ -62,10 +62,10 @@ export class Slider {
 
         if( index !==  this.currentIndex) {
             this.animationAloud = false;
-            this.prevIndex = this.currentIndex;
-            this.currentIndex = index;
+            this.prevIndex = parseInt(this.currentIndex);
+            this.currentIndex = parseInt(index);
             this.setActiveSlide();
-            this.settings.animateNextSlide( this.currentSlide, parseInt(this.currentIndex), parseInt(this.prevIndex) );
+            this.settings.animateNextSlide( this.currentSlide, this.currentIndex, this.prevIndex );
             this.selectAnimation(index);
         }
     }
@@ -80,6 +80,7 @@ export class Slider {
                     this.changeDotAndNavigationStyle();
                 }, onComplete: ()=> {
                     this.animationAloud = true;
+                    this.settings.afterAnimationEnd(this.currentSlide, this.currentIndex, this.prevIndex);
                 }})
                 .to( this.slides[this.prevIndex], 0.4, {opacity: 0}, 0);
         } else {
@@ -91,6 +92,7 @@ export class Slider {
                     this.changeDotAndNavigationStyle();
                 }, onComplete: ()=> {
                     this.animationAloud = true;
+                    this.settings.afterAnimationEnd(this.currentSlide, this.currentIndex, this.prevIndex);
                 }, ease: Power2.easeInOut});
         }
     }

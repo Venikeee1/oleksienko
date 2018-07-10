@@ -44,7 +44,6 @@ export class HomePage {
 
                 if( currentIndex > 0 ) {
                     tl.to(currentSlide.querySelectorAll('.homepage__animation-title'), 0, {y: 15, opacity: 0},0)
-                        .staggerTo(currentSlide.querySelectorAll('.homepage__animation-title'), 0.8, {y: 0, opacity: 1}, 0.2,0.6);
                 }
 
                 if( currentIndex === 7 ) {
@@ -53,7 +52,19 @@ export class HomePage {
                         .to('.homepage__play-btn', 2.4, {scale: 1}, 0.5)
                 }
 
+                tl.to(currentSlide.querySelector('.slide__number'), 0, {x: -45, opacity: 0},0)
+
                 this.checkActiveLetter(currentIndex)
+
+            },
+            afterAnimationEnd: (currentSlide, currentIndex, prevIndex) => {
+                const tl = new TimelineMax();
+
+                if( currentIndex > 0 ) {
+                    tl.staggerTo(currentSlide.querySelectorAll('.homepage__animation-title'), 0.8, {y: 0, opacity: 1}, 0.2,0);
+                }
+
+                tl.to(currentSlide.querySelector('.slide__number'), 1.2, {x: 0, opacity: 1},0);
 
             }
         };
@@ -71,13 +82,19 @@ export class HomePage {
 
         window.addEventListener('resize', () => {
 
-            if(sectionSlider.currentIndex === 0) {
+            if( this.slider && this.slider.currentIndex === 0) {
                 const tl = new TimelineMax();
 
                 tl.to('.logo__wrapper', 0.1,{ top: ( val, elem ) => {
                         return calcTopValueForLogo(elem);
                     },  ease: Power2.easeInOut})
             }
+        })
+    }
+
+    langChoose() {
+        document.querySelector('.header__lang-btn').addEventListener('click', () => {
+            document.querySelector('.header__lang-list').classList.toggle('active');
         })
     }
 
@@ -115,9 +132,27 @@ export class HomePage {
 
     init() {
         this.initSlider();
+        this.langChoose();
         const preloader = new Prelaoder();
         preloader.init();
         this.addEventListenersToLetters();
+
+
+        document.querySelector('.header__menu-button').addEventListener('click', () => {
+
+            const tl = new TimelineMax();
+            document.querySelector('.menu').classList.toggle('active');
+
+            if(document.querySelector('.menu').classList.contains('active')) {
+                tl.staggerTo('.logo__animation', 0.5, { opacity: 1, y: 0}, 0.2)
+                    .to('.preloader__svg', 0.5, { fill: '#df2032',  opacity: 1}, 0);
+            } else {
+                tl.staggerTo('.logo__animation', 0.5, { opacity: 0, y: 30}, 0.2)
+                    .to('.preloader__svg', 0.5, { fill: '#fff', opacity: 0.5}, 0);
+
+            }
+
+        })
     }
 }
 
