@@ -14,10 +14,6 @@ export class Prelaoder {
             .to('.header', 0, {y: '-50', opacity: 0},0)
             .to(this.logoCircle, 1.1,{width: 0})
             .to('.logo__animation',0, {y: 30, opacity: 0})
-
-            .to('.preloader__bg',1.3,{opacity: 0, onComplete: () => {
-                    this.preloaderContainer.parentNode.removeChild(this.preloaderContainer);
-                }}, '+=0.5')
             .to('.logo__wrapper', 1.2, {y: '0%',
                 left: '47%',
                 top: ( val, elem ) => {

@@ -8,7 +8,7 @@ $menu-white-color: #fefefe;
     display: flex;
     justify-content: flex-end;
     padding: 170px 50px 90px;
-    color: rgba($menu-white-color,0.3);
+    color: rgba($menu-white-color,0.7);
     opacity: 0;
     transition: opacity 0.4s;
     z-index: -1;
@@ -133,6 +133,10 @@ $menu-white-color: #fefefe;
 
     &__info-item {
         margin-bottom: 30px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 
     &__info-link {
