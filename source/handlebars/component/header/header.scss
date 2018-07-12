@@ -4,10 +4,10 @@
   left: 0;
   width: 100%;
   padding-top: 50px;
-  font-family: $exo2ExtraLight;
+  font-family: $exo2Light;
   color: #fff;
   z-index: 100;
-  font-size: 18px;
+  font-size: 19px;
 
   &__inner {
     display: flex;
@@ -69,8 +69,8 @@
     cursor: pointer;
     background: none;
     text-transform: uppercase;
-    font-size: 18px;
-    font-family: $exo2ExtraLight;
+    font-size: inherit;
+    font-family: inherit;
     padding: 0;
     line-height: 1;
     outline: none;

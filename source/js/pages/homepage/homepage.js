@@ -5,6 +5,7 @@ export class HomePage {
     constructor() {
         this.slider = {};
         this.letters = document.querySelectorAll('.dila__letter-container');
+        this.letterAnimationTimeLine = new TimelineMax();
     }
 
     initSlider() {
@@ -26,9 +27,13 @@ export class HomePage {
 
                     tl.to('.logo__wrapper',1.2,{top: 50, bottom: 'auto', ease: Power2.easeInOut})
                         .to('.logo__animation', 0.2,{opacity: 0},0)
-                        .to('.logo__wrapper',1.2,{left: 105, x: '0%', ease: Power2.easeInOut},0)
+                        .to('.logo__wrapper',1.2,{left: 105, x: '0%', ease: Power2.easeIn},0)
+                        .to('.slider__dots--wrapper', 1.5, {y: '0%', ease: Power3.easeOut})
                         .to('.preloader__logo',1.2,{scale: 1, opacity: 0.5}, 0)
                         .to('.preloader__svg',1.2,{fill: '#fff'}, 0)
+
+                    this.letterShowAnimation();
+
 
                 } else if( currentIndex === 0) {
 
@@ -40,6 +45,11 @@ export class HomePage {
                         .to('.preloader__svg',1.2,{fill: redColor}, 0)
                         .to('.logo__animation', 0,{y: 50})
                         .staggerTo('.logo__animation',0.9, {y: 0, opacity: 1}, 0.2)
+                        .to('.slider__dots--wrapper', 0.9, {y: '105%', ease: Quad.easeOut},0)
+
+                    this.letterAnimationTimeLine.clear();
+                    this.letterHideAnimation();
+
                 }
 
                 if( currentIndex > 0 ) {
@@ -90,6 +100,16 @@ export class HomePage {
                     },  ease: Power2.easeInOut})
             }
         })
+    }
+
+    letterShowAnimation() {
+        this.letterAnimationTimeLine.to('.dila__letter-container', 0, {opacity: 0, x:45},0)
+            .staggerTo('.dila__letter-container', 0.9, {opacity: 1, x: 0},0.2, 2.1)
+    }
+
+    letterHideAnimation() {
+        const tl = new TimelineMax();
+        tl.staggerTo('.dila__letter-container', 0.9, {opacity: 0, x: 45},0.1,0)
     }
 
     langChoose() {

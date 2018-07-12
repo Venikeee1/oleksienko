@@ -102,6 +102,7 @@
         left: 40px;
         top: 0;
         font-family: $openSansBold;
+        opacity: 0;
     }
 
     &__value {
@@ -175,6 +176,7 @@
     &__letter-container {
         display: block;
         position: relative;
+        opacity: 0;
 
         &:hover, &.active {
             .dila__word {

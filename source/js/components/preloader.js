@@ -22,18 +22,9 @@ export class Prelaoder {
                 ease: Power2.easeOut},'+=0.1')
             .staggerTo('.logo__animation', 1.1, {y: 0, opacity: 1}, 0.2)
             .to('.header', 0.6, {y: '0', opacity: 1}, '-=0.6')
-            .to('.slider__dot', 0, {y: '20', opacity: 0},0)
             .to('.scroll-more', 0, {opacity: 0},0)
             .to('.red-squares', 0,{opacity: 0},0)
-            .staggerTo('.slider__dot', 0.6, {y: '0', opacity: 1}, 0.1)
-            .to('.red-squares', 0.6, {opacity: 1})
-            .to('.dila__letter-container', 0, {opacity: 0, x: 25},0)
-            .staggerTo('.dila__letter-container', 0.6, {opacity: 1, x: 0},0.15, '-=1.8')
             .to('.scroll-more', 0.8, {opacity: 1}, '-=0.6')
-
-
-
-
 
         /*.to('.logo__animation',0, {y: 50, opacity: 0})
         .staggerTo('.logo__animation',0.9, {y: 0, opacity: 1}, 0.2)*/
