@@ -11,23 +11,20 @@ export class Prelaoder {
     animateLogo() {
         this.timeLine
             .to(this.logo, 0.9,{scale: 0.8})
-            .to('.header', 0, {y: '-50', opacity: 0},0)
+            .to('.header', 0, {y: '-20', opacity: 0},0)
             .to(this.logoCircle, 1.1,{width: 0})
             .to('.logo__animation',0, {y: 30, opacity: 0})
-            .to('.logo__wrapper', 1.2, {y: '0%',
+            /*.to('.logo__wrapper', 1.2, {y: '0%',
                 left: '47%',
                 top: ( val, elem ) => {
                     return calcTopValueForLogo(elem);
                 },
-                ease: Power2.easeOut},'+=0.1')
+                ease: Power2.easeOut},'+=0.1')*/
             .staggerTo('.logo__animation', 1.1, {y: 0, opacity: 1}, 0.2)
-            .to('.header', 0.6, {y: '0', opacity: 1}, '-=0.6')
+            .to('.header', 0.8, {y: '0', opacity: 1}, '-=0.6')
             .to('.scroll-more', 0, {opacity: 0},0)
             .to('.red-squares', 0,{opacity: 0},0)
             .to('.scroll-more', 0.8, {opacity: 1}, '-=0.6')
-
-        /*.to('.logo__animation',0, {y: 50, opacity: 0})
-        .staggerTo('.logo__animation',0.9, {y: 0, opacity: 1}, 0.2)*/
     }
 
     init() {

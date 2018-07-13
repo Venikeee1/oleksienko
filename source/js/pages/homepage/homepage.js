@@ -28,11 +28,11 @@ export class HomePage {
                     tl.to('.logo__wrapper',1.2,{top: 50, bottom: 'auto', ease: Power2.easeInOut})
                         .to('.logo__animation', 0.2,{opacity: 0},0)
                         .to('.logo__wrapper',1.2,{left: 105, x: '0%', ease: Power2.easeIn},0)
-                        .to('.slider__dots--wrapper', 1.5, {y: '0%', ease: Power3.easeOut})
                         .to('.preloader__logo',1.2,{scale: 1, opacity: 0.5}, 0)
                         .to('.preloader__svg',1.2,{fill: '#fff'}, 0)
 
                     this.letterShowAnimation();
+                    this.sliderDotsAnimation();
 
 
                 } else if( currentIndex === 0) {
@@ -110,6 +110,11 @@ export class HomePage {
     letterHideAnimation() {
         const tl = new TimelineMax();
         tl.staggerTo('.dila__letter-container', 0.9, {opacity: 0, x: 45},0.1,0)
+    }
+
+    sliderDotsAnimation() {
+        const tl = new TimelineMax();
+        tl.to('.slider__dots--wrapper', 1.5, {y: '0%', ease: Power3.easeOut},1)
     }
 
     langChoose() {

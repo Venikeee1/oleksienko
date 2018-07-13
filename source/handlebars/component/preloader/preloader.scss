@@ -60,9 +60,9 @@
     &__wrapper {
         z-index: 40;
         position: fixed;
-        top: 50%;
+        bottom: 200px;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translateX(-50%);
     }
 
     &__link {
