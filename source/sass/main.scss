@@ -63,7 +63,11 @@ select {
 @import "../handlebars/component/logo/logo";
 @import "../handlebars/component/menu/menu";
 @import "../handlebars/component/preloader/preloader";
+@import "../handlebars/component/videoPopup/videoPopup";
 /* Import components end*/
+
+/*template styles*/
+@import "../handlebars/template/template";
 
 /* Import pages style*/
 @import "../handlebars/pages/homepage/homepage.scss";

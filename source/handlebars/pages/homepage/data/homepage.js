@@ -6,7 +6,8 @@ homepage: {
             subtitle: '',
             description: '',
             background: '../source/images/homepage/slide-1.jpg',
-            number: '01'
+            number: '01',
+            logo: 'vsem pizda'
         },
         {
             title: 'Natalia',

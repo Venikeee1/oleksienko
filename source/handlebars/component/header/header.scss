@@ -9,9 +9,25 @@
   z-index: 100;
   font-size: 16px;
 
+  &.homepage__header {
+    .logo {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    opacity: 0;
+  }
+
   &__inner {
     display: flex;
     justify-content: flex-end;
+  }
+
+  &__logo {
+    position: absolute;
+    top: 65px;
+    left: 95px;
+    pointer-events: none;
   }
 
   &__list {
@@ -39,6 +55,7 @@
     margin-left: 30px;
     margin-right: 40px;
     text-transform: uppercase;
+    align-self: flex-start;
 
     &:before {
       content: '';
@@ -57,9 +74,11 @@
     left: 0;
     opacity: 0;
     transition: opacity 0.4s;
+    pointer-events: none;
 
     &.active {
       opacity: 1;
+      pointer-events: auto;
     }
   }
 

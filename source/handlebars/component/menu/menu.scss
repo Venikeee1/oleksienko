@@ -7,15 +7,17 @@ $menu-white-color: #fefefe;
     min-height: 100%;
     display: flex;
     justify-content: flex-end;
-    padding: 170px 50px 90px;
+    padding: 12% 50px 8%;
     color: rgba($menu-white-color,0.7);
     opacity: 0;
     transition: opacity 0.4s;
-    z-index: -1;
+    pointer-events: none;
+    z-index: 10;
 
     &.active {
-      opacity: 1;
-      z-index: 80;
+        pointer-events: auto;
+        opacity: 1;
+        z-index: 80;
     }
 
     &__wrapper {
@@ -28,7 +30,7 @@ $menu-white-color: #fefefe;
 
     &__list {
         font-family: $uniSansLight;
-        font-size: 24px;
+        font-size: 20px;
     }
 
     &__item {
@@ -56,9 +58,9 @@ $menu-white-color: #fefefe;
 
     &__title {
         position: absolute;
-        left: 15px;
+        left: 9px;
         top: 0;
-        height: 95%;
+        height: 98%;
         transform: translateX(-50%);
         opacity: 0.48;
 
@@ -112,17 +114,27 @@ $menu-white-color: #fefefe;
 
     &__media {
         position: absolute;
-        left: 0;
+        left: -5px;
         bottom: 0;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 275px;
+        height: 36%;
     }
 
     &__ico {
-        width: 25px;
-        height: 25px;
+        svg {
+            width: 20px;
+            height: 20px;
+            fill: rgba(#fff,0.25);
+            transition: fill 0.4s;
+        }
+
+        &:hover {
+            svg {
+                fill: $red-color;
+            }
+        }
     }
 
     &__info {

@@ -20,8 +20,9 @@ export class Slider {
             this.sliderStyle = this.settings.sliderStyle;
         }
 
-        /*this.hammer = new Hammer(document.querySelector('.collection__current-pict'));
-        this.hammer.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL , pointers: 1});*/
+        this.hammer = new Hammer(this.sliderContainer);
+        this.hammer.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL , pointers: 1});
+
     }
 
     setActiveSlide() {
@@ -55,8 +56,6 @@ export class Slider {
         this.settings.animateNextSlide( this.currentSlide, this.currentIndex, this.prevIndex );
         this.selectAnimation(1);
     }
-
-
 
     goToSlide( index ) {
 
@@ -232,11 +231,23 @@ export class Slider {
         })
     }
 
+    addSwipeListeners() {
+        this.hammer.on('swipeup', () => {
+            this.nextSlide();
+        });
+
+        this.hammer.on('swipedown', () => {
+            this.prevSlide();
+        });
+
+    }
+
     init(){
         this.createSlidesWrapper();
         this.addClassesToSliderItems();
         this.addKeyListeners();
         this.addMouseWheelIndicator();
+        this.addSwipeListeners();
         this.createDots();
         this.createNavigation();
         this.setActiveSlide();

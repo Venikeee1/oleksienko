@@ -1,5 +1,4 @@
 <div class="menu">
-    {{>component/logo/logo}}
     <div class="menu__wrapper">
         <ul class="menu__list">
             {{#each menu.nav}}
@@ -12,11 +11,11 @@
         <div class="menu__title">
             <img src="source/images/menu/menu.png" alt="">
         </div>
-       <!-- <div class="menu__media">
+        <div class="menu__media">
             {{#each menu.socialNetwork}}
-                <a href="{{link}}" class="menu__ico">{{ico}}</a>
+                <a href="{{link}}" class="menu__ico">{{{ico}}}</a>
             {{/each}}
-        </div>-->
+        </div>
         <ul class="menu__info">
             {{#each menu.projects}}
                 <li class="menu__info-item">

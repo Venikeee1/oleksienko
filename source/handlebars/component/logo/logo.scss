@@ -1,9 +1,32 @@
 .logo {
 
-    height: 80px;
+    &__link {
+        display: block;
+        border-radius: 50%;
+        overflow: hidden;
+        height: 180px;
+        width: 180px;
+        pointer-events: auto;
 
-    svg {
-        height: 100%;
-        width: 160px;
+
+        svg {
+            height: 100%;
+            width: 180px;
+        }
+
+    }
+
+    &__text {
+
+
+        svg {
+            fill: #fff;
+            overflow: visible;
+            width: 500px;
+        }
+    }
+
+    &__animation {
+        opacity: 0;
     }
 }

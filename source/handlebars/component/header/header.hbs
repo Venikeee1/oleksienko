@@ -1,4 +1,7 @@
-<header class="header">
+<header class="header {{#if header-class}} {{header-class}} {{/if}}">
+    <div class="header__logo">
+        {{>component/logo/logo}}
+    </div>
     <div class="container header__inner">
         <nav class="header__nav">
             <ul class="header__list">

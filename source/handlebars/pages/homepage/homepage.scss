@@ -16,6 +16,7 @@
         background-size: cover;
         position: relative;
         color: #fff;
+        overflow: hidden;
     }
 
     &__text {
@@ -33,39 +34,55 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) scale(0);
-        width: 15vw;
+        width: 20vw;
         max-width: 360px;
-        height: 15vw;
+        height: 20vw;
         max-height: 360px;
         background: #e4e3e3;
         border-radius: 50%;
+        z-index: 5;
+        display: flex;
 
-        &:before {
-            content: '';
-            position: absolute;
-            border: 16px solid transparent;
-            border-left: 28px solid $red-color;
-            top: 50%;
-            left: 50%;
-            margin-top: -17px;
-            margin-left: -8px;
-        }
+    }
+
+    &__play-triangle {
+        border: 16px solid transparent;
+        border-left: 28px solid $red-color;
+        margin: auto;
+        position: relative;
+        left: 12px;
+        display: inline-block;
+    }
+
+    &__position {
+        padding-left: 93px;
     }
 }
 
 .achievement {
 
+    &__wrapper {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        height: 100%;
+    }
+
     &__list {
         max-width: 510px;
-        position: absolute;
-        right: 115px;
-        bottom: 160px;
+        //position: absolute;
+        /*right: 115px;
+        bottom: 160px;*/
+        margin: auto;
     }
 
     &__item {
         font-family: $exo2SemiBold;
         font-size: 48px;
-        margin-bottom: 45px;
+        margin-bottom: 60px;
         display: flex;
     }
 
@@ -78,20 +95,23 @@
         font-size: 24px;
         margin-left: 40px;
         padding-top: 22px;
+
     }
 }
 
-.slide__description {
-    font-size: 21px;
-    line-height: 1.1;
-    max-width: 480px;
-    width: 100%;
-    margin-top: 5px;
-    font-family: $exo2Light;
-    color: #dddddd;
-}
-
 .slide {
+
+    &__description {
+        font-size: 21px;
+        line-height: 1.1;
+        max-width: 510px;
+        width: 100%;
+        padding-left: 45px;
+        margin-top: 10px;
+        font-family: $exo2Light;
+        color: #dddddd;
+        height: 46px;
+    }
 
     &__number {
         position: absolute;
@@ -115,8 +135,10 @@
 .red-squares {
     position: absolute;
     left: 140px;
-    bottom: 24%;
+    bottom: calc(20% - 10px);
     z-index: 55;
+    display: flex;
+    opacity: 0;
 }
 
 .red-square {
@@ -131,6 +153,7 @@
     left: 150px;
     font-size: 12px;
     z-index: 5;
+    opacity: 0;
 
     &__text {
         display: inline-block;
@@ -164,8 +187,8 @@
         display: flex;
         flex-direction: column;
         align-content: flex-start;
-        height: 55%;
-        top: 30%;
+        bottom: 11%;
+        top: 22%;
         justify-content: space-between;
         font-size: 24px;
         z-index: 55;
@@ -235,6 +258,50 @@
             transition: width 0.9s;
         }
     }
+}
+
+.video {
+
+    &__lines {
+        top: 0;
+        left: 50%;
+        height: 100%;
+        width: 1px;
+    }
+
+    &__line {
+        position: absolute;
+
+        width: 1px;
+        background: #fff;
+        height: 0;
+
+        &--1 {
+            left: 35%;
+            transform: rotate(-18deg);
+            top: -50px;
+            transform-origin: 0 0;
+        }
+
+        &--2 {
+            left: 49%;
+            top: 0;
+        }
+
+        &--3 {
+            left: 54%;
+            top: 0;
+        }
+    }
+}
+
+.first-letter-animation, .rest-letters-animation {
+    display: inline-block;
+    opacity: 0;
+}
+
+.animation-title {
+    opacity: 0;
 }
 
 
