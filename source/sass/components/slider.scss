@@ -27,6 +27,16 @@
         padding: 5px 4px 0;
         z-index: 25;
         overflow: hidden;
+
+        @include media($desk-middle){
+            left: 8.5%;
+            width: 35px;
+        }
+
+        @media only screen and (max-height: $maxHeight){
+            bottom: 25%;
+        }
+
     }
 
     &__dots--wrapper {
@@ -79,7 +89,7 @@
             background: #ffffff;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateX(-50%);
             transition: height 0.2s;
             transform-origin: 50% 50%;
         }

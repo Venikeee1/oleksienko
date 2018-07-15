@@ -26,6 +26,11 @@ $menu-white-color: #fefefe;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
+
+        @include media($desk-middle) {
+            width: 50%;
+        }
     }
 
     &__list {

@@ -8,10 +8,14 @@
         width: 180px;
         pointer-events: auto;
 
+        @include media($desk-middle) {
+            height: 140px;
+            width: 140px;
+        }
 
         svg {
             height: 100%;
-            width: 180px;
+            width: 100% ;
         }
 
     }
@@ -23,6 +27,10 @@
             fill: #fff;
             overflow: visible;
             width: 500px;
+
+            @include media($desk-middle) {
+                width: 330px;
+            }
         }
     }
 

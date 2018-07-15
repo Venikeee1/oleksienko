@@ -9,6 +9,10 @@
   z-index: 100;
   font-size: 16px;
 
+  @media only screen and (max-height: $maxHeight){
+    padding-top: 4vh;
+  }
+
   &.homepage__header {
     .logo {
       opacity: 0;
@@ -25,9 +29,17 @@
 
   &__logo {
     position: absolute;
-    top: 65px;
+    top: 50px;
     left: 95px;
     pointer-events: none;
+
+    @media only screen and (max-height: $maxHeight){
+      top: 4vh;
+    }
+
+    @include media($desk-middle){
+      left: 7.5%;
+    }
   }
 
   &__list {
@@ -158,6 +170,10 @@
   right: 50px;
   width: 28px;
   height: 18px;
+
+  @media only screen and (max-height: $maxHeight){
+    top: 4vh;
+  }
 
   &__line {
     position: absolute;

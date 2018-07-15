@@ -23,10 +23,24 @@
         position: absolute;
         bottom: 50px;
         left: 240px;
+
+        @include media($desk-middle){
+            left: 14%;
+            bottom: 5%;
+        }
+
+        @include media($break-tablet){
+            left: 17%;
+        }
     }
 
     &__subtitle {
         padding-left: 45px;
+        margin-top: -10px;
+
+        @include media($desk-middle){
+            margin-top: 0;
+        }
     }
 
     &__play-btn {
@@ -56,6 +70,10 @@
 
     &__position {
         padding-left: 93px;
+
+        @include media($desk-middle){
+            padding-left: 78px;
+        }
     }
 }
 
@@ -111,6 +129,10 @@
         font-family: $exo2Light;
         color: #dddddd;
         height: 46px;
+
+        @include media($desk-middle){
+            font-size: 18px;
+        }
     }
 
     &__number {
@@ -119,16 +141,24 @@
         flex-direction: column;
         justify-content: center;
         height: 100%;
-        left: 40px;
+        left: 20px;
         top: 0;
         font-family: $openSansBold;
         opacity: 0;
+
+        @include media($desk-middle) {
+            left: 1%;
+        }
     }
 
     &__value {
         transform: rotate(-90deg);
         font-size: 94px;
         opacity: 0.2;
+
+        @include media($desk-middle) {
+            font-size: 6vw;
+        }
     }
 }
 
@@ -139,6 +169,14 @@
     z-index: 55;
     display: flex;
     opacity: 0;
+
+    @include media($desk-middle){
+        left: 8.5%;
+    }
+
+    @media only screen and (max-height: $maxHeight){
+        bottom: calc(25% - 10px);
+    }
 }
 
 .red-square {
@@ -155,12 +193,17 @@
     z-index: 5;
     opacity: 0;
 
+    @include media($desk-middle){
+        left: 8.5%;
+    }
+
     &__text {
         display: inline-block;
         transform-origin: 0 100%;
         transform: rotate(-90deg);
         position: relative;
         padding-left: 50px;
+        left: 10px;
 
         &:before {
             content: '';

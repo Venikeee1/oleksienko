@@ -3,8 +3,15 @@
 .main-title {
   font-size: 72px;
 
+  @include media($desk-middle){
+    font-size: 60px;
+  }
+
+  @include media($break-tablet){
+    font-size: 60px;
+  }
+
   &--semibold {
-    margin-top: -10px;
     font-family: $uniSansSemiBold;
   }
 
@@ -18,4 +25,12 @@
   font-family: $uniSansBold;
   text-transform: uppercase;
   margin-top: 10px;
+
+  @include media($desk-middle){
+    font-size: 30px;
+  }
+
+  @include media($break-tablet){
+    font-size: 24px;
+  }
 }

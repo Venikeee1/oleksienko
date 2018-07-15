@@ -5,6 +5,7 @@ $break-tablet: 1024px;
 $desk-middle: 1366px;
 $break-large: 1660px;
 $break-extra-large: 1900px;
+$maxHeight: 800px;
 
 @mixin media($width) {
 	@media only screen and (max-width: $width) {
