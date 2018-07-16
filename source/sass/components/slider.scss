@@ -37,10 +37,19 @@
             bottom: 25%;
         }
 
+        @include media($break-mobile) {
+            left: 15px;
+            margin-left: 0;
+        }
+
     }
 
     &__dots--wrapper {
         transform: translateY(105%);
+
+        @include media($break-mobile) {
+            padding-top: 5px;
+        }
     }
 
     &__nav {
@@ -54,20 +63,35 @@
         margin-bottom: 15px;
         display: inline-block;
         cursor: pointer;
-
         pointer-events: auto;
+
+        @include media($break-mobile) {
+            height: 5px;
+            margin-bottom: 7px;
+            display: block;
+        }
 
         &.active {
             transform: scale(1);
 
             &:after {
                 height: 4px;
+
+                @include media($break-mobile) {
+                    height: 5px;
+                    background: $red-color;
+                    transform: scale(1.8);
+                }
             }
         }
 
         &:hover {
             &:after {
                 animation: wider 0.3s;
+
+                @include media($break-mobile) {
+                   animation: none;
+                }
             }
         }
 
@@ -92,6 +116,15 @@
             transform: translateX(-50%);
             transition: height 0.2s;
             transform-origin: 50% 50%;
+
+            @include media($break-mobile) {
+
+                width: 5px;
+                height: 5px;
+                background: rgba(#fff, 0.7);
+                transform: none;
+                left: 0;
+            }
         }
     }
 

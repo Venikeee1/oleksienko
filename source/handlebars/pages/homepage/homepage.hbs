@@ -2,25 +2,19 @@
     <div class="red-squares">
         <div class="red-square"></div>
     </div>
-    <div class="dila__letters">
-        <span class="dila__letter-container" data-index="2">
-            <a href="#" class="dila__letter" ><span>A</span></a>
-            <a href="" class="dila__word" >Architecture</a>
-        </span>
-        <span class="dila__letter-container" data-index="3">
-            <a href="#" class="dila__letter dila__letter--i"><span>I</span></a>
-            <a href="" class="dila__word" >Interior design</a>
-        </span>
-        <span class="dila__letter-container" data-index="4">
-            <a href="#" class="dila__letter"><span>L</span></a>
-            <a href="" class="dila__word" >Landscape design</a>
-        </span>
-        <span class="dila__letter-container"  data-index="5">
-            <a href="#" class="dila__letter"><span>D</span></a>
-            <a href="" class="dila__word">Design</a>
-        </span>
-    </div>
+    {{>component/navigationLetters/navigationLetters}}
     <div class="homepage__slides">
+        <section class="homepage__item">
+            {{> component/preloader/preloader}}
+            <div class="first-screen-slider">
+                {{#each homepage.firstScreen.slides}}
+                    <div class="first-screen-slider__item" style="background-image: url('{{this}}')"></div>
+                {{/each}}
+            </div>
+            <div class="slide__number">
+                <span class="slide__value">{{homepage.firstScreen.number}}</span>
+            </div>
+        </section>
         {{#each homepage.items}}
             <section class="homepage__item" style="background-image: url('{{background}}')">
                 <div class="homepage__text">
@@ -39,15 +33,12 @@
                         {{/if}}
                     </p>
                 </div>
-                {{#if logo}}
-                    {{> component/preloader/preloader}}
-                {{/if}}
                 <div class="slide__number">
                     <span class="slide__value">{{number}}</span>
                 </div>
             </section>
         {{/each}}
-        <section class="homepage__item" style="background-image: url('{{homepage.achievement.background}}')">
+        <section class="homepage__item" style="background-image: url('{{homepage.achievement.background}}')" data-section="achievement">
             <div class="homepage__text">
                 <h2 class="main-title main-title--light">{{homepage.achievement.title}}</h2>
                 <h3 class="homepage__subtitle main-title main-title--semibold">{{homepage.achievement.titleBold}}</h3>
@@ -87,6 +78,10 @@
         </section>
     </div>
     <div class="scroll-more">
-        <span class="scroll-more__text exo--thin">Scroll <span class="scroll-more--bold exo--bold">Down</span></span>
+        <span class="scroll-more__text exo--thin">
+            <span class="scroll-more__desktop">Scroll</span>
+            <span class="scroll-more__mobile">Swipe</span>
+            <span class="scroll-more--bold exo--bold">Down</span>
+        </span>
     </div>
 </div>

@@ -1,14 +1,20 @@
 homepage: {
+    firstScreen: {
+        title: '',
+        titleBold: '',
+        subtitle: '',
+        description: '',
+        slides: [
+            '../source/images/homepage/slide-1.jpg',
+            '../source/images/homepage/slide-2.jpg',
+            '../source/images/homepage/slide-3.jpg',
+            '../source/images/homepage/slide-4.jpg'
+        ],
+        number: '01',
+        logo: 'vsem pizda'
+    },
     items: [
-        {
-            title: '',
-            titleBold: '',
-            subtitle: '',
-            description: '',
-            background: '../source/images/homepage/slide-1.jpg',
-            number: '01',
-            logo: 'vsem pizda'
-        },
+
         {
             title: 'Natalia',
             titleBold: 'Oleksienko',

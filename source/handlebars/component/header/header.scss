@@ -1,199 +1,265 @@
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding-top: 50px;
-  font-family: $exo2Light;
-  color: #fff;
-  z-index: 100;
-  font-size: 16px;
-
-  @media only screen and (max-height: $maxHeight){
-    padding-top: 4vh;
-  }
-
-  &.homepage__header {
-    .logo {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    opacity: 0;
-  }
-
-  &__inner {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  &__logo {
-    position: absolute;
-    top: 50px;
-    left: 95px;
-    pointer-events: none;
-
-    @media only screen and (max-height: $maxHeight){
-      top: 4vh;
-    }
-
-    @include media($desk-middle){
-      left: 7.5%;
-    }
-  }
-
-  &__list {
-    display: flex;
-  }
-
-  &__item {
-    padding: 0 30px;
-  }
-
-  &__link {
-    display: block;
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: opacity 0.4s;
-
-    &:hover {
-      opacity: 0.5;
-    }
-  }
-
-  &__lang {
-    position: relative;
-    margin-left: 30px;
-    margin-right: 40px;
-    text-transform: uppercase;
-    align-self: flex-start;
-
-    &:before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      right: -14px;
-      border: 5px solid transparent;
-      border-top-color: $red-color;
-      transform: translateY(-15%);
-    }
-}
-
-  &__lang-list {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    opacity: 0;
-    transition: opacity 0.4s;
-    pointer-events: none;
-
-    &.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-  }
-
-  &__lang-btn {
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    background: none;
-    text-transform: uppercase;
-    font-size: inherit;
-    font-family: inherit;
-    padding: 0;
-    line-height: 1;
-    outline: none;
-  }
-
-  &__lang-item {
-    margin-top: 25px;
-    display: inline-block;
-    color: #fff;
-    transition: opacity 0.4s;
-
-    &:hover {
-      opacity: 0.5;
-    }
-  }
-
-  &__menu {
-    position: relative;
-    text-transform: uppercase;
-    padding-right: 60px;
-    padding-left: 30px;
-    align-self: flex-start;
-    line-height: 1;
-    
-    &:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 2px;
-      background: #fff;
-    }
-
-    &:hover {
-      .header__menu-text {
-        opacity: 0.5;
-      }
-
-      .burger__line {
-        background: #fff;
-      }
-    }
-  }
-
-  &__menu-text {
-    transition: opacity 0.4s;
-  }
-
-  &__menu-button {
-    position: absolute;
-    background: none;
-    border: none;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    outline: none;
-    cursor: pointer;
-  }
+    padding-top: 50px;
+    font-family: $exo2Light;
+    color: #fff;
+    z-index: 105;
+    font-size: 16px;
+
+    @media only screen and (max-height: $maxHeight) {
+        padding-top: 4vh;
+    }
+
+    @include media($break-mobile) {
+        opacity: 1!important;
+        transform: none !important;
+    }
+
+    &.homepage__header {
+        .logo {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        opacity: 0;
+    }
+
+    &__inner {
+        display: flex;
+        justify-content: flex-end;
+
+        @include media($break-mobile) {
+            padding: 0 20px;
+        }
+    }
+
+    &__logo {
+        position: absolute;
+        top: 50px;
+        left: 95px;
+        pointer-events: none;
+
+        @media only screen and (max-height: $maxHeight) {
+            top: 4vh;
+        }
+
+        @include media($desk-middle) {
+            left: 7.5%;
+        }
+
+        @include media($break-mobile) {
+            top: 15px;
+            left: 15px;
+        }
+    }
+
+    &__list {
+        display: flex;
+
+        @include media($break-mobile) {
+            display: none;
+        }
+    }
+
+    &__item {
+        padding: 0 25px;
+    }
+
+    &__link {
+        display: block;
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: opacity 0.4s;
+
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+
+    &__lang {
+        position: relative;
+        margin-left: 20px;
+        margin-right: 55px;
+        text-transform: uppercase;
+        align-self: flex-start;
+
+        @include media($break-mobile) {
+            display: none;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -14px;
+            border: 5px solid transparent;
+            border-top-color: $red-color;
+            transform: translateY(-15%);
+        }
+    }
+
+    &__lang-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        opacity: 0;
+        transition: opacity 0.4s;
+        pointer-events: none;
+
+        &.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+
+    &__lang-btn {
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        background: none;
+        text-transform: uppercase;
+        font-size: inherit;
+        font-family: inherit;
+        padding: 0;
+        line-height: 1;
+        outline: none;
+    }
+
+    &__lang-item {
+        margin-top: 25px;
+        display: inline-block;
+        color: #fff;
+        transition: opacity 0.4s;
+
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+
+    &__menu {
+        position: relative;
+        text-transform: uppercase;
+        padding-right: 50px;
+        padding-left: 30px;
+        align-self: flex-start;
+        line-height: 1;
+
+        @include media($break-mobile) {
+            padding: 0;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 2px;
+            background: #fff;
+
+            @include media($break-mobile) {
+                display: none;
+            }
+        }
+
+        &:hover {
+            .header__menu-text {
+                opacity: 0.5;
+            }
+
+            .burger__line {
+                background: #fff;
+
+                @include media($break-mobile) {
+                    background: $red-color;
+                }
+            }
+        }
+    }
+
+    &__menu-text {
+        transition: opacity 0.4s;
+
+        @include media($break-mobile) {
+            display: none;
+        }
+    }
+
+    &__menu-button {
+        position: absolute;
+        background: none;
+        border: none;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        outline: none;
+        cursor: pointer;
+    }
 }
 
 .burger {
-  position: fixed;
-  top: 50px;
-  right: 50px;
-  width: 28px;
-  height: 18px;
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    width: 28px;
+    height: 18px;
 
-  @media only screen and (max-height: $maxHeight){
-    top: 4vh;
-  }
+    &.active {
 
-  &__line {
-    position: absolute;
-    left: 0;
-    height: 2px;
-    width: 100%;
-    background: $red-color;
-    transition: background-color 0.4s;
+        .burger__line {
 
-    &--top {
-      top: 0;
+            background: $red-color;
+
+            &--top {
+                transform: rotate(45deg);
+                top: 47%;
+            }
+
+            &--center {
+                opacity: 0;
+            }
+
+            &--bottom {
+                transform: rotate(-45deg);
+                bottom: 47%;
+            }
+        }
     }
 
-    &--center {
-      top: 50%;
-      margin-top: -1px;
+    @media only screen and (max-height: $maxHeight) {
+        top: 4vh;
     }
 
-    &--bottom {
-      bottom: 0;
+    @include media($break-mobile) {
+        position: relative;
+        top: 0;
+        right: 0;
     }
-  }
+
+    &__line {
+        position: absolute;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        background: $red-color;
+        transition: background-color 0.4s, transform 0.4s;
+
+        &--top {
+            top: 0;
+        }
+
+        &--center {
+            top: 50%;
+            margin-top: -1px;
+        }
+
+        &--bottom {
+            bottom: 0;
+        }
+    }
 }

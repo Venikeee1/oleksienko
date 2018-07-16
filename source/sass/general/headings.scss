@@ -11,6 +11,14 @@
     font-size: 60px;
   }
 
+  @include media($break-mobile) {
+    font-size: 30px;
+  }
+
+  @include media($break-extra-small) {
+    font-size: 24px;
+  }
+
   &--semibold {
     font-family: $uniSansSemiBold;
   }
@@ -32,5 +40,9 @@
 
   @include media($break-tablet){
     font-size: 24px;
+  }
+
+  @include media($break-mobile) {
+    font-size: 20px;
   }
 }

@@ -6,13 +6,22 @@ $menu-white-color: #fefefe;
     width: 100%;
     min-height: 100%;
     display: flex;
-    justify-content: flex-end;
-    padding: 12% 50px 8%;
+    padding: 15vh 50px 10vh;
     color: rgba($menu-white-color,0.7);
     opacity: 0;
     transition: opacity 0.4s;
     pointer-events: none;
     z-index: 10;
+    flex-direction: column;
+
+    @include media($break-mobile) {
+        padding-top: 18vh;
+    }
+
+    @include media(600px) {
+        padding-left: 60px;
+        padding-right: 30px;
+    }
 
     &.active {
         pointer-events: auto;
@@ -26,16 +35,36 @@ $menu-white-color: #fefefe;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        margin: auto 0 auto auto;
+        height: 100%;
+        flex: 1;
+        max-height: 600px;
 
 
         @include media($desk-middle) {
             width: 50%;
+        }
+
+        @include media($break-mobile) {
+            width: 80%;
+            max-width: 470px;
+        }
+
+        @include media(600px) {
+            width: 100%;
+            position: relative;
+            max-width: 370px;
+            max-height: 450px;
         }
     }
 
     &__list {
         font-family: $uniSansLight;
         font-size: 20px;
+
+        @include media(600px) {
+            font-size: 14px;
+        }
     }
 
     &__item {
@@ -85,6 +114,10 @@ $menu-white-color: #fefefe;
         padding-left: 90px;
         overflow: hidden;
         transition: color 0.4s;
+
+        @include media(600px) {
+            padding-left: 40px;
+        }
 
         &:before {
             content: '';
@@ -145,7 +178,12 @@ $menu-white-color: #fefefe;
     &__info {
         font-size: 16px;
         font-family: $uniSansSemiBold;
-        padding-left: 120px;
+        padding: 1.5em 0 1.5em 120px;
+
+        @include media(600px) {
+            padding-left: 70px;
+            font-size: 12px;
+        }
     }
 
     &__info-item {
@@ -169,6 +207,10 @@ $menu-white-color: #fefefe;
 
     &__tel {
         padding-left: 120px;
+
+        @include media(600px) {
+            padding-left: 70px;
+        }
     }
 
     &__tel-item {
@@ -178,5 +220,9 @@ $menu-white-color: #fefefe;
         font-size: 24px;
         margin-bottom: 5px;
         font-family: $uniSansLight;
+
+        @include media(600px) {
+            font-size: 16px;
+        }
     }
 }

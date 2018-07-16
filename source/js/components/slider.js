@@ -9,6 +9,8 @@ export class Slider {
         this.currentIndex = 0;
         this.prevIndex = this.currentIndex;
         this.currentSlide = this.slides[this.currentIndex];
+        this.delay = settings.delay || 800;
+        this.animationTime = settings.animationTime || 400;
         //this.activeBackground = this.backgroundsArray[this.currentIndex];
         this.animationAloud = true;
         this.dots = [];
@@ -69,26 +71,35 @@ export class Slider {
         }
     }
 
+    autoPlay() {
+        if( this.settings.autoplay) {
+            setInterval( () => {
+                if(this.currentIndex === this.slides.length - 1) {
+                    this.goToSlide(0);
+                } else {
+                    this.nextSlide();
+                }
+            }, this.delay);
+        }
+    }
+
     selectAnimation( index ) {
         const tl = new TimelineMax();
 
         if( this.settings.sliderStyle === 'fadeIn') {
 
-            tl.to(this.currentSlide, 0.4, {opacity: 1, onStart: ()=> {
-                    this.changeHeaderStyle();
-                    this.changeDotAndNavigationStyle();
+            tl.to(this.currentSlide, this.animationTime, {opacity: 1, onStart: ()=> {
+
                 }, onComplete: ()=> {
                     this.animationAloud = true;
                     this.settings.afterAnimationEnd(this.currentSlide, this.currentIndex, this.prevIndex);
                 }})
-                .to( this.slides[this.prevIndex], 0.4, {opacity: 0}, 0);
+                .to( this.slides[this.prevIndex], this.animationTime, {opacity: 0}, 0);
         } else {
             const animationLength = this.currentIndex * 100;
             const slideValue = `-${animationLength}%`;
 
-            tl.to('.slider__wrapper', this.duration, {y: slideValue , onStart: ()=> {
-                    this.changeHeaderStyle();
-                    this.changeDotAndNavigationStyle();
+            tl.to(this.sliderContainer.querySelector('.slider__wrapper'), this.duration, {y: slideValue , onStart: ()=> {
                 }, onComplete: ()=> {
                     this.animationAloud = true;
                     this.settings.afterAnimationEnd(this.currentSlide, this.currentIndex, this.prevIndex);
@@ -114,14 +125,6 @@ export class Slider {
             this.activeDot.classList.add('active');
 
         }
-    }
-
-    changeHeaderStyle(){
-
-    }
-
-    changeDotAndNavigationStyle() {
-
     }
 
     createSlidesWrapper() {
@@ -232,14 +235,15 @@ export class Slider {
     }
 
     addSwipeListeners() {
-        this.hammer.on('swipeup', () => {
-            this.nextSlide();
-        });
+        if( this.settings.touch) {
+            this.hammer.on('swipeup', () => {
+                this.nextSlide();
+            });
 
-        this.hammer.on('swipedown', () => {
-            this.prevSlide();
-        });
-
+            this.hammer.on('swipedown', () => {
+                this.prevSlide();
+            });
+        }
     }
 
     init(){
@@ -252,6 +256,7 @@ export class Slider {
         this.createNavigation();
         this.setActiveSlide();
         this.afterInitCallBack();
+        this.autoPlay();
     }
 }
 

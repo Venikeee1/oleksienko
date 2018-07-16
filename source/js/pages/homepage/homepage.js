@@ -5,6 +5,7 @@ import {VideoPopup} from "../../components/videoPopup";
 export class HomePage {
     constructor() {
         this.slider = {};
+        this.firstScreenSlider = {};
         this.letters = document.querySelectorAll('.dila__letter-container');
         this.letterAnimationTimeLine = new TimelineMax();
     }
@@ -16,6 +17,7 @@ export class HomePage {
 
         const sliderSettings = {
             afterInit: () => { },
+            touch: true,
             animateNextSlide: (currentSlide, currentIndex, prevIndex) => {
 
                 const tl = new TimelineMax();
@@ -76,6 +78,12 @@ export class HomePage {
                         .to('.homepage__play-triangle', 0.2, {x: '0%'})
                 }
 
+                if( currentSlide.getAttribute('data-section') === 'achievement' ) {
+                    Array.from(document.querySelectorAll('.achievement__item')).forEach( (elem) => {
+                        elem.style.opacity = 0;
+                    })
+                }
+
                 tl.to(currentSlide.querySelector('.slide__number'), 0, {x: -45, opacity: 0},0)
 
                 this.checkActiveLetter(currentIndex)
@@ -91,6 +99,12 @@ export class HomePage {
 
                 }
 
+                if( currentSlide.getAttribute('data-section') === 'achievement' ) {
+                    const timeline = new TimelineMax();
+
+                    timeline.staggerFromTo('.achievement__item', 0.9, { opacity: 0, y: 40}, { opacity: 1, y: 0},0.2,0.7)
+                }
+
                 tl.to(currentSlide.querySelector('.slide__number'), 1.2, {x: 0, opacity: 1},'-=0.5');
 
             }
@@ -98,6 +112,37 @@ export class HomePage {
 
         this.slider = new Slider('.homepage__slides', sliderSettings);
         this.slider.init();
+    }
+
+    initFirstScreenSlider() {
+
+
+        const sliderSettings = {
+            sliderStyle: 'fadeIn',
+            autoplay: true,
+            delay: 7000,
+            animationTime: 4,
+            touch: false,
+            afterInit: (currentSlide)  => {
+                const tl = new TimelineMax();
+
+                tl.to(currentSlide, 12, {scale: 1.05});
+            },
+            animateNextSlide: (currentSlide, currentIndex, prevIndex) => {
+
+                const tl = new TimelineMax();
+
+                tl.to(currentSlide, 0, {scale: 1})
+                    .to(currentSlide, 12, {scale: 1.05});
+
+            },
+            afterAnimationEnd: (currentSlide, currentIndex, prevIndex) => {
+
+            }
+        };
+
+        this.firstScreenSlider = new Slider('.first-screen-slider', sliderSettings);
+        this.firstScreenSlider.init();
     }
 
     letterShowAnimation() {
@@ -130,7 +175,8 @@ export class HomePage {
     }
 
     langChoose() {
-        document.querySelector('.header__lang-btn').addEventListener('click', () => {
+        document.querySelector('.header__lang-btn').addEventListener('click', (e) => {
+            e.preventDefault();
             document.querySelector('.header__lang-list').classList.toggle('active');
         })
     }
@@ -201,11 +247,34 @@ export class HomePage {
 
     }
 
+    checkForDisablingHover() {
+        if(window.innerWidth < 1040) {
+            Array.from(document.querySelectorAll('.dila__letter-container')).forEach( (elem) => {
+                elem.classList.add('nohover');
+            })
+        } else {
+            Array.from(document.querySelectorAll('.dila__letter-container')).forEach( (elem) => {
+                elem.classList.remove('nohover');
+            })
+        }
+
+
+    }
+
+    resizeWindow() {
+        window.addEventListener('resize', () => {
+            this.checkForDisablingHover();
+        })
+    }
+
     init() {
+        this.initFirstScreenSlider();
         this.initSlider();
         this.langChoose();
         this.wrapFirstLetters();
         this.initVideoPopup();
+        this.checkForDisablingHover();
+        this.resizeWindow();
         const preloader = new Prelaoder();
         preloader.init();
         this.addEventListenersToLetters();
@@ -219,6 +288,8 @@ export class HomePage {
                 tl.staggerTo('.logo__animation', 0.5, { opacity: 1, y: 0}, 0.2)
                     .to('.logo', 0.5, {opacity: 1, pointerEvents: 'auto'}, 0)
                     .to('.logo__svg', 0.5, { fill: '#df2032',  opacity: 1}, 0);
+
+                document.querySelector('.burger').classList.add('active');
             } else {
 
                 tl.staggerTo('.logo__animation', 0.1, { opacity: 0, y: 30})
@@ -228,6 +299,8 @@ export class HomePage {
                 } else {
                     tl.to('.logo__svg', 1.2, { fill: '#fff',  opacity: 0.5}, 0);
                 }
+
+                document.querySelector('.burger').classList.remove('active');
             }
 
         })

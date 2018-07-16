@@ -7,10 +7,22 @@
         height: 180px;
         width: 180px;
         pointer-events: auto;
+        min-height: 100px;
+        min-width: 100px;
 
         @include media($desk-middle) {
             height: 140px;
             width: 140px;
+        }
+
+        @include media(900px) {
+            width: 15vw;
+            height: 15vw;
+        }
+
+        @include media($break-mobile) {
+            min-height: 50px;
+            min-width: 50px;
         }
 
         svg {
@@ -22,6 +34,14 @@
 
     &__text {
 
+        @include media(900px) {
+            margin-top: -15px;
+        }
+
+        @include media($break-mobile) {
+            display: none;
+        }
+
 
         svg {
             fill: #fff;
@@ -30,6 +50,10 @@
 
             @include media($desk-middle) {
                 width: 330px;
+            }
+
+            @include media($break-tablet) {
+                width: 250px;
             }
         }
     }
