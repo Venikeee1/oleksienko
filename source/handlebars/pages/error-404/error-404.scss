@@ -1,0 +1,60 @@
+.error-404 {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: 50% 20%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+
+    &__text {
+        color: #fff;
+        width: 100%;
+        max-width: 500px;
+        position: absolute;
+        top: 50%;
+        right: 10%;
+
+        @media only screen and (max-height: 650px) {
+            top: 35%;
+        }
+
+    }
+
+    &__title {
+        color: $red-color;
+        font-family: $uniSansBold;
+        font-size: 72px;
+    }
+
+    &__subtitle {
+        color: $red-color;
+        font-family: $uniSansBook;
+        font-size: 48px;
+        margin-bottom: 10px;
+    }
+
+    &__description {
+        font-family: $uniSansLight;
+        font-size: 30px;
+        line-height: 1.2;
+    }
+
+    &__pict {
+        position: absolute;
+        right: calc(10% + 550px);
+        top: 10%;
+        bottom: 10%;
+        max-height: 800px;
+        width: 1px;
+    }
+
+    &__img {
+        height: 100%;
+        width: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}

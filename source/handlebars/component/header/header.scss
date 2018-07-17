@@ -18,6 +18,16 @@
         transform: none !important;
     }
 
+    &.dark-bg {
+        .logo__svg {
+            fill: $red-color;
+        }
+
+        .logo__animation {
+            opacity: 1;
+        }
+    }
+
     &.homepage__header {
         .logo {
             opacity: 0;
