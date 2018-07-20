@@ -1,5 +1,30 @@
-<div class="template-wrap">
+<div class="inner-page">
+    <div class="inner-page__name">
+        {{#if title}}
+            <h2 class="main-title main-title--light">{{title}}</h2>
+        {{/if}}
+        {{#if titleBold}}
+            <h3 class="homepage__subtitle main-title main-title--semibold">{{titleBold}}</h3>
+        {{/if}}
+        {{#if subtitle}}
+            <h3 class="homepage__position main-subtitle animation-title">{{subtitle}}</h3>
+        {{/if}}
+        <p class="slide__description animation-title">
+            {{#if description}}
+                {{{description}}}
+            {{/if}}
+        </p>
+    </div>
+    {{#each homepage.items}}
+        <section class="homepage__item" style="background-image: url('{{background}}')">
+            <div class="homepage__text">
 
+            </div>
+            <div class="slide__number">
+                <span class="slide__value">{{number}}</span>
+            </div>
+        </section>
+    {{/each}}
 </div>
 
 

@@ -1,5 +1,6 @@
 import { TimelineLite } from "gsap";
 import { HomePage } from './pages/homepage/homepage';
+import { Menu } from "./components/menu";
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,10 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('load', () => {
 
+    const PopupMenu = new Menu('.menu');
+    const GLOBAL_OBJECT = {};
+
+    GLOBAL_OBJECT.menu = PopupMenu;
+
     if(document.querySelector('.homepage')) {
-        const activeScript = new HomePage();
+        const activeScript = new HomePage(GLOBAL_OBJECT);
+        PopupMenu.animationOnClose = true;
         activeScript.init();
     }
+
+    PopupMenu.init();
 
 });
 

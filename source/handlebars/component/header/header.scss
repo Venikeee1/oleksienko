@@ -209,6 +209,7 @@
         height: 100%;
         outline: none;
         cursor: pointer;
+        outline: none;
     }
 }
 
@@ -236,7 +237,7 @@
 
             &--bottom {
                 transform: rotate(-45deg);
-                bottom: 47%;
+                bottom: 44%;
             }
         }
     }
@@ -257,7 +258,7 @@
         height: 2px;
         width: 100%;
         background: $red-color;
-        transition: background-color 0.4s, transform 0.4s;
+        transition: background-color 0.4s, transform 0.4s, top 0.4s, bottom 0.4s;
 
         &--top {
             top: 0;

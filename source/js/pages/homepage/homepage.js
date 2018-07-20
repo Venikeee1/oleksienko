@@ -3,11 +3,12 @@ import {Prelaoder} from "../../components/preloader";
 import {VideoPopup} from "../../components/videoPopup";
 
 export class HomePage {
-    constructor() {
+    constructor( globalObj) {
         this.slider = {};
         this.firstScreenSlider = {};
         this.letters = document.querySelectorAll('.dila__letter-container');
         this.letterAnimationTimeLine = new TimelineMax();
+        this.globalObj = globalObj;
     }
 
     initSlider() {
@@ -247,6 +248,18 @@ export class HomePage {
 
     }
 
+    callBackForMenu() {
+        this.globalObj.menu.beforeClose = () => {
+            const tl = new TimelineMax();
+
+            if( this.slider.currentIndex === 0 ) {
+                tl.to('.logo', 0.5, {opacity: 0, pointerEvents: 'none'}, 0)
+            } else {
+                tl.to('.logo__svg', 1.2, { fill: '#fff',  opacity: 0.5}, 0);
+            }
+        }
+    }
+
     checkForDisablingHover() {
         if(window.innerWidth < 1040) {
             Array.from(document.querySelectorAll('.dila__letter-container')).forEach( (elem) => {
@@ -278,32 +291,7 @@ export class HomePage {
         const preloader = new Prelaoder();
         preloader.init();
         this.addEventListenersToLetters();
-
-        document.querySelector('.header__menu-button').addEventListener('click', () => {
-
-            const tl = new TimelineMax();
-            document.querySelector('.menu').classList.toggle('active');
-
-            if(document.querySelector('.menu').classList.contains('active')) {
-                tl.staggerTo('.logo__animation', 0.5, { opacity: 1, y: 0}, 0.2)
-                    .to('.logo', 0.5, {opacity: 1, pointerEvents: 'auto'}, 0)
-                    .to('.logo__svg', 0.5, { fill: '#df2032',  opacity: 1}, 0);
-
-                document.querySelector('.burger').classList.add('active');
-            } else {
-
-                tl.staggerTo('.logo__animation', 0.1, { opacity: 0, y: 30})
-
-                if( this.slider.currentIndex === 0 ) {
-                    tl.to('.logo', 0.5, {opacity: 0, pointerEvents: 'none'}, 0)
-                } else {
-                    tl.to('.logo__svg', 1.2, { fill: '#fff',  opacity: 0.5}, 0);
-                }
-
-                document.querySelector('.burger').classList.remove('active');
-            }
-
-        })
+        this.callBackForMenu();
     }
 }
 

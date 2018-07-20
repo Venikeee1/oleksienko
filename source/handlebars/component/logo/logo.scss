@@ -39,7 +39,7 @@
             margin-top: -15px;
         }
 
-        @include media($break-mobile) {
+        @include media(1200px) {
             display: none;
         }
 
