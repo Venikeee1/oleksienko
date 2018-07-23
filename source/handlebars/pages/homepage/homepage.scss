@@ -246,13 +246,13 @@
         flex-direction: column;
         justify-content: center;
         height: 100%;
-        left: 20px;
+        left: -62px;
         top: 0;
         font-family: $openSansBold;
         opacity: 0;
 
-        @include media($desk-middle) {
-            left: 1%;
+        @include media($break-tablet) {
+            left: -80px;
         }
 
         @include media($break-mobile) {
@@ -264,6 +264,7 @@
         transform: rotate(-90deg);
         font-size: 94px;
         opacity: 0.2;
+        width: 242px;
 
         @include media($desk-middle) {
             font-size: 6vw;
@@ -273,7 +274,7 @@
 
 .red-squares {
     position: absolute;
-    left: 140px;
+    left: 110px;
     bottom: calc(20% - 10px);
     z-index: 55;
     display: flex;
@@ -302,7 +303,7 @@
 .scroll-more {
     position: fixed;
     bottom: 0;
-    left: 141px;
+    left: 111px;
     font-size: 12px;
     z-index: 5;
     opacity: 0;

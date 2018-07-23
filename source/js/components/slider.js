@@ -7,6 +7,7 @@ export class Slider {
         this.slides = document.querySelectorAll( `${selector}>*` );
         this.slideCount = this.slides.length;
         this.currentIndex = 0;
+        this.hashNavigation = false;
         this.prevIndex = this.currentIndex;
         this.currentSlide = this.slides[this.currentIndex];
         this.delay = settings.delay || 800;
@@ -14,6 +15,7 @@ export class Slider {
         //this.activeBackground = this.backgroundsArray[this.currentIndex];
         this.animationAloud = true;
         this.dots = [];
+        this.hashList = [];
         this.activeDot = '';
         this.settings = settings;
         this.sliderStyle = 'slider';
@@ -83,6 +85,31 @@ export class Slider {
         }
     }
 
+    createHashList() {
+        this.slides.forEach( elem => {
+            this.hashList.push(elem.getAttribute('data-hash'));
+
+        })
+    }
+
+    checkHash( fastMove ) {
+        if( location.hash ) {
+            const hash = location.hash.slice(1);
+            const index = this.hashList.indexOf(hash);
+            const duration = this.duration;
+
+            if( fastMove) {
+                this.duration = 0;
+            }
+
+            if( index >= 0) {
+                this.goToSlide(parseInt(index));
+            }
+
+            this.duration = duration;
+        }
+    }
+
     selectAnimation( index ) {
         const tl = new TimelineMax();
 
@@ -98,11 +125,18 @@ export class Slider {
         } else {
             const animationLength = this.currentIndex * 100;
             const slideValue = `-${animationLength}%`;
+            window.location.hash = `#${this.currentIndex}`;
 
             tl.to(this.sliderContainer.querySelector('.slider__wrapper'), this.duration, {y: slideValue , onStart: ()=> {
                 }, onComplete: ()=> {
                     this.animationAloud = true;
-                    this.settings.afterAnimationEnd(this.currentSlide, this.currentIndex, this.prevIndex);
+                    if(this.duration === 0) {
+                        setTimeout( () => {
+                            this.settings.afterAnimationEnd(this.currentSlide, this.currentIndex, this.prevIndex);
+                        }, 500)
+                    } else {
+                        this.settings.afterAnimationEnd(this.currentSlide, this.currentIndex, this.prevIndex);
+                    }
                 }, ease: Power2.easeInOut});
         }
     }
@@ -133,7 +167,8 @@ export class Slider {
         sliderWrapper.style.height = '100%';
         sliderWrapper.style.width = '100%';
 
-        Array.from(this.slides).forEach( (elem) => {
+        Array.from(this.slides).forEach( (elem, i) => {
+            elem.setAttribute('data-hash', i);
             sliderWrapper.appendChild(elem);
         });
         this.sliderContainer.appendChild(sliderWrapper);
@@ -253,10 +288,20 @@ export class Slider {
         this.addMouseWheelIndicator();
         this.addSwipeListeners();
         this.createDots();
+        this.createHashList();
         this.createNavigation();
         this.setActiveSlide();
         this.afterInitCallBack();
         this.autoPlay();
+
+
+
+        if(this.hashNavigation) {
+            this.checkHash(true);
+            window.addEventListener('popstate', () => {
+                this.checkHash();
+            })
+        }
     }
 }
 

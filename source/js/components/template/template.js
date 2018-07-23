@@ -1,6 +1,7 @@
 import {Slider} from "../slider";
 import {wrapFirstLetters} from "../../helper/helper";
 import {innerPageInfo} from "../innerPageInfo/innerPageInfo";
+import SimpleBar from 'simplebar';
 
 export class Template {
     constructor() {
@@ -17,6 +18,7 @@ export class Template {
                 const tl = new TimelineMax();
 
                 currentTimeLine.clear();
+
                 tl
                     .to('.rest-letters-animation', 0, {y: 2, opacity: 0}, 0)
                     .to('.first-letter-animation', 0, {y: 30, opacity: 0}, 0)
@@ -32,14 +34,24 @@ export class Template {
                     .staggerTo('.slide__description', 1, {y: 0, opacity: 1},0.3, '-=1.1')
                     .to('.slider__dots--wrapper', 1.5, {y: '0%', ease: Power3.easeOut},0)
                     .to('.slide__number', 1.2, {x: 0, opacity: 1},'-=0.5')
-                    .to('.red-squares', 0.5, {opacity: 1}, 1)
-                    .to('.scroll-more', 1.8, {opacity: 1}, 1)
+                    .to('.red-square', 0, {opacity: 0, scale: 0}, 0)
+                    .to('.red-squares', 0.1, {opacity: 1}, 0)
+                    .staggerTo('.red-square', 0.5, {opacity: 1, scale: 1},0.1, 0)
+                    .to('.scroll-more', 1.8, {opacity: 1}, 1.5)
 
 
                 currentTimeLine = tl;
             },
             touch: true,
-            animateNextSlide: () => {
+            animateNextSlide: (el, currentslide) => {
+                const currentIndex = currentslide < 10 ? `0${currentslide + 1}` : currentslide + 1;
+                const slideIndexContainer = document.querySelector('.slide__number-index');
+                const tl = new TimelineMax();
+                tl.to(slideIndexContainer, 0.5, {opacity: 0, onComplete: () => {
+                        slideIndexContainer.textContent = currentIndex;
+                    }} )
+                    .to(slideIndexContainer, 0.5, {opacity: 1});
+
 
             },
             afterAnimationEnd: () => {
@@ -65,9 +77,16 @@ export class Template {
         })
     }
 
+    customizeScrollBar() {
+        if(window.innerWidth >= 768 ) {
+            new SimpleBar(document.querySelector('.inner-page-info__text'));
+        }
+    }
+
     init() {
         wrapFirstLetters();
         this.initSlider();
         this.showInnerPopup();
+        this.customizeScrollBar();
     }
 }

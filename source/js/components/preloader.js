@@ -15,7 +15,7 @@ export class Prelaoder {
             .to(this.logoCircle, 1.2,{width: 0})
             .to('.preloader__animation',0, {y: 30, opacity: 0})
             .staggerTo('.preloader__animation', 1.8, {y: 0, opacity: 1}, 0.4)
-            .to('.header', 1.3, {y: '0', opacity: 1}, '-=0.6')
+            .to('.header', 1.3, {y: '0', opacity: 1}, 1)
             .to('.scroll-more', 0, {opacity: 0},0)
             .to('.red-squares', 0,{opacity: 0},0)
             .to('.scroll-more', 0.8, {opacity: 1}, '-=0.6')

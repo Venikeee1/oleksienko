@@ -19,9 +19,10 @@ homepage: {
             title: 'Natalia',
             titleBold: 'Oleksienko',
             subtitle: 'Architect',
-            description: 'All my projects are not just work, it`s taking care of exceptional customer experiences. <a class="more-btn" href="" class="exo--bold"> more...</a>',
+            description: 'All my projects are not just work, it\'s taking care of exceptional customer experiences. <a class="more-btn" href="/architect.html" class="exo--bold"> more...</a>',
             background: '../source/images/homepage/slide-2.jpg',
-            number: '02'
+            number: '02',
+            link: '/architect.html'
         },
         {
             title: 'Villa',
@@ -29,7 +30,8 @@ homepage: {
             subtitle: '',
             description: 'The prize in the competition of the Ukrainian magazine “Salon” in 2013',
             background: '../source/images/homepage/slide-3.jpg',
-            number: '03'
+            number: '03',
+            link: '/architect.html'
         },
         {
             title: 'Code of hapiness',
@@ -37,7 +39,8 @@ homepage: {
             subtitle: '',
             description: 'The concept of landscape design for a forest country house',
             background: '../source/images/homepage/slide-4.jpg',
-            number: '04'
+            number: '04',
+            link: '/architect.html'
         },
         {
             title: 'Villa',
@@ -45,7 +48,8 @@ homepage: {
             subtitle: '',
             description: 'The concept of landscape design for a forest country house',
             background: '../source/images/homepage/slide-5.jpg',
-            number: '05'
+            number: '05',
+            link: '/architect.html'
         },
         {
             title: 'Luminaces',
@@ -53,7 +57,8 @@ homepage: {
             subtitle: '',
             description: 'III places in the XV Festival of Architecture and Interior Design “Under roof of the house”',
             background: '../source/images/homepage/slide-6.jpg',
-            number: '06'
+            number: '06',
+            link: '/architect.html'
         },
 
     ],
@@ -62,6 +67,7 @@ homepage: {
         titleBold: 'Achievement',
         background: '../source/images/homepage/slide-7.jpg',
         number: '07',
+        link: '/architect.html',
         list: [
             {
                 value: 2001,
@@ -85,7 +91,8 @@ homepage: {
         subtitle: '',
         description: '',
         background: '../source/images/homepage/slide-8.jpg',
-        number: '08'
+        number: '08',
+        link: '/architect.html'
     }
 }
 

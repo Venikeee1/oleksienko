@@ -112,6 +112,7 @@ export class HomePage {
         };
 
         this.slider = new Slider('.homepage__slides', sliderSettings);
+        this.slider.hashNavigation = true;
         this.slider.init();
     }
 

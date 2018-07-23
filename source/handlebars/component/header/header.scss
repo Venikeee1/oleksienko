@@ -8,6 +8,7 @@
     color: #fff;
     z-index: 105;
     font-size: 16px;
+    pointer-events: none;
 
     @media only screen and (max-height: $maxHeight) {
         padding-top: 4vh;
@@ -90,12 +91,17 @@
         }
     }
 
+    &__nav {
+        pointer-events: auto;
+    }
+
     &__lang {
         position: relative;
         margin-left: 20px;
         margin-right: 55px;
         text-transform: uppercase;
         align-self: flex-start;
+        pointer-events: auto;
 
         @include media($break-mobile) {
             display: none;
@@ -157,6 +163,7 @@
         padding-left: 30px;
         align-self: flex-start;
         line-height: 1;
+        pointer-events: auto;
 
         @include media($break-mobile) {
             padding: 0;
