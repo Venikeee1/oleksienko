@@ -20,28 +20,6 @@
         overflow: hidden;
     }
 
-    &__text {
-        position: absolute;
-        bottom: 50px;
-        left: 240px;
-
-        @include media($desk-middle){
-            left: 14%;
-            bottom: 5%;
-        }
-
-        @include media($break-tablet){
-            left: 17%;
-        }
-
-        @include media($break-mobile) {
-            width: 100%;
-            left: 0;
-            padding: 0 10% 0 14%;
-            bottom: 3%;
-        }
-    }
-
     &__subtitle {
         padding-left: 45px;
         margin-top: -10px;
@@ -318,6 +296,7 @@
     width: 10px;
     height: 10px;
     background: $red-color;
+    margin-right: 5px;
 }
 
 .scroll-more {
@@ -441,6 +420,7 @@
 .first-letter-animation, .rest-letters-animation {
     display: inline-block;
     opacity: 0;
+    transition: color 0.4s;
 }
 
 .animation-title {

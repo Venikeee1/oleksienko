@@ -17,12 +17,12 @@
         </section>
         {{#each homepage.items}}
             <section class="homepage__item" style="background-image: url('{{background}}')">
-                <div class="homepage__text">
+                <div class="main__text">
                     {{#if title}}
-                        <h2 class="main-title main-title--light">{{title}}</h2>
+                        <a href="" class="main-title main-title--light">{{title}}</a>
                     {{/if}}
                     {{#if titleBold}}
-                        <h3 class="homepage__subtitle main-title main-title--semibold">{{titleBold}}</h3>
+                        <a href="" class="homepage__subtitle main-title main-title--semibold">{{titleBold}}</a>
                     {{/if}}
                     {{#if subtitle}}
                         <h3 class="homepage__position main-subtitle animation-title">{{subtitle}}</h3>
@@ -39,9 +39,9 @@
             </section>
         {{/each}}
         <section class="homepage__item" style="background-image: url('{{homepage.achievement.background}}')" data-section="achievement">
-            <div class="homepage__text">
-                <h2 class="main-title main-title--light">{{homepage.achievement.title}}</h2>
-                <h3 class="homepage__subtitle main-title main-title--semibold">{{homepage.achievement.titleBold}}</h3>
+            <div class="main__text">
+                <a href="" class="main-title main-title--light">{{homepage.achievement.title}}</a>
+                <a href="" class="homepage__subtitle main-title main-title--semibold">{{homepage.achievement.titleBold}}</a>
                 <p class="slide__description"></p>
             </div>
             <div class="slide__number">
@@ -49,7 +49,6 @@
             </div>
             <div class="achievement__wrapper">
                 <ul class="achievement__list">
-
                     {{#each homepage.achievement.list}}
                         <li class="achievement__item">
                             <span class="achievement__quantity"><span class="exo--light">{{zeroAmount}}</span>{{value}}</span>
@@ -59,9 +58,9 @@
             </div>
         </section>
         <section class="homepage__item" style="background-image: url('{{homepage.video.background}}')" data-section="video">
-            <div class="homepage__text">
-                <h2 class="main-title main-title--light homepage__animation-title">{{homepage.video.title}}</h2>
-                <h3 class="homepage__subtitle main-title main-title--semibold homepage__animation-title">{{homepage.video.titleBold}}</h3>
+            <div class="main__text">
+                <a href="" class="main-title main-title--light homepage__animation-title">{{homepage.video.title}}</a>
+                <a href="" class="homepage__subtitle main-title main-title--semibold homepage__animation-title">{{homepage.video.titleBold}}</a>
                 <p class="slide__description"></p>
             </div>
             <div class="slide__number">
@@ -77,11 +76,5 @@
             </div>
         </section>
     </div>
-    <div class="scroll-more">
-        <span class="scroll-more__text exo--thin">
-            <span class="scroll-more__desktop">Scroll</span>
-            <span class="scroll-more__mobile">Swipe</span>
-            <span class="scroll-more--bold exo--bold">Down</span>
-        </span>
-    </div>
+    {{>component/scroll-more/scroll-more}}
 </div>

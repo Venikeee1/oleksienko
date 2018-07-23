@@ -13,3 +13,28 @@
   }
 }
 
+.main {
+  &__text {
+    position: absolute;
+    bottom: 50px;
+    left: 240px;
+    z-index: 5;
+
+    @include media($desk-middle){
+      left: 14%;
+      bottom: 5%;
+    }
+
+    @include media($break-tablet){
+      left: 17%;
+    }
+
+    @include media($break-mobile) {
+      width: 100%;
+      left: 0;
+      padding: 0 10% 0 14%;
+      bottom: 3%;
+    }
+  }
+}
+

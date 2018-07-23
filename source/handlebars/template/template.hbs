@@ -1,13 +1,10 @@
-<div class="inner-page">
-    <div class="inner-page__name">
+<div class="inner-page" >
+    <div class="main__text">
         {{#if title}}
-            <h2 class="main-title main-title--light">{{title}}</h2>
-        {{/if}}
-        {{#if titleBold}}
-            <h3 class="homepage__subtitle main-title main-title--semibold">{{titleBold}}</h3>
+            <a href="" class="main-title main-title--light animation-title">{{title}}</a>
         {{/if}}
         {{#if subtitle}}
-            <h3 class="homepage__position main-subtitle animation-title">{{subtitle}}</h3>
+            <a href="" class="homepage__subtitle main-title main-title--semibold animation-title">{{subtitle}}</a>
         {{/if}}
         <p class="slide__description animation-title">
             {{#if description}}
@@ -15,16 +12,20 @@
             {{/if}}
         </p>
     </div>
-    {{#each homepage.items}}
-        <section class="homepage__item" style="background-image: url('{{background}}')">
-            <div class="homepage__text">
-
-            </div>
-            <div class="slide__number">
-                <span class="slide__value">{{number}}</span>
-            </div>
-        </section>
-    {{/each}}
+    <section class="inner-page__slides">
+        {{#each slides}}
+            <div class="inner-page__slide" style="background-image: url('{{this}}')"></div>
+        {{/each}}
+    </section>
+    <div class="red-squares">
+        <div class="red-square"></div>
+        <div class="red-square"></div>
+    </div>
+    <div class="slide__number">
+        <span class="slide__value">01</span>
+    </div>
+    {{>component/scroll-more/scroll-more}}
+    {{>component/innerPageInfo/innerPageInfo text}}
 </div>
 
 

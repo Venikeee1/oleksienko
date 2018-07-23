@@ -116,8 +116,6 @@ export class HomePage {
     }
 
     initFirstScreenSlider() {
-
-
         const sliderSettings = {
             sliderStyle: 'fadeIn',
             autoplay: true,
@@ -206,7 +204,7 @@ export class HomePage {
         }
 
         Array.from(titeles).map( (title) => {
-            const result = wrap(title.textContent.slice(0,1)) + wrapRest(title.textContent.slice(1));
+            const result = wrap(title.textContent[0]) + wrapRest(title.textContent.slice(1));
             title.innerHTML = result;
         })
     }

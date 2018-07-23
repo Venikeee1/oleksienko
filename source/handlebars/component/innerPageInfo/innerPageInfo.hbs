@@ -1,0 +1,41 @@
+<div class="inner-page-info__wrapper">
+    <div class="inner-page-info__bg"></div>
+    <div class="inner-page-info">
+        <div class="inner-page-info__inner">
+            <div class="inner-page-info__text">
+                <ul class="inner-page-info__head">
+                    {{#each list}}
+                        <li class="inner-page-info__head-item">
+                            <span class="inner-page-info__head-title">{{title}}:</span> <span>{{description}}</span>
+                        </li>
+                    {{/each}}
+                </ul>
+                <div class="inner-page-info__description inner-page-info--animation">
+                    {{#each description}}
+                        <p>{{this}}</p>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="inner-page-info__attribute">
+                {{#each attributes}}
+                    <div class="inner-page-info__attribute-item inner-page-info--animation">
+                        <span class="inner-page-info__head-title">{{title}}:</span>
+                        <ul class="inner-page-info__attribute-list">
+                            {{#each list}}
+                                <li><a href="">{{this}}</a></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="inner-page-info__close">
+            <button class="inner-page-info__close-btn"></button>
+            <span class="inner-page-info__close-text">Close</span>
+            <div class="x-btn">
+                <div class="x-btn__line x-btn__line--top"></div>
+                <div class="x-btn__line x-btn__line--bottom"></div>
+            </div>
+        </div>
+    </div>
+</div>
