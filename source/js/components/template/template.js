@@ -60,6 +60,7 @@ export class Template {
         };
 
         this.slider = new Slider('.inner-page__slides', sliderSettings);
+        this.slider.hashNavigation = true;
         this.slider.init();
     }
 

@@ -251,8 +251,12 @@
         font-family: $openSansBold;
         opacity: 0;
 
+        @include media($desk-middle) {
+            left: -50px;
+        }
+
         @include media($break-tablet) {
-            left: -80px;
+            left: -60px;
         }
 
         @include media($break-mobile) {
@@ -268,6 +272,11 @@
 
         @include media($desk-middle) {
             font-size: 6vw;
+            width: 200px;
+        }
+
+        @include media($break-tablet) {
+            width: 180px;
         }
     }
 }

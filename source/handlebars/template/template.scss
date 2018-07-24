@@ -20,7 +20,14 @@
             top: 4vh;
         }
 
-        @include media($break-mobile) {
+        @include media(1240px) {
+            top: auto;
+            bottom: 58px;
+            right: 40px;
+            text-align: right;
+        }
+
+        @include media($break-tablet) {
             display: none;
         }
     }

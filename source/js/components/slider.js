@@ -86,9 +86,8 @@ export class Slider {
     }
 
     createHashList() {
-        this.slides.forEach( elem => {
+        Array.from(this.slides).forEach( elem => {
             this.hashList.push(elem.getAttribute('data-hash'));
-
         })
     }
 
@@ -98,7 +97,7 @@ export class Slider {
             const index = this.hashList.indexOf(hash);
             const duration = this.duration;
 
-            if( fastMove) {
+            if( fastMove ) {
                 this.duration = 0;
             }
 
@@ -107,6 +106,10 @@ export class Slider {
             }
 
             this.duration = duration;
+        } else {
+            console.log(window.location)
+            const hashUrl = window.location.href + '#' + this.hashList[0];
+            history.replaceState(null, '',hashUrl);
         }
     }
 
@@ -125,7 +128,7 @@ export class Slider {
         } else {
             const animationLength = this.currentIndex * 100;
             const slideValue = `-${animationLength}%`;
-            window.location.hash = `#${this.currentIndex}`;
+
 
             tl.to(this.sliderContainer.querySelector('.slider__wrapper'), this.duration, {y: slideValue , onStart: ()=> {
                 }, onComplete: ()=> {
@@ -138,6 +141,11 @@ export class Slider {
                         this.settings.afterAnimationEnd(this.currentSlide, this.currentIndex, this.prevIndex);
                     }
                 }, ease: Power2.easeInOut});
+        }
+
+        if(this.hashNavigation) {
+            window.location.hash = this.hashList[this.currentIndex];
+            history.replaceState(null, '', window.location.href);
         }
     }
 
@@ -293,8 +301,6 @@ export class Slider {
         this.setActiveSlide();
         this.afterInitCallBack();
         this.autoPlay();
-
-
 
         if(this.hashNavigation) {
             this.checkHash(true);

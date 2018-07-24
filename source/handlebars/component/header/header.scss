@@ -17,6 +17,7 @@
     @include media($break-mobile) {
         opacity: 1!important;
         transform: none !important;
+        padding-top: calc(3.75vw + 15px);
     }
 
     &.dark-bg {
