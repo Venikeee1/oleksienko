@@ -59,6 +59,7 @@ select {
 /* Import components*/
 @import "components/slider";
 @import "components/simplebar";
+@import "components/swiper";
 @import "../handlebars/component/header/header";
 @import "../handlebars/component/footer/footer";
 @import "../handlebars/component/logo/logo";
@@ -79,3 +80,5 @@ select {
 
 
 @import "../handlebars/pages/error-404/error-404.scss";
+
+@import "../handlebars/pages/video-gallery/video-gallery.scss";

@@ -1,7 +1,7 @@
 header: {
     nav: [
 		{
-			link: "#",
+			link: "/video-gallery.html",
 			text: "Video",
 		},
 		{

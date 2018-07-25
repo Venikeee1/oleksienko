@@ -2,6 +2,7 @@ import { TimelineLite } from "gsap";
 import { HomePage } from './pages/homepage/homepage';
 import { Menu } from "./components/menu";
 import {Template} from "./components/template/template";
+import {VideoGallery} from "./pages/videoGallery/videoGallery";
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,6 +23,8 @@ window.addEventListener('load', () => {
     } else if(document.querySelector('.inner-page')) {
         ActiveScipt = new Template();
         PopupMenu.animationOnClose = true;
+    } else if(document.querySelector('.video-gallery')) {
+        ActiveScipt = new VideoGallery();
     }
 
     ActiveScipt.init();
