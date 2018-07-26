@@ -1,0 +1,67 @@
+.navigation-arrows {
+    &__nav {
+        position: absolute;
+        top: 45px;
+        width: 100%;
+        text-align: center;
+        z-index: 55;
+
+        @media only screen and (max-height: $maxHeight) {
+            top: 4vh;
+        }
+
+        @include media(1240px) {
+            top: auto;
+            bottom: 58px;
+            right: 40px;
+            text-align: right;
+        }
+
+        @include media($break-tablet) {
+            display: none;
+        }
+    }
+
+    &__nav-arrow {
+        margin: 0 15px;
+        text-decoration: none;
+        color: #fff;
+        position: relative;
+        display: inline-block;
+        font-size: 16px;
+        font-family: $exo2Light;
+
+
+
+        img {
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        &--left {
+            text-align: right;
+            img {
+                right: 0;
+            }
+
+            &:hover {
+                img {
+                    transform: translateX(-10px);
+                }
+            }
+        }
+
+        &--right {
+            text-align: left;
+            img {
+                left: 0;
+            }
+
+            &:hover {
+                img {
+                    transform: translateX(10px);
+                }
+            }
+        }
+    }
+}

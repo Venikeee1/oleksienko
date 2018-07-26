@@ -240,7 +240,6 @@ export class HomePage {
 
             const videoPopup = new VideoPopup(iframeSrc);
 
-            videoPopup.setIframe();
             videoPopup.openPopup();
         })
 

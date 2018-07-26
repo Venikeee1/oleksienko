@@ -1,16 +1,34 @@
 <div class="video-gallery" style="background-image: url('../source/images/homepage/slide-8.jpg')">
     <div class="video-gallery__list swiper-container">
+        {{>component/navigation-arrows/navigation-arrows videoGallery.navigation}}
         <div class="swiper-wrapper">
             {{#each videoGallery.list}}
-                <div class="swiper-slide video-gallery__item"  style="background-image: url('{{videoBg}}')">
-                    <div class="video-gallery__item-inner" style="background-image: url('{{videoHoverBg}}')">
-                        <div class="video-gallery__play-btn">
+                <div class="swiper-slide video-gallery__item">
+                    <div class="video-gallery__item-wrap"  style="background-image: url('{{videoBg}}')">
+                        <div class="video-gallery__item-inner" style="background-image: url('{{videoHoverBg}}')">
+                            <div class="video-gallery__play-btn">
 
+                            </div>
+                            <a href="#" class="video-gallery__link" data-frame="{{link}}"></a>
                         </div>
-                        <a href="#" class="video-gallery__link" data-frame="{{link}}"></a>
+                        <div class="video-gallery__video-name">
+                            <span>{{name}}</span>
+                        </div>
                     </div>
-                    <div class="video-gallery__video-name">
-                        <span>{{name}}</span>
+                </div>
+            {{/each}}
+            {{#each videoGallery.list}}
+                <div class="swiper-slide video-gallery__item" >
+                    <div class="video-gallery__item-wrap"   style="background-image: url('{{videoBg}}')">
+                        <div class="video-gallery__item-inner" style="background-image: url('{{videoHoverBg}}')">
+                            <div class="video-gallery__play-btn">
+
+                            </div>
+                            <a href="#" class="video-gallery__link" data-frame="{{link}}"></a>
+                        </div>
+                        <div class="video-gallery__video-name">
+                            <span>{{name}}</span>
+                        </div>
                     </div>
                 </div>
             {{/each}}

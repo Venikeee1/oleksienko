@@ -25,12 +25,14 @@ window.addEventListener('load', () => {
         PopupMenu.animationOnClose = true;
     } else if(document.querySelector('.video-gallery')) {
         ActiveScipt = new VideoGallery();
+        PopupMenu.animationOnClose = true;
     }
 
-    ActiveScipt.init();
+    if(ActiveScipt) {
+        ActiveScipt.init();
+    }
 
     PopupMenu.init();
-
 });
 
 // fix bug with ie11 that dont undertans the min-height for wrapper

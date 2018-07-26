@@ -6,6 +6,16 @@ innerPage: {
         '../source/images/homepage/slide-3.jpg',
         '../source/images/homepage/slide-4.jpg'
 	],
+    navigation: {
+        next: {
+            text: 'Next project',
+            link: '#'
+        },
+        prev: {
+            text: 'Back',
+            link: '/#2'
+        }
+    },
 	text: {
 		list: [
 			{

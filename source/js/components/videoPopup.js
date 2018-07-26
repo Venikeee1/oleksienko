@@ -34,6 +34,7 @@ export class VideoPopup {
     }
 
     openPopup() {
+        this.setIframe();
         this.videoContainer.classList.add('active');
     }
 
