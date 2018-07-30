@@ -7,27 +7,27 @@ menu: {
         },
         {
             name: 'About',
-            link: '/about.html',
+            link: '/architect.html',
             number: '02'
         },
         {
             name: 'Architecture',
-            link: '/architecture.html',
+            link: '/architect.html',
             number: '03'
         },
         {
             name: 'Interior design',
-            link: '/architecture.html',
+            link: '/architect.html',
             number: '04'
         },
         {
             name: 'Landscape design',
-            link: '/architecture.html',
+            link: '/architect.html',
             number: '05'
         },
         {
             name: 'Design',
-            link: '/architecture.html',
+            link: '/architect.html',
             number: '06'
         }
     ],

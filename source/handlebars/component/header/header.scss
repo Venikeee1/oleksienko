@@ -105,8 +105,12 @@
         pointer-events: auto;
 
         @include media($break-mobile) {
-            display: none;
+            margin-right: 100px;
         }
+
+        /*@include media($break-small-mobile) {
+            margin-right: 30px;
+        }*/
 
         &:before {
             content: '';
@@ -281,4 +285,18 @@
             bottom: 0;
         }
     }
+}
+
+.messenger {
+    position: absolute;
+    top: calc(3.75vw + 5px);
+    right: 72px;
+    z-index: 5555;
+    display: none;
+    opacity: 0.8;
+
+    @include media($break-mobile) {
+        display: block;
+    }
+
 }

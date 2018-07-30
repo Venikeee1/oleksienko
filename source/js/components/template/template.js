@@ -47,15 +47,43 @@ export class Template {
                 const currentIndex = currentslide < 10 ? `0${currentslide + 1}` : currentslide + 1;
                 const slideIndexContainer = document.querySelector('.slide__number-index');
                 const tl = new TimelineMax();
+
                 tl.to(slideIndexContainer, 0.5, {opacity: 0, onComplete: () => {
                         slideIndexContainer.textContent = currentIndex;
                     }} )
                     .to(slideIndexContainer, 0.5, {opacity: 1});
 
+                if(el.getAttribute('data-section') === 'footer') {
 
+                    tl
+                        .to('.main__text', 0.2, {opacity: 0, pointerEvents: 'none'},0)
+                        .to('.navigation-arrows__nav', 0.2, {opacity: 0, pointerEvents: 'none'},0)
+
+
+                    document.querySelector('.scroll-more--down').classList.remove('active');
+                    document.querySelector('.scroll-more--up').classList.add('active');
+                }
             },
-            afterAnimationEnd: () => {
+            afterAnimationEnd: (el) => {
+                const tl = new TimelineMax();
 
+                if(el.getAttribute('data-section') !== 'footer') {
+                    tl
+                        .to('.main__text', 0.6, {opacity: 1, pointerEvents: 'auto'},0)
+                        .to('.navigation-arrows__nav', 0.6, {opacity: 1,pointerEvents: 'auto'},0)
+                        .to('.navigation-arrows__nav', 0.6, {opacity: 1,pointerEvents: 'auto'},0)
+
+                    document.querySelector('.scroll-more--down').classList.add('active');
+                    document.querySelector('.scroll-more--up').classList.remove('active');
+
+                    /*to('.scroll-more__direction', 0.3, {opacity: 0, onComplete: () => {
+                            const tl = new TimelineMax();
+
+                            document.querySelector('.scroll-more--down').classList.add('active');
+                            document.querySelector('.scroll-more--up').classList.remove('active');
+                            tl.to('.scroll-more__direction', 0.3, {opacity: 1});
+                        }},0)*/
+                }
             }
         };
 

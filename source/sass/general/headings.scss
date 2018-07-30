@@ -30,10 +30,18 @@
 
   &--semibold {
     font-family: $uniSansSemiBold;
+
+    @include media($break-mobile) {
+      font-family: $uniSans;
+    }
   }
 
   &--light {
     font-family: $uniSansLight;
+
+    @include media($break-mobile) {
+      font-family: $uniSansThin;
+    }
   }
 }
 
