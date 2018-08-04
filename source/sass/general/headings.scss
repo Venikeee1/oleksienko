@@ -6,12 +6,6 @@
   color: inherit;
   display: block;
 
-  &:hover {
-    .first-letter-animation {
-      color: $red-color;
-    }
-  }
-
   @include media($desk-middle){
     font-size: 60px;
   }

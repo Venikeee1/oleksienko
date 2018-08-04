@@ -30,7 +30,7 @@ $menu-white-color: #fefefe;
     }
 
     &__wrapper {
-        width: 40%;
+        width: 36%;
         position: relative;
         display: flex;
         flex-direction: column;
@@ -59,8 +59,9 @@ $menu-white-color: #fefefe;
     }
 
     &__list {
+        padding-right: 4.6vw;
         font-family: $uniSansLight;
-        font-size: 20px;
+        font-size: 19px;
 
         @include media(600px) {
             font-size: 14px;
@@ -68,9 +69,8 @@ $menu-white-color: #fefefe;
     }
 
     &__item {
-        margin-bottom: 13px;
         position: relative;
-        padding-left:30px;
+        padding-left: 30px;
 
         &:nth-child(2n + 1) {
 
@@ -94,7 +94,7 @@ $menu-white-color: #fefefe;
         position: absolute;
         left: 9px;
         bottom: 10px;
-        height: 105%;
+        height: 97%;
         transform: translateX(-50%);
         opacity: 0.48;
 
@@ -114,10 +114,14 @@ $menu-white-color: #fefefe;
         position: relative;
         text-transform: uppercase;
         text-decoration: none;
-        padding-bottom: 6px;
-        padding-left: 90px;
+        padding: 20px 0 10px 90px;
         overflow: hidden;
         transition: color 0.4s;
+
+        @include media($break-tablet) {
+            padding-top: 15px;
+            padding-bottom: 5px;
+        }
 
         @include media(600px) {
             padding-left: 40px;
@@ -167,10 +171,11 @@ $menu-white-color: #fefefe;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 39%;
+        height: 36%;
 
         @include media($break-mobile) {
             height: 40%;
+            left: 1px;
         }
     }
 

@@ -12,7 +12,9 @@
                 {{/each}}
             </div>
             <div class="slide__number">
-                <span class="slide__value">{{homepage.firstScreen.number}}</span>
+                <div class="slide__number-inner">
+                    <span class="slide__value">{{number}}</span>
+                </div>
             </div>
         </section>
         {{#each homepage.items}}
@@ -34,7 +36,9 @@
                     </p>
                 </div>
                 <div class="slide__number">
-                    <span class="slide__value">{{number}}</span>
+                    <div class="slide__number-inner">
+                        <span class="slide__value">{{number}}</span>
+                    </div>
                 </div>
             </section>
         {{/each}}
@@ -45,7 +49,9 @@
                 <p class="slide__description"></p>
             </div>
             <div class="slide__number">
-                <span class="slide__value">{{homepage.achievement.number}}</span>
+                <div class="slide__number-inner">
+                    <span class="slide__value">{{number}}</span>
+                </div>
             </div>
             <div class="achievement__wrapper">
                 <ul class="achievement__list">
@@ -64,7 +70,9 @@
                 <p class="slide__description"></p>
             </div>
             <div class="slide__number">
-                <span class="slide__value">{{homepage.video.number}}</span>
+                <div class="slide__number-inner">
+                    <span class="slide__value">{{number}}</span>
+                </div>
             </div>
             <a href="#" class="homepage__play-btn" data-iframe="https://www.youtube.com/embed/KQxxzMh7bto?autoplay=1&amp;auotplay=1&amp;showinfo=0&amp;rel=0">
                 <span class="homepage__play-triangle"></span>
