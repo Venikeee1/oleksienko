@@ -27,6 +27,8 @@ export class HomePage {
                 currentTimeLine.clear();
                 currentTimeLine = tl;
 
+
+
                 if( currentIndex > 0 && prevIndex === 0) {
 
                     tl
@@ -59,7 +61,10 @@ export class HomePage {
 
                 }
 
-                if( currentIndex > 0 ) {
+                if( currentSlide.getAttribute('data-section') === 'footer') {
+                    document.querySelector('.scroll-more--down').classList.remove('active');
+                    document.querySelector('.scroll-more--up').classList.add('active');
+                } else if( currentIndex > 0 ) {
                     tl
                         .to(currentSlide.querySelectorAll('.rest-letters-animation'), 0, {y: 2, opacity: 0},0)
                         .to(currentSlide.querySelectorAll('.first-letter-animation'), 0, {y: 30, opacity: 0},0)
@@ -73,10 +78,9 @@ export class HomePage {
                         .to('.video__line', 0, {height: '0%'}, 0)
                         .to('.homepage__play-btn', 2.4, {scale: 1})
                         .staggerTo('.video__line', 0.8, {height: '120%'}, 0.4)
-                        .to('.homepage__play-triangle', 0.2, {x: '50%'})
-                        .to('.homepage__play-triangle', 0.2, {x: '0%'})
-                        .to('.homepage__play-triangle', 0.2, {x: '50%'})
-                        .to('.homepage__play-triangle', 0.2, {x: '0%'})
+                        .to('.homepage__play-triangle', 0.3, {x: '50%'})
+                        .to('.homepage__play-triangle', 0.3, {x: '0%'})
+
                 }
 
                 if( currentSlide.getAttribute('data-section') === 'achievement' ) {
@@ -85,7 +89,10 @@ export class HomePage {
                     })
                 }
 
-                tl.to(currentSlide.querySelector('.slide__number'), 0, {x: -45, opacity: 0},0)
+                if( currentSlide.getAttribute('data-section') !== 'footer') {
+                    tl.to(currentSlide.querySelector('.slide__number'), 0, {x: -45, opacity: 0},0)
+                }
+
 
                 this.checkActiveLetter(currentIndex)
 
@@ -93,10 +100,14 @@ export class HomePage {
             afterAnimationEnd: (currentSlide, currentIndex, prevIndex) => {
                 const tl = new TimelineMax();
 
-                if( currentIndex > 0 ) {
+                if( currentIndex > 0 && currentSlide.getAttribute('data-section') !== 'footer') {
+
                     tl.staggerTo(currentSlide.querySelectorAll('.rest-letters-animation'), 0.8, {y: 0, opacity: 1}, 0,0)
                         .staggerTo(currentSlide.querySelectorAll('.first-letter-animation'), 1.8, {y: 0, opacity: 1, ease: Power2.easeOut},0,0)
                         .staggerTo(currentSlide.querySelectorAll('.animation-title'), 1, {y: 0, opacity: 1},0.3, '-=1.1')
+
+                    document.querySelector('.scroll-more--down').classList.add('active');
+                    document.querySelector('.scroll-more--up').classList.remove('active');
 
                 }
 
@@ -106,7 +117,11 @@ export class HomePage {
                     timeline.staggerFromTo('.achievement__item', 0.9, { opacity: 0, y: 40}, { opacity: 1, y: 0},0.2,0.7)
                 }
 
-                tl.to(currentSlide.querySelector('.slide__number'), 1.2, {x: 0, opacity: 1},'-=0.5');
+                if( currentSlide.getAttribute('data-section') !== 'footer') {
+                    tl.to(currentSlide.querySelector('.slide__number'), 1.2, {x: 0, opacity: 1},'-=0.5');
+                }
+
+
 
             }
         };

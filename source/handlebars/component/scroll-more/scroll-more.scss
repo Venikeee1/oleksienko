@@ -1,2 +1,70 @@
 .scroll-more {
+
+  position: fixed;
+  bottom: 0;
+  left: 111px;
+  font-size: 12px;
+  z-index: 5;
+  opacity: 0;
+
+
+
+  @include media($desk-middle){
+    left: 8.5%;
+  }
+
+  @include media($break-mobile) {
+    left: 17px;
+    bottom: -15px;
+  }
+
+  &__mobile {
+    display: none;
+
+    @include media($break-mobile) {
+      display: inline;
+    }
+  }
+
+  &__desktop {
+    display: inline;
+
+    @include media($break-mobile) {
+      display: none;
+    }
+  }
+
+  &__direction {
+    display: none;
+
+    &.active {
+      display: inline-block;
+    }
+  }
+
+  &__text {
+    display: inline-block;
+    transform-origin: 0 100%;
+    transform: rotate(-90deg);
+    position: relative;
+    padding-left: 50px;
+    left: 10px;
+    white-space: nowrap;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      height: 1px;
+      width: 40px;
+      background: #fff;
+      animation: scroll-more 4s infinite ;
+    }
+
+  }
+
+  &--bold {
+    margin-left: 3px;
+  }
 }

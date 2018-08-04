@@ -16,6 +16,7 @@ $uniSansSemiBold: 'uniSansSemiBold';
 $uniSansSemiLight: 'uniSansSemiLight';
 $uniSans: 'uniSans';
 $uniSansBook: 'uniSansBook';
+$uniSansThin: 'uniSansThin';
 
 $openSansBold: 'openSansBold';
 
@@ -34,5 +35,8 @@ $openSansBold: 'openSansBold';
 @include font-face("uniSansSemiBold", "../fonts/UniSans-SemiBold/UniSans-SemiBold");
 @include font-face("uniSans", "../fonts/UniSans/UniSans");
 @include font-face("uniSansBook", "../fonts/UniSans-Book/UniSans-Book");
+@include font-face("uniSansThin", "../fonts/UniSans-Thin/UniSans-Thin");
+
+
 
 

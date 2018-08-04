@@ -93,14 +93,18 @@ $menu-white-color: #fefefe;
     &__title {
         position: absolute;
         left: 9px;
-        top: 0;
-        height: 98%;
+        bottom: 10px;
+        height: 105%;
         transform: translateX(-50%);
         opacity: 0.48;
 
         img {
             height: 100%;
             width: auto;
+        }
+
+        @include media($break-mobile) {
+            height: 110%;
         }
     }
 
@@ -144,10 +148,16 @@ $menu-white-color: #fefefe;
 
     &__number {
         position: absolute;
-        font-size: 14px;
+        font-size: 12px;
         left: 0;
         bottom: -5px;
         transition: color 0.4s;
+
+        @include media($break-mobile) {
+            font-size: 10px;
+            left: 6px;
+            bottom: -4px;
+        }
     }
 
     &__media {
@@ -157,7 +167,11 @@ $menu-white-color: #fefefe;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 36%;
+        height: 39%;
+
+        @include media($break-mobile) {
+            height: 40%;
+        }
     }
 
     &__ico {

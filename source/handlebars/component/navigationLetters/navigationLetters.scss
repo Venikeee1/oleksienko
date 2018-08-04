@@ -19,13 +19,13 @@
         @include media($break-mobile) {
             right: 25px;
             font-size: 16px;
+            display: none;
         }
     }
 
     &__letter-container {
         display: block;
         position: relative;
-        opacity: 0;
 
         &.active {
             .dila__word {
