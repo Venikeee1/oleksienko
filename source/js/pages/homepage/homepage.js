@@ -64,7 +64,9 @@ export class HomePage {
                 if( currentSlide.getAttribute('data-section') === 'footer') {
                     document.querySelector('.scroll-more--down').classList.remove('active');
                     document.querySelector('.scroll-more--up').classList.add('active');
-                } else if( currentIndex > 0 ) {
+                }
+
+                if( currentIndex > 0 && currentSlide.querySelectorAll('.rest-letters-animation')) {
                     tl
                         .to(currentSlide.querySelectorAll('.rest-letters-animation'), 0, {y: 2, opacity: 0},0)
                         .to(currentSlide.querySelectorAll('.first-letter-animation'), 0, {y: 30, opacity: 0},0)
@@ -117,7 +119,7 @@ export class HomePage {
                     timeline.staggerFromTo('.achievement__item', 0.9, { opacity: 0, y: 40}, { opacity: 1, y: 0},0.2,0.7)
                 }
 
-                if( currentSlide.getAttribute('data-section') !== 'footer') {
+                if( currentSlide.querySelector('.slide__number')) {
                     tl.to(currentSlide.querySelector('.slide__number'), 1.2, {x: 0, opacity: 1},'-=0.5');
                 }
 
