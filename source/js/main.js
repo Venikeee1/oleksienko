@@ -13,7 +13,7 @@ window.addEventListener('load', () => {
 
     const PopupMenu = new Menu('.menu');
     const GLOBAL_OBJECT = {};
-    let ActiveScipt = {};
+    let ActiveScipt = null;
 
     GLOBAL_OBJECT.menu = PopupMenu;
 
@@ -28,7 +28,7 @@ window.addEventListener('load', () => {
         PopupMenu.animationOnClose = true;
     }
 
-    if(ActiveScipt) {
+    if( ActiveScipt ) {
         ActiveScipt.init();
     }
 
