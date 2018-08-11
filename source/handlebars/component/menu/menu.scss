@@ -180,6 +180,12 @@ $menu-white-color: #fefefe;
     }
 
     &__ico {
+        margin-right: 40px;
+
+        @include media($break-small-mobile) {
+            margin-right: 25px;
+        }
+
         svg {
             width: 20px;
             height: 20px;
