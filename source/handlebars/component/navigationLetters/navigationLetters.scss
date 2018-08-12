@@ -119,7 +119,8 @@
             background: $red-color;
             left: 0;
             bottom: -5px;
-            transition: width 0.9s;
+            transition-delay: 0.3s;
+            transition: width 0.9s cubic-bezier(0,1.49,.73,1.32);
 
             @include media($break-mobile) {
                 bottom: -6px;

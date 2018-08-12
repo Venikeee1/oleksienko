@@ -26,9 +26,6 @@
     }
 
     &.dark-bg {
-       /* .logo__svg {
-            fill: $red-color;
-        }*/
 
         .logo__animation {
             opacity: 1;
@@ -65,12 +62,12 @@
 
         @include media($desk-middle) {
             left: 5.5vw;
-            top: 5vh;
+            top: 30px;
         }
 
         @include media($break-mobile) {
-            top: 15px;
-            left: 15px;
+            top: 28px;
+            left: 30px;
         }
     }
 
@@ -84,6 +81,10 @@
 
     &__item {
         padding: 0 25px;
+
+        @include media($desk-middle) {
+            padding: 0 20px;
+        }
     }
 
     &__link {
@@ -112,12 +113,8 @@
         pointer-events: auto;
 
         @include media($break-mobile) {
-            margin-right: 100px;
+            margin-right: 40px;
         }
-
-        /*@include media($break-small-mobile) {
-            margin-right: 30px;
-        }*/
 
         &:before {
             content: '';
@@ -178,7 +175,7 @@
         pointer-events: auto;
 
         @include media($desk-middle) {
-            padding-right: 70px;
+            padding-right: 60px;
         }
 
         @include media($break-mobile) {
@@ -307,15 +304,16 @@
 }
 
 .messenger {
-    position: absolute;
-    top: calc(3.75vw + 5px);
-    right: 72px;
-    z-index: 5555;
-    display: none;
+    width: 30px;
+    height: 30px;
     opacity: 0.8;
+    pointer-events: auto;
+    margin-right: 40px;
+    display: block;
+    transform: translateY(-8px);
 
     @include media($break-mobile) {
-        display: block;
+        margin-right: 30px;
     }
 
 }

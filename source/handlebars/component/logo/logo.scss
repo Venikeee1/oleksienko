@@ -23,12 +23,18 @@
         @include media($break-mobile) {
             min-height: 50px;
             min-width: 50px;
+            width: 18vw;
+            height: 18vw;
         }
 
         svg {
             height: 100%;
             width: 100%;
             fill: rgba(#fff, 0.5);
+
+            @include media($break-mobile) {
+                fill: #fff;
+            }
         }
 
     }

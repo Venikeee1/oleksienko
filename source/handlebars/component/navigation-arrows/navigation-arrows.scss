@@ -15,13 +15,6 @@
         }
 
         @include media(1240px) {
-            top: auto;
-            bottom: 55px;
-            right: 85px;
-            text-align: right;
-        }
-
-        @include media($break-tablet) {
             display: none;
         }
     }

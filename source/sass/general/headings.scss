@@ -5,6 +5,7 @@
   text-decoration: none;
   color: inherit;
   display: block;
+  white-space: nowrap;
 
   @include media($desk-middle){
     font-size: 60px;
@@ -15,7 +16,7 @@
   }
 
   @include media($break-mobile) {
-    font-size: 30px;
+    font-size: 40px;
   }
 
   @include media($break-extra-small) {

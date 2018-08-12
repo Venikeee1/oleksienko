@@ -182,7 +182,7 @@ export class HomePage {
         const tl = new TimelineMax();
 
         tl.to('.logo', 0.5, {opacity: 1, pointerEvents: 'auto'}, 0)
-            .to('.logo__svg', 0.5, { fill: '#fff',  opacity: 0.5}, 0);
+            //.to('.logo__svg', 0.5, { fill: '#fff',  opacity: 0.5}, 0);
     }
 
     logoAnimationHide() {
@@ -269,8 +269,6 @@ export class HomePage {
 
             if( this.slider.currentIndex === 0 ) {
                 tl.to('.logo', 0.5, {opacity: 0, pointerEvents: 'none'}, 0)
-            } else {
-                tl.to('.logo__svg', 1.2, { fill: '#fff',  opacity: 0.5}, 0);
             }
         }
     }

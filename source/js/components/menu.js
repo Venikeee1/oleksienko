@@ -13,7 +13,7 @@ export class Menu {
         this.timeLine.clear();
         this.timeLine.staggerTo('.logo__animation', 0.5, { opacity: 1, y: 0}, 0.2)
             .to('.logo', 0.5, {opacity: 1, pointerEvents: 'auto'}, 0)
-            .to('.logo__svg', 0.5, { /*fill: '#df2032',*/  opacity: 1}, 0);
+
     }
 
     menuClose() {
@@ -21,7 +21,7 @@ export class Menu {
         this.timeLine.clear();
         if(this.animationOnClose) {
             this.timeLine.staggerTo('.logo__animation', 0.1, { opacity: 0, y: 30});
-            this.timeLine.to('.logo__svg', 1.2, { fill: '#fff',  opacity: 0.5}, 0);
+            //this.timeLine.to('.logo__svg', 1.2, { fill: '#fff',  opacity: 0.5}, 0);
         }
     }
 

@@ -109,18 +109,22 @@
         width: 100%;
         left: 0;
         right: 0;
-        margin: 0 auto;
         display: flex;
         bottom: 25px;
         font-family: $exo2Light;
         font-size: 16px;
-        padding: 0 53px 0 17%;
+        padding: 0 0 0 18%;
         pointer-events: none;
         opacity: 0;
+        max-width: 500px;
 
-        @include media($break-tablet) {
+        @include media(1240px) {
             opacity: 1;
             pointer-events: auto;
+        }
+
+        @include media($break-tablet) {
+            padding-left: calc(17% + 45px);
         }
 
         @include media($break-mobile) {
