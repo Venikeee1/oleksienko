@@ -7,7 +7,7 @@ $menu-white-color: #fefefe;
     min-height: 100%;
     display: flex;
     padding: 15vh 50px 10vh;
-    color: rgba($menu-white-color,0.7);
+    color: $menu-white-color;
     opacity: 0;
     transition: opacity 0.4s;
     pointer-events: none;
@@ -184,7 +184,7 @@ $menu-white-color: #fefefe;
         svg {
             width: 20px;
             height: 20px;
-            fill: rgba(#fff,0.25);
+            fill: rgba(#fff,0.9);
             transition: fill 0.4s;
         }
 
@@ -235,7 +235,7 @@ $menu-white-color: #fefefe;
 
     &__tel-item {
         text-decoration: none;
-        color: rgba($menu-white-color,0.7);
+        color: $menu-white-color;
         display: block;
         font-size: 24px;
         margin-bottom: 5px;

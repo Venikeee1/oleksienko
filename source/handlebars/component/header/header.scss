@@ -114,6 +114,7 @@
 
         @include media($break-mobile) {
             margin-right: 40px;
+            font-family: $exo2SemiBold;
         }
 
         &:before {

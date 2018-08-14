@@ -63,6 +63,10 @@ export class Template {
                     document.querySelector('.scroll-more--down').classList.remove('active');
                     document.querySelector('.scroll-more--up').classList.add('active');
                 }
+
+                if(el.getAttribute('data-section') === 'footer') {
+                    tl.to('.slide__number', 0.5, {opacity: 0},0);
+                }
             },
             afterAnimationEnd: (el) => {
                 const tl = new TimelineMax();
@@ -72,6 +76,7 @@ export class Template {
                         .to('.main__text', 0.6, {opacity: 1, pointerEvents: 'auto'},0)
                         .to('.navigation-arrows__nav', 0.6, {opacity: 1,pointerEvents: 'auto'},0)
                         .to('.navigation-arrows__nav', 0.6, {opacity: 1,pointerEvents: 'auto'},0)
+                        .to('.slide__number', 0.5, {opacity: 1},0);
 
                     document.querySelector('.scroll-more--down').classList.add('active');
                     document.querySelector('.scroll-more--up').classList.remove('active');

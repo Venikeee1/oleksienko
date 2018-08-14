@@ -181,7 +181,7 @@ export class HomePage {
     logoAnimationShow() {
         const tl = new TimelineMax();
 
-        tl.to('.logo', 0.5, {opacity: 1, pointerEvents: 'auto'}, 0)
+        tl.to('.logo', 0.5, {opacity: 1, pointerEvents: 'auto'}, 1)
             //.to('.logo__svg', 0.5, { fill: '#fff',  opacity: 0.5}, 0);
     }
 

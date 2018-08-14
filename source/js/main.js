@@ -16,6 +16,11 @@ window.addEventListener('load', () => {
     let ActiveScipt = null;
 
     GLOBAL_OBJECT.menu = PopupMenu;
+    const langChoose = document.querySelector('.header__lang-btn');
+
+    langChoose.addEventListener('click', () => {
+        document.querySelector('.header__lang-list').classList.toggle('active');
+    });
 
     if(document.querySelector('.homepage')) {
         ActiveScipt = new HomePage(GLOBAL_OBJECT);
