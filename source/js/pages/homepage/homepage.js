@@ -191,13 +191,6 @@ export class HomePage {
         tl.to('.logo', 0.5, {opacity: 0, pointerEvents: 'none'}, 0)
     }
 
-    langChoose() {
-        document.querySelector('.header__lang-btn').addEventListener('click', (e) => {
-            e.preventDefault();
-            document.querySelector('.header__lang-list').classList.toggle('active');
-        })
-    }
-
     checkActiveLetter( index ) {
         Array.from(this.letters).forEach( (letter) => {
             const itemIndex = letter.getAttribute('data-index');
@@ -296,7 +289,6 @@ export class HomePage {
     init() {
         this.initFirstScreenSlider();
         this.initSlider();
-        this.langChoose();
         this.wrapFirstLetters();
         this.initVideoPopup();
         this.checkForDisablingHover();

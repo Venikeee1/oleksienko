@@ -105,10 +105,12 @@ export class Template {
             })
         })
 
-        document.querySelector('.more-btn').addEventListener('click', (e) => {
-            e.preventDefault();
-            this.innerPopup.open();
-        })
+        if(document.querySelector('.more-btn')) {
+            document.querySelector('.more-btn').addEventListener('click', (e) => {
+                e.preventDefault();
+                this.innerPopup.open();
+            })
+        }
     }
 
     customizeScrollBar() {
