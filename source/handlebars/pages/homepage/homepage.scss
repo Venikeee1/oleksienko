@@ -150,6 +150,7 @@
         background-size: cover;
         background-position: 50% 50%;
         opacity: 0;
+        transform-origin: 80%;
 
         &:first-child {
             z-index: 5;
@@ -276,6 +277,8 @@
         font-family: $exo2Light;
         color: #dddddd;
         min-height: 46px;
+        text-decoration: none;
+        display: block;
 
         @include media($desk-middle){
             font-size: 18px;
@@ -287,6 +290,11 @@
             min-height: 35px;
         }
 
+    }
+
+    &__description-link {
+        text-decoration: none;
+        color: inherit;
     }
 
     &__number {
@@ -328,7 +336,7 @@
         opacity: 0.2;
         width: 242px;
         transform: translateX(-50%);
-
+        white-space: nowrap;
 
         @include media($desk-middle) {
             font-size: calc(4px + 5vw);
@@ -431,7 +439,7 @@
 
 .first-letter-animation, .rest-letters-animation {
     display: inline-block;
-    opacity: 0;
+    //opacity: 0;
     transition: color 0.4s;
 }
 

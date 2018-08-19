@@ -1,4 +1,5 @@
 .logo {
+    pointer-events: none;
 
     &__link {
         display: block;
@@ -40,6 +41,7 @@
     }
 
     &__text {
+        pointer-events: none;
 
         @include media(900px) {
             margin-top: -15px;

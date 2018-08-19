@@ -11,7 +11,18 @@ export class Template {
 
     initSlider() {
 
+        const langList = document.querySelectorAll('.header__lang-link');
+        const longListArray = [];
         let currentTimeLine = new TimelineMax();
+
+        Array.from(langList).forEach( (elem) => {
+            const langItem = {
+                nodeItem: elem,
+                link: elem.getAttribute('href')
+            };
+            
+            longListArray.push(langItem);
+        });
 
         const sliderSettings = {
             afterInit: () => {
@@ -44,9 +55,13 @@ export class Template {
             },
             touch: true,
             animateNextSlide: (el, currentslide) => {
-                const currentIndex = currentslide < 10 ? `0${currentslide + 1}` : currentslide + 1;
+                const currentIndex = currentslide < 9 ? `0${currentslide + 1}` : currentslide + 1;
                 const slideIndexContainer = document.querySelector('.slide__number-index');
                 const tl = new TimelineMax();
+
+                longListArray.forEach( (elem) => {
+                    elem.nodeItem.setAttribute('href', elem.link + '#' + currentslide);
+                });
 
                 tl.to(slideIndexContainer, 0.5, {opacity: 0, onComplete: () => {
                         slideIndexContainer.textContent = currentIndex;
@@ -58,15 +73,16 @@ export class Template {
                     tl
                         .to('.main__text', 0.2, {opacity: 0, pointerEvents: 'none'},0)
                         .to('.navigation-arrows__nav', 0.2, {opacity: 0, pointerEvents: 'none'},0)
+                        .to('.slide__number', 0.5, {opacity: 0},0)
+                        .to('.logo__svg', 0.8, {fill: '#fff'}, 0.3)
 
 
                     document.querySelector('.scroll-more--down').classList.remove('active');
                     document.querySelector('.scroll-more--up').classList.add('active');
+                } else {
+                    tl.to('.logo__svg', 0.8, {fill: 'rgba(255, 255, 255, 0.5)'}, 0.3)
                 }
 
-                if(el.getAttribute('data-section') === 'footer') {
-                    tl.to('.slide__number', 0.5, {opacity: 0},0);
-                }
             },
             afterAnimationEnd: (el) => {
                 const tl = new TimelineMax();
@@ -80,14 +96,6 @@ export class Template {
 
                     document.querySelector('.scroll-more--down').classList.add('active');
                     document.querySelector('.scroll-more--up').classList.remove('active');
-
-                    /*to('.scroll-more__direction', 0.3, {opacity: 0, onComplete: () => {
-                            const tl = new TimelineMax();
-
-                            document.querySelector('.scroll-more--down').classList.add('active');
-                            document.querySelector('.scroll-more--up').classList.remove('active');
-                            tl.to('.scroll-more__direction', 0.3, {opacity: 1});
-                        }},0)*/
                 }
             }
         };

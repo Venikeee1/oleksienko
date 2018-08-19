@@ -105,7 +105,7 @@ gulp.task(commands.handlebarsCompile, function(){
 
     if(isBuild === true){
 
-        dist = `./${BUILD}s/${BUILD}_${DATE}/`;
+        dist = `./${BUILD}s/`;
         hash = PARAMS.hash ;
         static = `${STATIC__BUILD.html}`;
 
@@ -176,7 +176,7 @@ gulp.task(commands.browse, function() {
 gulp.task(commands.moveImgs, function() {
     var dist;
     if(isBuild === true){
-        dist = `${BUILD}s/${BUILD}_${DATE}/${SOURCE}/${IMGS}`;
+        dist = `${BUILD}s/${SOURCE}/${IMGS}`;
     } else if (cms === true) {
         dist = `${CMS}/${SOURCE}/${IMGS}`;
     }else {
@@ -191,7 +191,7 @@ gulp.task(commands.moveFonts, function() {
     var dist;
     if(isBuild === true){
 
-        dist = `${BUILD}s/${BUILD}_${DATE}/${SOURCE}/${FONTS}`;
+        dist = `${BUILD}s/${SOURCE}/${FONTS}`;
 
     } else if (cms === true) {
         dist = `${CMS}/${SOURCE}/${FONTS}`;
@@ -208,7 +208,7 @@ gulp.task(commands.moveMisc, function() {
     var dist;
     if(isBuild){
 
-        dist = `${BUILD}s/${BUILD}_${DATE}/`;
+        dist = `${BUILD}s/`;
 
     } else if (cms === true) {
         dist = `${CMS}/`;
@@ -235,7 +235,7 @@ gulp.task(commands.css, function () {
     name = `main.css`;
     if(isBuild === true){
         name = `main.css`;
-        dist = `${BUILD}s/${BUILD}_${DATE}/${SOURCE}/css`;
+        dist = `${BUILD}s/${SOURCE}/css`;
         static = STATIC__BUILD.css
 
     } else if (cms === true) {
@@ -266,7 +266,7 @@ gulp.task(commands.js, function () {
     var name, webpackParams, dist, static;
     if(isBuild === true){
         name = `[name].js`;
-        dist = `${BUILD}s/${BUILD}_${DATE}/${SOURCE}/${JS}`;
+        dist = `${BUILD}s/${SOURCE}/${JS}`;
         static = STATIC__BUILD.js;
 
     } else if (cms === true) {

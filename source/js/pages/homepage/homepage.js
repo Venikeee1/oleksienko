@@ -13,7 +13,18 @@ export class HomePage {
 
     initSlider() {
 
+        const langList = document.querySelectorAll('.header__lang-link');
+        const longListArray = [];
         let currentTimeLine = new TimelineMax();
+
+        Array.from(langList).forEach( (elem) => {
+            const langItem = {
+                nodeItem: elem,
+                link: elem.getAttribute('href')
+            };
+            
+            longListArray.push(langItem);
+        });
 
 
         const sliderSettings = {
@@ -23,6 +34,10 @@ export class HomePage {
 
                 const tl = new TimelineMax();
                 const redColor = '#df2032';
+
+                longListArray.forEach( (elem) => {
+                    elem.nodeItem.setAttribute('href', elem.link + '#' + currentIndex);
+                });
 
                 currentTimeLine.clear();
                 currentTimeLine = tl;
@@ -64,13 +79,15 @@ export class HomePage {
                 if( currentSlide.getAttribute('data-section') === 'footer') {
                     document.querySelector('.scroll-more--down').classList.remove('active');
                     document.querySelector('.scroll-more--up').classList.add('active');
+
+                    tl.to('.logo__svg', 0.8, {fill: '#fff'}, 0.3);
                 }
 
                 if( currentIndex > 0 && currentSlide.querySelectorAll('.rest-letters-animation')) {
                     tl
-                        .to(currentSlide.querySelectorAll('.rest-letters-animation'), 0, {y: 2, opacity: 0},0)
                         .to(currentSlide.querySelectorAll('.first-letter-animation'), 0, {y: 30, opacity: 0},0)
                         .to(currentSlide.querySelectorAll('.animation-title'), 0, {y: 20, opacity: 0},0)
+                        .staggerTo(currentSlide.querySelectorAll('.first-letter-animation'), 1.8, {y: 0, opacity: 1, ease: Power2.easeOut},0,0.5)
 
                 }
 
@@ -78,7 +95,7 @@ export class HomePage {
 
                     tl.to('.homepage__play-btn',0, {scale: 0},0)
                         .to('.video__line', 0, {height: '0%'}, 0)
-                        .to('.homepage__play-btn', 2.4, {scale: 1})
+                        .to('.homepage__play-btn', 2.4, {scale: 1}, '-=1.1')
                         .staggerTo('.video__line', 0.8, {height: '120%'}, 0.4)
                         .to('.homepage__play-triangle', 0.3, {x: '50%'})
                         .to('.homepage__play-triangle', 0.3, {x: '0%'})
@@ -93,6 +110,7 @@ export class HomePage {
 
                 if( currentSlide.getAttribute('data-section') !== 'footer') {
                     tl.to(currentSlide.querySelector('.slide__number'), 0, {x: -45, opacity: 0},0)
+                        .to('.logo__svg', 0.8, {fill: 'rgba(255, 255, 255, 0.5)'}, 0.3)
                 }
 
 
@@ -104,9 +122,9 @@ export class HomePage {
 
                 if( currentIndex > 0 && currentSlide.getAttribute('data-section') !== 'footer') {
 
-                    tl.staggerTo(currentSlide.querySelectorAll('.rest-letters-animation'), 0.8, {y: 0, opacity: 1}, 0,0)
-                        .staggerTo(currentSlide.querySelectorAll('.first-letter-animation'), 1.8, {y: 0, opacity: 1, ease: Power2.easeOut},0,0)
-                        .staggerTo(currentSlide.querySelectorAll('.animation-title'), 1, {y: 0, opacity: 1},0.3, '-=1.1')
+                    tl.staggerTo(currentSlide.querySelectorAll('.rest-letters-animation'), 0.8, {y: 0, opacity: 1}, 0)
+                        
+                        .staggerTo(currentSlide.querySelectorAll('.animation-title'), 1, {y: 0, opacity: 1},0.3, '-=0.8')
 
                     document.querySelector('.scroll-more--down').classList.add('active');
                     document.querySelector('.scroll-more--up').classList.remove('active');
@@ -116,7 +134,7 @@ export class HomePage {
                 if( currentSlide.getAttribute('data-section') === 'achievement' ) {
                     const timeline = new TimelineMax();
 
-                    timeline.staggerFromTo('.achievement__item', 0.9, { opacity: 0, y: 40}, { opacity: 1, y: 0},0.2,0.7)
+                    timeline.staggerFromTo('.achievement__item', 0.9, { opacity: 0, y: 40}, { opacity: 1, y: 0},0.2,0.1)
                 }
 
                 if( currentSlide.querySelector('.slide__number')) {
@@ -181,7 +199,7 @@ export class HomePage {
     logoAnimationShow() {
         const tl = new TimelineMax();
 
-        tl.to('.logo', 0.5, {opacity: 1, pointerEvents: 'auto'}, 1)
+        tl.to('.logo', 0.5, {opacity: 1}, 1)
             //.to('.logo__svg', 0.5, { fill: '#fff',  opacity: 0.5}, 0);
     }
 
