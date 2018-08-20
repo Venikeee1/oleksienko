@@ -472,7 +472,7 @@ gulp.task('createPage', function() {
 });
 
 gulp.task('createComp', function() {
-
+    console.log(process.argv[3])
     let componentName = process.argv[3].replace('--','') || 'component';
     let componentPath = `${SOURCE}/${HANDLEBARS}/component/${componentName}`;
 

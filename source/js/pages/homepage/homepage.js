@@ -28,7 +28,22 @@ export class HomePage {
 
 
         const sliderSettings = {
-            afterInit: () => { },
+            afterInit: () => { 
+                const logo = document.querySelector('.preloader__logo');
+                const logoCircle = logo.querySelector('.preloader__circle');
+                const timeLine = new TimelineMax();
+        
+                timeLine
+                    .to(logo, 1.3,{scale: 0.8})
+                    .to('.header', 0, {y: '-20', opacity: 0},0)
+                    .to(logoCircle, 1.2,{width: 0})
+                    .to('.preloader__animation',0, {y: 30, opacity: 0})
+                    .staggerTo('.preloader__animation', 1.8, {y: 0, opacity: 1}, 0.4)
+                    .to('.header', 1.3, {y: '0', opacity: 1}, 1)
+                    .to('.scroll-more', 0, {opacity: 0},0)
+                    .to('.red-squares', 0,{opacity: 0},0)
+                    .to('.scroll-more', 0.8, {opacity: 1}, '-=0.6')
+            },
             touch: true,
             animateNextSlide: (currentSlide, currentIndex, prevIndex) => {
 
@@ -42,29 +57,15 @@ export class HomePage {
                 currentTimeLine.clear();
                 currentTimeLine = tl;
 
-
-
                 if( currentIndex > 0 && prevIndex === 0) {
-
-                    tl
-                        .to('.preloder__animation', 0.2,{opacity: 0},0)
-                        .to('.logo__wrapper',0.8,{x: 40, y:120, opacity: 1, ease: Power2.easeIn},0)
-                        .to('.preloader__logo',1.2,{scale: 1, opacity: 0.5}, 0)
-                        .to('.preloader__svg',1.2,{fill: '#fff', opacity: 0}, 0)
-
+                   
                     this.letterShowAnimation();
                     this.sliderDotsAnimation();
                     this.logoAnimationShow();
 
-
                 } else if( currentIndex === 0) {
 
                     tl
-                        .to('.logo__wrapper',1.2,{x: '0', y: '0', opacity: 1, ease: Power2.easeInOut},0)
-                        .to('.preloader__logo',1.2,{scale: 0.8, opacity: 1}, 0)
-                        .to('.preloader__svg',1.2,{fill: redColor, opacity: 1}, 0)
-                        .to('.preloder__animation', 0,{y: 50})
-                        .staggerTo('.preloder__animation',0.9, {y: 0, opacity: 1}, 0.2)
                         .to('.slider__dots--wrapper', 0.9, {y: '105%', ease: Quad.easeOut, onComplete: () => {
                                 const tl = new TimelineMax()
                                 tl.to('.red-squares', 0.5, {opacity: 0})
@@ -199,7 +200,7 @@ export class HomePage {
     logoAnimationShow() {
         const tl = new TimelineMax();
 
-        tl.to('.logo', 0.5, {opacity: 1}, 1)
+        tl.to('.logo', 2, {opacity: 1}, 1)
             //.to('.logo__svg', 0.5, { fill: '#fff',  opacity: 0.5}, 0);
     }
 
@@ -305,16 +306,60 @@ export class HomePage {
     }
 
     init() {
-        this.initFirstScreenSlider();
-        this.initSlider();
-        this.wrapFirstLetters();
-        this.initVideoPopup();
-        this.checkForDisablingHover();
-        this.resizeWindow();
-        const preloader = new Prelaoder();
+        const lunchAfterLoad = () => {
+            this.initSlider();
+            this.wrapFirstLetters();
+            this.initVideoPopup();
+            this.checkForDisablingHover();
+            this.resizeWindow();
+            this.addEventListenersToLetters();
+            this.callBackForMenu();
+        }
+
+        const preloader = new Prelaoder(lunchAfterLoad);
+
         preloader.init();
-        this.addEventListenersToLetters();
-        this.callBackForMenu();
+        this.initFirstScreenSlider();
+console.log(1111)
+        preloader.close();
+        
     }
 }
+
+// function preloader() {
+//     const svgContainer = document.querySelector('.site-preloader__svg');
+//     const svgLines = document.querySelectorAll('.site-preloader__lines');
+//     let preloaderEnabel = true;
+//     let animationStage = 1;
+
+//     const tl = new TimelineMax({ onComplete: () => {
+        
+//         setTimeout(() => {
+//             if( preloaderEnabel ) {
+//                 animationStage = animationStage === 1 ? 2 : 1;
+
+//                 tl.clear();
+//                 tl.to(svgContainer, 0.5, { fill: '#555', ease: Power2.easeOut},0.1);
+//             }
+//         }, 1500)
+//     }});
+
+//     tl.to(svgContainer, 0.5, { fill: '#000', ease: Power2.easeOut},0.1);
+
+//     const updateCallBack = (timeLine) => {
+//         const progress = timeLine.progress();
+//         Array.from(svgLines).forEach( (elem, i) => {
+//             setTimeout(() => {
+//                 elem.setAttribute('stroke-dashoffset', 500 * animationStage + 500 * progress);
+//             }, 500 * i);
+//         })
+//     }
+    
+//     tl.eventCallback("onUpdate", () => {
+//         updateCallBack(tl)
+//     });
+
+// }
+
+// preloader();
 

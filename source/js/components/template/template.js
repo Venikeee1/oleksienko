@@ -2,11 +2,15 @@ import {Slider} from "../slider";
 import {wrapFirstLetters} from "../../helper/helper";
 import {innerPageInfo} from "../innerPageInfo/innerPageInfo";
 import SimpleBar from 'simplebar';
+import Hammer from 'hammerjs';
 
 export class Template {
     constructor() {
         this.slider = {};
         this.innerPopup = new innerPageInfo('.inner-page-info__wrapper');
+
+        this.hammer = new Hammer(document.querySelector('.inner-page'));
+        this.hammer.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL , pointers: 1});
     }
 
     initSlider() {
@@ -25,6 +29,7 @@ export class Template {
         });
 
         const sliderSettings = {
+            touch: false,
             afterInit: () => {
                 const tl = new TimelineMax();
 
@@ -53,7 +58,6 @@ export class Template {
 
                 currentTimeLine = tl;
             },
-            touch: true,
             animateNextSlide: (el, currentslide) => {
                 const currentIndex = currentslide < 9 ? `0${currentslide + 1}` : currentslide + 1;
                 const slideIndexContainer = document.querySelector('.slide__number-index');
@@ -105,6 +109,16 @@ export class Template {
         this.slider.init();
     }
 
+    addSwipe() {
+        this.hammer.on('swipeup', () => {
+            this.slider.nextSlide();
+        });
+
+        this.hammer.on('swipedown', () => {
+            this.slider.prevSlide();
+        });
+    }
+
     showInnerPopup() {
         Array.from(document.querySelectorAll('.main-title')).forEach( (elem) => {
             elem.addEventListener('click', (e) => {
@@ -130,6 +144,7 @@ export class Template {
     init() {
         wrapFirstLetters();
         this.initSlider();
+        this.addSwipe();
         this.showInnerPopup();
         this.customizeScrollBar();
     }

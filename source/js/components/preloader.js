@@ -1,35 +1,61 @@
-//import TimelineMax from "gsap";
-
 export class Prelaoder {
-    constructor() {
-        this.preloaderContainer = document.querySelector('.preloader');
-        this.logo = document.querySelector('.preloader__logo');
-        this.logoCircle = this.logo.querySelector('.preloader__circle');
-        this.timeLine = new TimelineMax();
+    constructor( onDisable ) {
+        this.preloaderContainer = document.querySelector('.site-preloader');
+        this.preloaderSvg = document.querySelector('.site-preloader__svg');
+        this.svgLines = document.querySelectorAll('.site-preloader__lines');
+        this.preloaderEnabel = true;
+        this.onDisable = onDisable;
+        this.timeLine = {};
     }
 
-    animateLogo() {
-        this.timeLine
-            .to(this.logo, 1.3,{scale: 0.8})
-            .to('.header', 0, {y: '-20', opacity: 0},0)
-            .to(this.logoCircle, 1.2,{width: 0})
-            .to('.preloader__animation',0, {y: 30, opacity: 0})
-            .staggerTo('.preloader__animation', 1.8, {y: 0, opacity: 1}, 0.4)
-            .to('.header', 1.3, {y: '0', opacity: 1}, 1)
-            .to('.scroll-more', 0, {opacity: 0},0)
-            .to('.red-squares', 0,{opacity: 0},0)
-            .to('.scroll-more', 0.8, {opacity: 1}, '-=0.6')
+    animate() {
+        let animationStage = 1;
+
+        this.timeLine = new TimelineMax({ onComplete: () => {
+    
+            setTimeout(() => {
+                this.timeLine.clear();
+
+                if( this.preloaderEnabel ) {
+                    animationStage = animationStage === 1 ? 2 : 1;
+                    this.timeLine.to(this.preloaderSvg, 0.5, { fill: '#555', ease: Power2.easeOut},0.1);
+                } else {
+                    
+                    if(this.onDisable) {
+                        this.onDisable();
+                    }
+                    this.disable();
+                }
+            }, 1500)
+        }});
+
+        this.timeLine.to(this.preloaderSvg, 0.5, { fill: '#000', ease: Power2.easeOut},0.1);
+
+        const updateCallBack = (timeLine) => {
+            const progress = timeLine.progress();
+            Array.from(this.svgLines).forEach( (elem, i) => {
+                setTimeout(() => {
+                    elem.setAttribute('stroke-dashoffset', 500 * animationStage + 500 * progress);
+                }, 500 * i);
+            })
+        }
+
+        this.timeLine.eventCallback("onUpdate", () => {
+            updateCallBack(this.timeLine)
+        });
+    
+    }
+
+    disable() {
+        this.preloaderContainer.style.opacity = 0;
+        this.preloaderContainer.style.pointerEvents = 'none';
+    }
+
+    close() {
+        this.preloaderEnabel = false;
     }
 
     init() {
-        this.animateLogo();
+        this.animate();
     }
-}
-
-function calcTopValueForLogo(elem) {
-    const windowHeight = window.innerHeight;
-    const elemHeight = elem.clientHeight;
-    const bottom = 200;
-
-    return windowHeight - bottom - elemHeight;
 }
