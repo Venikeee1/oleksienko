@@ -3,6 +3,7 @@ import {wrapFirstLetters} from "../../helper/helper";
 import {innerPageInfo} from "../innerPageInfo/innerPageInfo";
 import SimpleBar from 'simplebar';
 import Hammer from 'hammerjs';
+import {LazyLoad} from "../lazyLoad";
 
 export class Template {
     constructor() {
@@ -10,7 +11,7 @@ export class Template {
         this.innerPopup = new innerPageInfo('.inner-page-info__wrapper');
 
         this.hammer = new Hammer(document.querySelector('.inner-page'));
-        this.hammer.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL , pointers: 1});
+        this.hammer.get('swipe').set({ direction: Hammer.DIRECTION_ALL , pointers: 1});
     }
 
     initSlider() {
@@ -117,6 +118,20 @@ export class Template {
         this.hammer.on('swipedown', () => {
             this.slider.prevSlide();
         });
+
+        if(window.inne)
+
+        this.hammer.on('swipeleft', () => {
+            const href = document.querySelector('.navigation-arrows__nav-arrow--right').getAttribute('href');
+            window.location.href = href;
+            console.log('right')
+        });
+
+        this.hammer.on('swiperight', () => {
+            const href = document.querySelector('.navigation-arrows__nav-arrow--left').getAttribute('href');
+            window.location.href = href;
+            console.log('left')
+        });
     }
 
     showInnerPopup() {
@@ -143,6 +158,7 @@ export class Template {
 
     init() {
         wrapFirstLetters();
+        new LazyLoad('.inner-page__slide');
         this.initSlider();
         this.addSwipe();
         this.showInnerPopup();

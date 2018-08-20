@@ -26,17 +26,17 @@ export class Prelaoder {
                     }
                     this.disable();
                 }
-            }, 1500)
+            }, 1100)
         }});
 
-        this.timeLine.to(this.preloaderSvg, 0.5, { fill: '#000', ease: Power2.easeOut},0.1);
+        this.timeLine.to(this.preloaderSvg, 0.5, { fill: '#000', ease: Power2.easeIn},0.1);
 
         const updateCallBack = (timeLine) => {
             const progress = timeLine.progress();
             Array.from(this.svgLines).forEach( (elem, i) => {
                 setTimeout(() => {
                     elem.setAttribute('stroke-dashoffset', 500 * animationStage + 500 * progress);
-                }, 500 * i);
+                }, 300 * i);
             })
         }
 

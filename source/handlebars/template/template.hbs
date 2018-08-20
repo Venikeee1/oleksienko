@@ -16,7 +16,7 @@
     </div>
     <section class="inner-page__slides">
         {{#each slides}}
-            <div class="inner-page__slide" style="background-image: url('{{this}}')"></div>
+            <div class="inner-page__slide" data-desktop-img="{{this}}"></div>
         {{/each}}
         <div class="inner-page__slide" data-section="footer">
             {{>component/footer/footer}}
@@ -36,7 +36,7 @@
         <a href="" class="inner-page__mobile-item">Next project</a>
     </div>
     {{>component/scroll-more/scroll-more}}
-    {{>component/innerPageInfo/innerPageInfo text}}
 </div>
+{{>component/innerPageInfo/innerPageInfo text}}
 
 

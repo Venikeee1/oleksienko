@@ -12,7 +12,7 @@ export class Slider {
         this.currentSlide = this.slides[this.currentIndex];
         this.delay = settings.delay || 800;
         this.animationTime = settings.animationTime || 400;
-        //this.activeBackground = this.backgroundsArray[this.currentIndex];
+        this.autoPlayInterval = {};
         this.animationAloud = true;
         this.dots = [];
         this.hashList = [];
@@ -20,6 +20,8 @@ export class Slider {
         this.settings = settings;
         this.sliderStyle = 'slider';
         this.duration = 1.1;
+        this.externalTimeLine = null;
+        this.timeline = new TimelineMax();
         if(this.settings) {
             this.sliderStyle = this.settings.sliderStyle;
         }
@@ -75,13 +77,33 @@ export class Slider {
 
     autoPlay() {
         if( this.settings.autoplay) {
-            setInterval( () => {
+
+            this.autoPlayInterval = setInterval( () => {
+
                 if(this.currentIndex === this.slides.length - 1) {
                     this.goToSlide(0);
                 } else {
                     this.nextSlide();
                 }
             }, this.delay);
+
+            console.log(this.autoPlayInterval);
+        }
+    }
+
+    autoPlayEnable() {
+        this.autoPlay();
+        this.timeline.play();
+        if(this.externalTimeLine) {
+            this.externalTimeLine.play();
+        }
+    }
+
+    autoPlayDisable() {
+        clearInterval(this.autoPlayInterval);
+        this.timeline.pause();
+        if(this.externalTimeLine) {
+            this.externalTimeLine.pause();
         }
     }
 
@@ -107,18 +129,17 @@ export class Slider {
 
             this.duration = duration;
         } else {
-            console.log(window.location)
             const hashUrl = window.location.href + '#' + this.hashList[0];
             history.replaceState(null, '',hashUrl);
         }
     }
 
     selectAnimation( index ) {
-        const tl = new TimelineMax();
+        this.timeline =  new TimelineMax();
 
         if( this.settings.sliderStyle === 'fadeIn') {
 
-            tl.to(this.currentSlide, this.animationTime, {opacity: 1, onStart: ()=> {
+            this.timeline.to(this.currentSlide, this.animationTime, {opacity: 1, onStart: ()=> {
 
                 }, onComplete: ()=> {
                     this.animationAloud = true;
@@ -130,7 +151,7 @@ export class Slider {
             const slideValue = `-${animationLength}%`;
 
 
-            tl.to(this.sliderContainer.querySelector('.slider__wrapper'), this.duration, {y: slideValue , onStart: ()=> {
+            this.timeline.to(this.sliderContainer.querySelector('.slider__wrapper'), this.duration, {y: slideValue , onStart: ()=> {
                 }, onComplete: ()=> {
                     this.animationAloud = true;
                     if(this.duration === 0) {
@@ -178,6 +199,7 @@ export class Slider {
         Array.from(this.slides).forEach( (elem, i) => {
             elem.setAttribute('data-hash', i);
             sliderWrapper.appendChild(elem);
+            elem.style.height = window.innerHeight + 'px';
         });
         this.sliderContainer.appendChild(sliderWrapper);
 

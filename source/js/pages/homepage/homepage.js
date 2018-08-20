@@ -62,6 +62,7 @@ export class HomePage {
                     this.letterShowAnimation();
                     this.sliderDotsAnimation();
                     this.logoAnimationShow();
+                    this.firstScreenSlider.autoPlayDisable();
 
                 } else if( currentIndex === 0) {
 
@@ -74,6 +75,7 @@ export class HomePage {
                     this.letterAnimationTimeLine.clear();
                     this.letterHideAnimation();
                     this.logoAnimationHide();
+                    this.firstScreenSlider.autoPlayEnable();
 
                 }
 
@@ -153,6 +155,8 @@ export class HomePage {
     }
 
     initFirstScreenSlider() {
+
+        const tl = new TimelineMax();
         const sliderSettings = {
             sliderStyle: 'fadeIn',
             autoplay: true,
@@ -160,13 +164,12 @@ export class HomePage {
             animationTime: 4,
             touch: false,
             afterInit: (currentSlide)  => {
-                const tl = new TimelineMax();
 
                 tl.to(currentSlide, 12, {scale: 1.05});
             },
             animateNextSlide: (currentSlide, currentIndex, prevIndex) => {
 
-                const tl = new TimelineMax();
+                tl.clear();
 
                 tl.to(currentSlide, 0, {scale: 1})
                     .to(currentSlide, 12, {scale: 1.05});
@@ -178,6 +181,7 @@ export class HomePage {
         };
 
         this.firstScreenSlider = new Slider('.first-screen-slider', sliderSettings);
+        this.firstScreenSlider.externalTimeLine = tl;
         this.firstScreenSlider.init();
     }
 
