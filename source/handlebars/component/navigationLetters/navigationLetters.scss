@@ -29,6 +29,7 @@
         position: relative;
 
         &.active {
+            pointer-events: none;
             .dila__word {
                 transform: translateX(0);
                 opacity: 1;
@@ -44,6 +45,7 @@
 
             .dila__letter {
                 opacity: 0;
+                pointer-events: none;
             }
         }
 
