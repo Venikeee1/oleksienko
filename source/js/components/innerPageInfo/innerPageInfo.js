@@ -2,7 +2,7 @@ export class innerPageInfo {
     constructor(selector) {
         this.pageInfoContainer = document.querySelector(selector);
         this.tl = new TimelineMax();
-        this.header = document.querySelector('.header');
+        this.header = document.querySelector('.header__inner');
 
         this.init();
     }

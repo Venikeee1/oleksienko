@@ -1,58 +1,30 @@
 export class Prelaoder {
-    constructor( onDisable ) {
+    constructor( onDisableCallBack ) {
+        this.lines = document.querySelectorAll('.site-preloader__line');
         this.preloaderContainer = document.querySelector('.site-preloader');
-        this.preloaderSvg = document.querySelector('.site-preloader__svg');
-        this.svgLines = document.querySelectorAll('.site-preloader__lines');
-        this.preloaderEnabel = true;
-        this.onDisable = onDisable;
-        this.timeLine = {};
+        this.onDisableCallBack = onDisableCallBack;
+
+        this.timeLine = new TimelineMax( {repeat: -1});
     }
 
     animate() {
-        let animationStage = 1;
-
-        this.timeLine = new TimelineMax({ onComplete: () => {
-    
-            setTimeout(() => {
-                this.timeLine.clear();
-
-                if( this.preloaderEnabel ) {
-                    animationStage = animationStage === 1 ? 2 : 1;
-                    this.timeLine.to(this.preloaderSvg, 0.5, { fill: '#555', ease: Power2.easeOut},0.1);
-                } else {
-                    
-                    if(this.onDisable) {
-                        this.onDisable();
-                    }
-                    this.disable();
-                }
-            }, 1100)
-        }});
-
-        this.timeLine.to(this.preloaderSvg, 0.5, { fill: '#000', ease: Power2.easeIn},0.1);
-
-        const updateCallBack = (timeLine) => {
-            const progress = timeLine.progress();
-            Array.from(this.svgLines).forEach( (elem, i) => {
-                setTimeout(() => {
-                    elem.setAttribute('stroke-dashoffset', 500 * animationStage + 500 * progress);
-                }, 300 * i);
-            })
+        if( this.lines ) {
+            this.timeLine.to( this.lines, 0, {height: '0%'})
+                .staggerTo(this.lines, 0.8, {height: '120%'}, 0.4)
+                .to( '.site-preloader', 0.8, {opacity: 0.5})
+                .staggerTo(this.lines, 0.8, {height: '0%'}, 0.4)
         }
-
-        this.timeLine.eventCallback("onUpdate", () => {
-            updateCallBack(this.timeLine)
-        });
-    
     }
 
     disable() {
-        this.preloaderContainer.style.opacity = 0;
-        this.preloaderContainer.style.pointerEvents = 'none';
+
     }
 
     close() {
-        this.preloaderEnabel = false;
+        if(this.onDisableCallBack) {
+            this.onDisableCallBack();
+        }
+        //this.timeLine.clear();
     }
 
     init() {

@@ -4,32 +4,91 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 5555;
-    background: #111;
-    transition: opacity 1s;
+    background: #fff;
+    z-index: 555555;
+    display: flex;
 
-    @include media(1200px) {
-        width: 150%;
-        transform: translateX(-25vw);
-    }
-
-    @include media($break-mobile) {
-        width: 300%;
-        transform: translateX(-100vw);
-    }
-
-    &__svg {
-        width: 100%;
+    &__lines {
+        top: 0;
+        left: 50%;
         height: 100%;
-        stroke-width: 0.5;
-        stroke: #636661;
-        vector-effect: non-scaling-stroke;
-        stroke-dasharray: 500;
-        stroke-dashoffset: 500;
-        //animation: dash 4s infinite linear ;
+        width: 1px;
+    }
+
+    &__logo {
+        margin: auto;
+        border-radius: 50%;
+        background: #fff;
+        position: relative;
+        z-index: 1;
+
+        svg {
+            fill: $red-color;
+            width: 180px;
+            height: 180px;
+        }
+    }
+
+    &__line {
+        position: absolute;
+        display: inline-block;
+        width: 1px;
+        background: #333;
+        height: 0;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -1px;
+            background: #fff;
+            width: 3px;
+            height: 0;
+            transition: height 0.8s;
+        }
+
+        &.active {
+            &:before {
+                height: 100%;
+            }
+        }
+
+        &--1 {
+            left: 39%;
+            transform: rotate(-18deg);
+            top: -50px;
+            transform-origin: 0 0;
+
+            @include media($desk-middle) {
+                transform: rotate(-12deg);
+                left: 35%;
+            }
+
+            @include media(900px) {
+                transform: rotate(-14deg);
+                left: 30%;
+            }
+
+            @include media($break-mobile) {
+                left: 22%;
+            }
+        }
+
+        &--2 {
+            left: 49%;
+            top: 0;
+        }
+
+        &--3 {
+            left: 54%;
+            top: 0;
+
+            @include media($break-mobile) {
+                left: 57%;
+            }
+        }
     }
 }
-
 
   
 @keyframes dash {

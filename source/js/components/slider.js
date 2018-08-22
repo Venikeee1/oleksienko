@@ -87,7 +87,6 @@ export class Slider {
                 }
             }, this.delay);
 
-            console.log(this.autoPlayInterval);
         }
     }
 
@@ -199,7 +198,7 @@ export class Slider {
         Array.from(this.slides).forEach( (elem, i) => {
             elem.setAttribute('data-hash', i);
             sliderWrapper.appendChild(elem);
-            elem.style.height = window.innerHeight + 'px';
+            this.setSlideHeight(elem);
         });
         this.sliderContainer.appendChild(sliderWrapper);
 
@@ -220,6 +219,10 @@ export class Slider {
 
     createDot(){
         return createElement('span','slider__dot');
+    }
+
+    setSlideHeight(slide) {
+        slide.style.height = window.innerHeight + 'px';
     }
 
     createDots() {
@@ -311,6 +314,14 @@ export class Slider {
         }
     }
 
+    windowResize() {
+        window.addEventListener('resize', () => {
+            Array.from(this.slides).forEach( (slide) => {
+                this.setSlideHeight(slide);
+            })
+        })
+    }
+
     init(){
         this.createSlidesWrapper();
         this.addClassesToSliderItems();
@@ -323,6 +334,7 @@ export class Slider {
         this.setActiveSlide();
         this.afterInitCallBack();
         this.autoPlay();
+        this.windowResize();
 
         if(this.hashNavigation) {
             this.checkHash(true);

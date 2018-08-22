@@ -324,46 +324,8 @@ export class HomePage {
 
         preloader.init();
         this.initFirstScreenSlider();
-console.log(1111)
+
         preloader.close();
         
     }
 }
-
-// function preloader() {
-//     const svgContainer = document.querySelector('.site-preloader__svg');
-//     const svgLines = document.querySelectorAll('.site-preloader__lines');
-//     let preloaderEnabel = true;
-//     let animationStage = 1;
-
-//     const tl = new TimelineMax({ onComplete: () => {
-        
-//         setTimeout(() => {
-//             if( preloaderEnabel ) {
-//                 animationStage = animationStage === 1 ? 2 : 1;
-
-//                 tl.clear();
-//                 tl.to(svgContainer, 0.5, { fill: '#555', ease: Power2.easeOut},0.1);
-//             }
-//         }, 1500)
-//     }});
-
-//     tl.to(svgContainer, 0.5, { fill: '#000', ease: Power2.easeOut},0.1);
-
-//     const updateCallBack = (timeLine) => {
-//         const progress = timeLine.progress();
-//         Array.from(svgLines).forEach( (elem, i) => {
-//             setTimeout(() => {
-//                 elem.setAttribute('stroke-dashoffset', 500 * animationStage + 500 * progress);
-//             }, 500 * i);
-//         })
-//     }
-    
-//     tl.eventCallback("onUpdate", () => {
-//         updateCallBack(tl)
-//     });
-
-// }
-
-// preloader();
-
