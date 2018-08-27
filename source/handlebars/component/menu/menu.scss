@@ -62,7 +62,7 @@ $menu-white-color: #fefefe;
 
     &__list {
         padding-right: 4.6vw;
-        font-family: $uniSansLight;
+        font-family: $uniSansLight, $exo2Light;
         font-size: 19px;
 
         @include media(600px) {
@@ -77,7 +77,7 @@ $menu-white-color: #fefefe;
         &:nth-child(2n + 1) {
 
             .menu__link {
-                font-family: $uniSansSemiBold;
+                font-family: $uniSansSemiBold, $exo2SemiBold;
             }
         }
 
@@ -199,7 +199,7 @@ $menu-white-color: #fefefe;
 
     &__info {
         font-size: 16px;
-        font-family: $uniSansSemiBold;
+        font-family: $uniSansSemiBold, $exo2SemiBold;
         padding: 1.5em 0 1.5em 120px;
 
         @include media(600px) {

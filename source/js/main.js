@@ -16,6 +16,12 @@ window.addEventListener('load', () => {
     const GLOBAL_OBJECT = {};
     let ActiveScript = null;
 
+    window.isMobile = false;
+
+    if(window.innerWidth < 768) {
+        window.isMobile = true;
+    }
+
     GLOBAL_OBJECT.menu = PopupMenu;
 
     new LanguageSelector();

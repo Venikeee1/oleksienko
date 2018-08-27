@@ -85,7 +85,9 @@ export class Template {
                     document.querySelector('.scroll-more--down').classList.remove('active');
                     document.querySelector('.scroll-more--up').classList.add('active');
                 } else {
-                    tl.to('.logo__svg', 0.8, {fill: 'rgba(255, 255, 255, 0.5)'}, 0.3)
+                    if(!window.isMobile) {
+                        tl.to('.logo__svg', 0.8, {fill: 'rgba(255, 255, 255, 0.5)'}, 0.3)
+                    }
                 }
 
             },
@@ -106,7 +108,7 @@ export class Template {
         };
 
         this.slider = new Slider('.inner-page__slides', sliderSettings);
-        this.slider.hashNavigation = true;
+        //this.slider.hashNavigation = true;
         this.slider.init();
     }
 
