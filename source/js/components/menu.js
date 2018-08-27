@@ -50,5 +50,6 @@ export class Menu {
     init() {
         this.checkSettings();
         this.addClickListeners();
+
     }
 }
