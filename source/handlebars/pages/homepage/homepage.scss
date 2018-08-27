@@ -23,7 +23,7 @@
     &__subtitle {
         padding-left: 45px;
         margin-top: -10px;
-        font-family: $uniSans;
+        font-family: $uniSans, $exo2Regular;
 
         @include media($desk-middle){
             margin-top: -7px;

@@ -1,33 +1,46 @@
 export class Prelaoder {
     constructor( onDisableCallBack ) {
-        this.lines = document.querySelectorAll('.site-preloader__line');
         this.preloaderContainer = document.querySelector('.site-preloader');
         this.onDisableCallBack = onDisableCallBack;
+        this.logo = document.querySelector('.site-preloader__logo');
+        this.animationAloud = true;
 
-        this.timeLine = new TimelineMax( {repeat: -1});
+        this.timeLine = new TimelineMax();
     }
 
     animate() {
-        if( this.lines ) {
-            this.timeLine.to( this.lines, 0, {height: '0%'})
-                .staggerTo(this.lines, 0.8, {height: '120%'}, 0.4)
-                .to( '.site-preloader', 0.8, {opacity: 0.5})
-                .staggerTo(this.lines, 0.8, {height: '0%'}, 0.4)
-        }
+
     }
 
     disable() {
-
+        this.animationAloud = false;
     }
 
     close() {
-        if(this.onDisableCallBack) {
-            this.onDisableCallBack();
-        }
-        //this.timeLine.clear();
+        this.timeLine
+            .to(this.logo, 0.5, {scale: '0', onStart:() => {
+
+                    this.logo.style.animationName = 'lol';
+                    this.logo.style.transform = 'scale(1.2)';
+                }})
+            .to(this.preloaderContainer, 0.4, {opacity: 0, pointerEvents: 'none', onComplete: () => {
+                    this.preloaderContainer.parentNode.removeChild(this.preloaderContainer);
+                }})
+    }
+
+    interval() {
+        this.interval = setInterval(() => {
+            if( !this.animationAloud ) {
+                if(this.onDisableCallBack) {
+                    this.onDisableCallBack();
+                }
+                clearInterval(this.interval);
+                this.close();
+            }
+        }, 2000)
     }
 
     init() {
-        this.animate();
+        this.interval();
     }
 }

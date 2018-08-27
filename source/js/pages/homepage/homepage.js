@@ -113,7 +113,9 @@ export class HomePage {
 
                 if( currentSlide.getAttribute('data-section') !== 'footer') {
                     tl.to(currentSlide.querySelector('.slide__number'), 0, {x: -45, opacity: 0},0)
-                        .to('.logo__svg', 0.8, {fill: 'rgba(255, 255, 255, 0.5)'}, 0.3)
+                    if(!window.isMobile) {
+                        tl.to('.logo__svg', 0.8, {fill: 'rgba(255, 255, 255, 0.5)'}, 0.3)
+                    }
                 }
 
 
@@ -312,20 +314,19 @@ export class HomePage {
     init() {
         const lunchAfterLoad = () => {
             this.initSlider();
-            this.wrapFirstLetters();
-            this.initVideoPopup();
-            this.checkForDisablingHover();
-            this.resizeWindow();
-            this.addEventListenersToLetters();
-            this.callBackForMenu();
-        }
+        };
 
         const preloader = new Prelaoder(lunchAfterLoad);
-
         preloader.init();
+
+        this.wrapFirstLetters();
+        this.initVideoPopup();
+        this.checkForDisablingHover();
+        this.resizeWindow();
+        this.addEventListenersToLetters();
+        this.callBackForMenu();
         this.initFirstScreenSlider();
 
-        preloader.close();
-        
+        preloader.disable();
     }
 }

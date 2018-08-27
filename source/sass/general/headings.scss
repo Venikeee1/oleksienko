@@ -24,19 +24,19 @@
   }
 
   &--semibold {
-    font-family: $uniSansSemiBold;
+    font-family: $uniSansSemiBold, $exo2SemiBold;
 
     @include media($break-mobile) {
-      font-family: $uniSans;
+      font-family: $uniSans, $exo2Regular;
     }
   }
 
   &--light {
-    font-family: $uniSansThin;
+    font-family: $uniSansThin, $exo2Thin;
 
-    @include media($break-mobile) {
+    /*@include media($break-mobile) {
       font-family: $uniSansThin;
-    }
+    }*/
   }
 }
 

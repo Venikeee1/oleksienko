@@ -45,6 +45,14 @@ export class Menu {
                 this.menuClose();
             }
         })
+
+        Array.from(document.querySelectorAll('.menu__link')).forEach( (link) => {
+            link.addEventListener('click', () => {
+                this.menu.classList.toggle('active');
+                this.burger.classList.toggle('active');
+                this.menuClose();
+            })
+        })
     }
 
     init() {

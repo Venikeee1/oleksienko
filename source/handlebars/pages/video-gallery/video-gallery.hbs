@@ -3,8 +3,20 @@
         {{>component/navigation-arrows/navigation-arrows videoGallery.navigation}}
         <div class="swiper-wrapper">
             {{#each videoGallery.list}}
+                <div class="swiper-slide video-gallery__item"  >
+                    <div class="video-gallery__item-wrap" data-swiper-parallax="30" style="background-image: url('{{videoBg}}')">
+                        <div class="video-gallery__item-inner" style="background-image: url('{{videoHoverBg}}')">
+                            <div class="video-gallery__play-btn">
+
+                            </div>
+                            <a href="#" class="video-gallery__link" data-frame="{{link}}"></a>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+            {{#each videoGallery.list}}
                 <div class="swiper-slide video-gallery__item">
-                    <div class="video-gallery__item-wrap"  style="background-image: url('{{videoBg}}')">
+                    <div class="video-gallery__item-wrap" data-swiper-parallax="30" style="background-image: url('{{videoBg}}')">
                         <div class="video-gallery__item-inner" style="background-image: url('{{videoHoverBg}}')">
                             <div class="video-gallery__play-btn">
 
