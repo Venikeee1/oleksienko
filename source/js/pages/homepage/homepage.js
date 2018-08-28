@@ -1,5 +1,4 @@
 import {Slider} from "../../components/slider";
-import {Prelaoder} from "../../components/preloader";
 import {VideoPopup} from "../../components/videoPopup";
 
 export class HomePage {
@@ -40,6 +39,7 @@ export class HomePage {
                     .to('.preloader__animation',0, {y: 30, opacity: 0})
                     .staggerTo('.preloader__animation', 1.8, {y: 0, opacity: 1}, 0.4)
                     .to('.header', 1.3, {y: '0', opacity: 1}, 1)
+                    .to('.logo', 0, { opacity:0}, 0)
                     .to('.scroll-more', 0, {opacity: 0},0)
                     .to('.red-squares', 0,{opacity: 0},0)
                     .to('.scroll-more', 0.8, {opacity: 1}, '-=0.6')
@@ -252,7 +252,7 @@ export class HomePage {
 
             letter.addEventListener('click', (e) => {
                 e.preventDefault();
-
+                console.log(1111)
                 const index = letter.getAttribute('data-index');
 
                 if(activeLetter) {
@@ -282,7 +282,7 @@ export class HomePage {
     }
 
     callBackForMenu() {
-        this.globalObj.menu.beforeClose = () => {
+        window.GLOBAL_OBJECT.menu.beforeClose = () => {
             const tl = new TimelineMax();
 
             if( this.slider.currentIndex === 0 ) {
@@ -312,21 +312,13 @@ export class HomePage {
     }
 
     init() {
-        const lunchAfterLoad = () => {
-            this.initSlider();
-        };
-
-        const preloader = new Prelaoder(lunchAfterLoad);
-        preloader.init();
-
+        this.initFirstScreenSlider();
         this.wrapFirstLetters();
         this.initVideoPopup();
         this.checkForDisablingHover();
         this.resizeWindow();
         this.addEventListenersToLetters();
         this.callBackForMenu();
-        this.initFirstScreenSlider();
-
-        preloader.disable();
+        this.initSlider();
     }
 }

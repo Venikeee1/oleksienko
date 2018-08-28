@@ -4,7 +4,12 @@ import { Menu } from "./components/menu";
 import {Template} from "./components/template/template";
 import {VideoGallery} from "./pages/videoGallery/videoGallery";
 import {LanguageSelector} from "./components/languageSelecor";
+import {BarbaLoader} from "./barba/barbaBootstrap";
+import {Prelaoder} from "./components/preloader";
 
+
+window.GLOBAL_OBJECT = {};
+window.isMobile = false;
 
 document.addEventListener('DOMContentLoaded', () => {
     window.debug = true;
@@ -12,36 +17,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('load', () => {
 
+    const preloader = new Prelaoder();
     const PopupMenu = new Menu('.menu');
-    const GLOBAL_OBJECT = {};
-    let ActiveScript = null;
+    new LanguageSelector();
 
-    window.isMobile = false;
+    preloader.init();
 
     if(window.innerWidth < 768) {
         window.isMobile = true;
     }
 
-    GLOBAL_OBJECT.menu = PopupMenu;
-
-    new LanguageSelector();
-
-    if(document.querySelector('.homepage')) {
-        ActiveScript = new HomePage(GLOBAL_OBJECT);
-        PopupMenu.animationOnClose = true;
-    } else if(document.querySelector('.inner-page')) {
-        ActiveScript = new Template();
-        PopupMenu.animationOnClose = true;
-    } else if(document.querySelector('.video-gallery')) {
-        ActiveScript = new VideoGallery();
-        PopupMenu.animationOnClose = true;
-    }
-
-    if( ActiveScript ) {
-        ActiveScript.init();
-    }
+    window.GLOBAL_OBJECT.menu = PopupMenu;
+    PopupMenu.animationOnClose = true;
 
     PopupMenu.init();
+    const barba = new BarbaLoader();
+
+    preloader.disable();
 });
 
 // fix bug with ie11 that dont undertans the min-height for wrapper

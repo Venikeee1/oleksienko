@@ -1,31 +1,35 @@
-<div class="video-gallery" style="background-image: url('../source/images/homepage/slide-8.jpg')">
-    <div class="video-gallery__list swiper-container">
-        {{>component/navigation-arrows/navigation-arrows videoGallery.navigation}}
-        <div class="swiper-wrapper">
-            {{#each videoGallery.list}}
-                <div class="swiper-slide video-gallery__item"  >
-                    <div class="video-gallery__item-wrap" data-swiper-parallax="30" style="background-image: url('{{videoBg}}')">
-                        <div class="video-gallery__item-inner" style="background-image: url('{{videoHoverBg}}')">
-                            <div class="video-gallery__play-btn">
+<div id="barba-wrapper">
+  <div class="barba-container" data-namespace="video">
+        <div class="video-gallery" style="background-image: url('../source/images/homepage/slide-8.jpg')">
+            <div class="video-gallery__list swiper-container">
+                {{>component/navigation-arrows/navigation-arrows videoGallery.navigation}}
+                <div class="swiper-wrapper">
+                    {{#each videoGallery.list}}
+                        <div class="swiper-slide video-gallery__item"  >
+                            <div class="video-gallery__item-wrap" data-swiper-parallax="30" style="background-image: url('{{videoBg}}')">
+                                <div class="video-gallery__item-inner" style="background-image: url('{{videoHoverBg}}')">
+                                    <div class="video-gallery__play-btn">
 
+                                    </div>
+                                    <a href="#" class="video-gallery__link" data-frame="{{link}}"></a>
+                                </div>
                             </div>
-                            <a href="#" class="video-gallery__link" data-frame="{{link}}"></a>
                         </div>
-                    </div>
-                </div>
-            {{/each}}
-            {{#each videoGallery.list}}
-                <div class="swiper-slide video-gallery__item">
-                    <div class="video-gallery__item-wrap" data-swiper-parallax="30" style="background-image: url('{{videoBg}}')">
-                        <div class="video-gallery__item-inner" style="background-image: url('{{videoHoverBg}}')">
-                            <div class="video-gallery__play-btn">
+                    {{/each}}
+                    {{#each videoGallery.list}}
+                        <div class="swiper-slide video-gallery__item">
+                            <div class="video-gallery__item-wrap" data-swiper-parallax="30" style="background-image: url('{{videoBg}}')">
+                                <div class="video-gallery__item-inner" style="background-image: url('{{videoHoverBg}}')">
+                                    <div class="video-gallery__play-btn">
 
+                                    </div>
+                                    <a href="#" class="video-gallery__link" data-frame="{{link}}"></a>
+                                </div>
                             </div>
-                            <a href="#" class="video-gallery__link" data-frame="{{link}}"></a>
                         </div>
-                    </div>
+                    {{/each}}
                 </div>
-            {{/each}}
+            </div>
         </div>
     </div>
 </div>

@@ -121,18 +121,12 @@ export class Template {
             this.slider.prevSlide();
         });
 
-        if(window.inne)
-
         this.hammer.on('swipeleft', () => {
-            const href = document.querySelector('.navigation-arrows__nav-arrow--right').getAttribute('href');
-            window.location.href = href;
-            console.log('right')
+            document.querySelector('.navigation-arrows__nav-arrow--right').click();
         });
 
         this.hammer.on('swiperight', () => {
-            const href = document.querySelector('.navigation-arrows__nav-arrow--left').getAttribute('href');
-            window.location.href = href;
-            console.log('left')
+            document.querySelector('.navigation-arrows__nav-arrow--left').click();
         });
     }
 

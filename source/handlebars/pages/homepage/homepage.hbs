@@ -1,90 +1,94 @@
-<div class="homepage" >
-    <div class="red-squares">
-        <div class="red-square"></div>
-    </div>
-    {{>component/navigationLetters/navigationLetters}}
-    <div class="homepage__slides">
-        <section class="homepage__item">
-            {{> component/preloader/preloader}}
-            <div class="first-screen-slider">
-                {{#each homepage.firstScreen.slides}}
-                    <div class="first-screen-slider__item" style="background-image: url('{{this}}')"></div>
-                {{/each}}
+<div id="barba-wrapper">
+  <div class="barba-container" data-namespace="homepage">
+        <div class="homepage" >
+            <div class="red-squares">
+                <div class="red-square"></div>
             </div>
-            <div class="slide__number">
-                <div class="slide__number-inner">
-                    <span class="slide__value">{{number}}</span>
-                </div>
-            </div>
-        </section>
-        {{#each homepage.items}}
-            <section class="homepage__item" style="background-image: url('{{background}}')">
-                <div class="main__text">
-                    {{#if title}}
-                        <a href="{{link}}" class="main-title main-title--light">{{title}}</a>
-                    {{/if}}
-                    {{#if titleBold}}
-                        <a href="{{link}}" class="homepage__subtitle main-title main-title--semibold">{{titleBold}}</a>
-                    {{/if}}
-                    {{#if subtitle}}
-                        <h3 class="homepage__position main-subtitle animation-title">{{subtitle}}</h3>
-                    {{/if}}
-                    <p class="slide__description animation-title">
-                        <a href="" class="slide__description-link">{{{description}}}</a>
-                    </p>
-                    <a href="" class="homepage__view-project animation-title">View project</a>
-                </div>
-                <div class="slide__number">
-                    <div class="slide__number-inner">
-                        <span class="slide__value">{{number}}</span>
+            {{>component/navigationLetters/navigationLetters}}
+            <div class="homepage__slides">
+                <section class="homepage__item">
+                    {{> component/preloader/preloader}}
+                    <div class="first-screen-slider">
+                        {{#each homepage.firstScreen.slides}}
+                            <div class="first-screen-slider__item" style="background-image: url('{{this}}')"></div>
+                        {{/each}}
                     </div>
+                    <div class="slide__number">
+                        <div class="slide__number-inner">
+                            <span class="slide__value">{{number}}</span>
+                        </div>
+                    </div>
+                </section>
+                {{#each homepage.items}}
+                    <section class="homepage__item" style="background-image: url('{{background}}')">
+                        <div class="main__text">
+                            {{#if title}}
+                                <a href="{{link}}" class="main-title main-title--light">{{title}}</a>
+                            {{/if}}
+                            {{#if titleBold}}
+                                <a href="{{link}}" class="homepage__subtitle main-title main-title--semibold">{{titleBold}}</a>
+                            {{/if}}
+                            {{#if subtitle}}
+                                <h3 class="homepage__position main-subtitle animation-title">{{subtitle}}</h3>
+                            {{/if}}
+                            <p class="slide__description animation-title">
+                                <a href="" class="slide__description-link">{{{description}}}</a>
+                            </p>
+                            <a href="" class="homepage__view-project animation-title">View project</a>
+                        </div>
+                        <div class="slide__number">
+                            <div class="slide__number-inner">
+                                <span class="slide__value">{{number}}</span>
+                            </div>
+                        </div>
+                    </section>
+                {{/each}}
+                <section class="homepage__item" style="background-image: url('{{homepage.achievement.background}}')" data-section="achievement">
+                    <div class="main__text">
+                        <a href="{{link}}" class="main-title main-title--light">{{homepage.achievement.title}}</a>
+                        <a href="{{link}}" class="homepage__subtitle main-title main-title--semibold">{{homepage.achievement.titleBold}}</a>
+                        <p class="slide__description"></p>
+                    </div>
+                    <div class="slide__number">
+                        <div class="slide__number-inner">
+                            <span class="slide__value">{{homepage.achievement.number}}</span>
+                        </div>
+                    </div>
+                    <div class="achievement__wrapper">
+                        <ul class="achievement__list">
+                            {{#each homepage.achievement.list}}
+                                <li class="achievement__item">
+                                    <span class="achievement__quantity"><span class="exo--light">{{zeroAmount}}</span>{{value}}</span>
+                                    <span class="achievement__description">{{description}}</span></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </section>
+                <section class="homepage__item" style="background-image: url('{{homepage.video.background}}')" data-section="video">
+                    <div class="main__text">
+                        <a href="{{link}}" class="main-title main-title--light homepage__animation-title">{{homepage.video.title}}</a>
+                        <a href="{{link}}" class="homepage__subtitle main-title main-title--semibold homepage__animation-title">{{homepage.video.titleBold}}</a>
+                        <p class="slide__description"></p>
+                    </div>
+                    <div class="slide__number">
+                        <div class="slide__number-inner">
+                            <span class="slide__value">{{homepage.video.number}}</span>
+                        </div>
+                    </div>
+                    <a href="#" class="homepage__play-btn" data-iframe="https://www.youtube.com/embed/KQxxzMh7bto?autoplay=1&amp;auotplay=1&amp;showinfo=0&amp;rel=0">
+                        <span class="homepage__play-triangle"></span>
+                    </a>
+                    <div class="video__lines">
+                        <div class="video__line video__line--1"></div>
+                        <div class="video__line video__line--2"></div>
+                        <div class="video__line video__line--3"></div>
+                    </div>
+                </section>
+                <div class="homepage__item" data-section="footer">
+                    {{>component/footer/footer}}
                 </div>
-            </section>
-        {{/each}}
-        <section class="homepage__item" style="background-image: url('{{homepage.achievement.background}}')" data-section="achievement">
-            <div class="main__text">
-                <a href="{{link}}" class="main-title main-title--light">{{homepage.achievement.title}}</a>
-                <a href="{{link}}" class="homepage__subtitle main-title main-title--semibold">{{homepage.achievement.titleBold}}</a>
-                <p class="slide__description"></p>
             </div>
-            <div class="slide__number">
-                <div class="slide__number-inner">
-                    <span class="slide__value">{{homepage.achievement.number}}</span>
-                </div>
-            </div>
-            <div class="achievement__wrapper">
-                <ul class="achievement__list">
-                    {{#each homepage.achievement.list}}
-                        <li class="achievement__item">
-                            <span class="achievement__quantity"><span class="exo--light">{{zeroAmount}}</span>{{value}}</span>
-                            <span class="achievement__description">{{description}}</span></li>
-                    {{/each}}
-                </ul>
-            </div>
-        </section>
-        <section class="homepage__item" style="background-image: url('{{homepage.video.background}}')" data-section="video">
-            <div class="main__text">
-                <a href="{{link}}" class="main-title main-title--light homepage__animation-title">{{homepage.video.title}}</a>
-                <a href="{{link}}" class="homepage__subtitle main-title main-title--semibold homepage__animation-title">{{homepage.video.titleBold}}</a>
-                <p class="slide__description"></p>
-            </div>
-            <div class="slide__number">
-                <div class="slide__number-inner">
-                    <span class="slide__value">{{homepage.video.number}}</span>
-                </div>
-            </div>
-            <a href="#" class="homepage__play-btn" data-iframe="https://www.youtube.com/embed/KQxxzMh7bto?autoplay=1&amp;auotplay=1&amp;showinfo=0&amp;rel=0">
-                <span class="homepage__play-triangle"></span>
-            </a>
-            <div class="video__lines">
-                <div class="video__line video__line--1"></div>
-                <div class="video__line video__line--2"></div>
-                <div class="video__line video__line--3"></div>
-            </div>
-        </section>
-        <div class="homepage__item" data-section="footer">
-            {{>component/footer/footer}}
+            {{>component/scroll-more/scroll-more}}
         </div>
     </div>
-    {{>component/scroll-more/scroll-more}}
 </div>

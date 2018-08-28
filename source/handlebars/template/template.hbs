@@ -1,42 +1,50 @@
-<div class="inner-page" >
-    {{>component/navigationLetters/navigationLetters}}
-    {{>component/navigation-arrows/navigation-arrows navigation}}
-    <div class="main__text">
-        {{#if title}}
-            <a href="" class="main-title main-title--light animation-title">{{title}}</a>
-        {{/if}}
-        {{#if subtitle}}
-            <a href="" class="homepage__subtitle main-title main-title--semibold animation-title">{{subtitle}}</a>
-        {{/if}}
-        <p class="slide__description animation-title">
-            {{#if description}}
-                {{{description}}}
-            {{/if}}
-        </p>
-    </div>
-    <section class="inner-page__slides">
-        {{#each slides}}
-            <div class="inner-page__slide" data-desktop-img="{{this}}"></div>
-        {{/each}}
-        <div class="inner-page__slide" data-section="footer">
-            {{>component/footer/footer}}
+<div id="barba-wrapper">
+  <div class="barba-container" data-namespace="project">
+        <div class="inner-page" >
+            {{>component/navigationLetters/navigationLetters}}
+            {{>component/navigation-arrows/navigation-arrows navigation}}
+            <div class="main__text">
+                {{#if title}}
+                    <a href="" class="main-title main-title--light animation-title">{{title}}</a>
+                {{/if}}
+                {{#if subtitle}}
+                    <a href="" class="homepage__subtitle main-title main-title--semibold animation-title">{{subtitle}}</a>
+                {{/if}}
+                <p class="slide__description animation-title">
+                    {{#if description}}
+                        {{{description}}}
+                    {{/if}}
+                </p>
+            </div>
+            <section class="inner-page__slider">
+                <div class="inner-page__slider--prev"></div>
+                <div class="inner-page__slider--next"></div>
+                <div class="inner-page__slides">
+                    {{#each slides}}
+                        <div class="inner-page__slide" data-desktop-img="{{this}}"></div>
+                    {{/each}}
+                    <div class="inner-page__slide" data-section="footer">
+                        {{>component/footer/footer}}
+                    </div>
+                </div>
+            </section>
+            <div class="red-squares">
+                <div class="red-square"></div>
+                <div class="red-square"></div>
+            </div>
+            <div class="slide__number">
+                <div class="slide__number-inner">
+                    <span class="slide__value">01/<span class="slide__number-index">01</span></span>
+                </div>
+            </div>
+            <div class="inner-page__mobile-nav">
+                <a href="/" class="inner-page__mobile-item">Back</a>
+                <a href="" class="inner-page__mobile-item">Next project</a>
+            </div>
+            {{>component/scroll-more/scroll-more}}
         </div>
-    </section>
-    <div class="red-squares">
-        <div class="red-square"></div>
-        <div class="red-square"></div>
+        {{>component/innerPageInfo/innerPageInfo text}}
     </div>
-    <div class="slide__number">
-        <div class="slide__number-inner">
-            <span class="slide__value">01/<span class="slide__number-index">01</span></span>
-        </div>
-    </div>
-    <div class="inner-page__mobile-nav">
-        <a href="/" class="inner-page__mobile-item">Back</a>
-        <a href="" class="inner-page__mobile-item">Next project</a>
-    </div>
-    {{>component/scroll-more/scroll-more}}
 </div>
-{{>component/innerPageInfo/innerPageInfo text}}
 
 
