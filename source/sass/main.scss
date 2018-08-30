@@ -13,6 +13,10 @@ body {
     color: #fff;
     font-family: $uniSans;
     background: #000;
+
+    .slider__button {
+        display: none;
+    }
 }
 
 body, html {

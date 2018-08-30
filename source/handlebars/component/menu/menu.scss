@@ -247,4 +247,21 @@ $menu-white-color: #fefefe;
             font-size: 16px;
         }
     }
+
+    &__rights {
+        position: absolute;
+        bottom: 50px;
+        left: 80px;
+        font-size: 14px;
+        font-family: $exo2Light;
+        letter-spacing: 0.03em;
+
+        @include media(600px) {
+            margin-left: -30px;
+            position: static;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.2;
+        }
+    }
 }

@@ -79,6 +79,19 @@
         display: block;
         transition: opacity 0.4s;
         pointer-events: auto;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            top: 0;
+            left: 0;
+            margin-left: -11px;
+            margin-top: -7px;
+            display: block;
+        }
 
         span {
             transform: rotate(-90deg);
