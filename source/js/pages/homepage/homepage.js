@@ -277,9 +277,6 @@ export class HomePage {
                 slide.querySelector('.homepage__view-project').click();
             });
         })
-        
-
-       
     }
 
     initVideoPopup() {
