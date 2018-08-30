@@ -1,5 +1,6 @@
 import {Slider} from "../../components/slider";
 import {VideoPopup} from "../../components/videoPopup";
+import Hammer from 'hammerjs';
 
 export class HomePage {
     constructor( globalObj) {
@@ -46,6 +47,8 @@ export class HomePage {
             },
             touch: true,
             animateNextSlide: (currentSlide, currentIndex, prevIndex) => {
+
+                window.GLOBAL_OBJECT.currentSlide = currentSlide;
 
                 const tl = new TimelineMax();
                 const redColor = '#df2032';
@@ -236,7 +239,7 @@ export class HomePage {
         }
 
         function wrapRest( words ) {
-            return `<span class="rest-letters-animation">${words}</span>`
+            return `<span class="rest-letters-animation"> ${words}</span>`
         }
 
         Array.from(titeles).map( (title) => {
@@ -252,7 +255,6 @@ export class HomePage {
 
             letter.addEventListener('click', (e) => {
                 e.preventDefault();
-                console.log(1111)
                 const index = letter.getAttribute('data-index');
 
                 if(activeLetter) {
@@ -263,6 +265,21 @@ export class HomePage {
                 activeLetter = letter;
             })
         })
+    }
+
+    addSwipe() {
+        const slides = document.querySelectorAll('.homepage__swiped-blocks');
+
+        Array.from(slides).forEach( (slide) => {
+            const hammer = new Hammer(slide);
+            hammer.get('swipe').set({ direction: Hammer.DIRECTION_ALL , pointers: 1});
+            hammer.on('swipeleft', () => {
+                slide.querySelector('.homepage__view-project').click();
+            });
+        })
+        
+
+       
     }
 
     initVideoPopup() {
@@ -318,6 +335,7 @@ export class HomePage {
         this.checkForDisablingHover();
         this.resizeWindow();
         this.addEventListenersToLetters();
+        this.addSwipe();
         this.callBackForMenu();
         this.initSlider();
     }

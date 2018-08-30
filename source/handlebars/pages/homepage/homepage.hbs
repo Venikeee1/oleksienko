@@ -20,7 +20,7 @@
                     </div>
                 </section>
                 {{#each homepage.items}}
-                    <section class="homepage__item" style="background-image: url('{{background}}')">
+                    <section class="homepage__item homepage__swiped-blocks" style="background-image: url('{{background}}')">
                         <div class="main__text">
                             {{#if title}}
                                 <a href="{{link}}" class="main-title main-title--light">{{title}}</a>
@@ -34,13 +34,14 @@
                             <p class="slide__description animation-title">
                                 <a href="" class="slide__description-link">{{{description}}}</a>
                             </p>
-                            <a href="" class="homepage__view-project animation-title">View project</a>
+                            <a href="" class="homepage__view-project animation-title" data-transition="homePageSwipe">View project</a>
                         </div>
                         <div class="slide__number">
                             <div class="slide__number-inner">
                                 <span class="slide__value">{{number}}</span>
                             </div>
                         </div>
+                        <div class="homepage__item--right"></div>
                     </section>
                 {{/each}}
                 <section class="homepage__item" style="background-image: url('{{homepage.achievement.background}}')" data-section="achievement">

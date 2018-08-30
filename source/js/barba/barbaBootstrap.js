@@ -22,19 +22,22 @@ export class BarbaLoader {
             const url = window.location.href;
             const hash = window.location.hash;
             let trimmedUrl = url;
+            let newUrl = e.currentTarget.href;
 
             if ( url.indexOf('#') >= 0) {
                 trimmedUrl = window.location.href.substring(0, window.location.href.indexOf('#'));
             }
 
-            if(e.currentTarget.href === trimmedUrl || this.disablePageLink ) {
+            if(this.disablePageLink ) {
                 e.preventDefault();
                 e.stopPropagation();
-            } else if( e.currentTarget.href.indexOf('#') >= 0) {
+            } else if( newUrl.indexOf('#') >= 0 && newUrl.substring(0, newUrl.indexOf('#')) !== trimmedUrl) {
                 e.preventDefault();
                 e.stopPropagation();
                 Barba.Pjax.goTo(e.currentTarget.href);
             }
+
+            window.GLOBAL_OBJECT.menu.menuClose();
         };
 
         for(let i = 0; i < links.length; i++) {
@@ -108,6 +111,30 @@ export class BarbaLoader {
         });
     }
 
+    barbaParseResponse() {
+        var originalFn = Barba.Pjax.Dom.parseResponse;
+
+        Barba.Pjax.Dom.parseResponse = function(response) {
+        // do your stuff with the response
+
+            var parser = new DOMParser()
+            var el = parser.parseFromString(response, "text/html");
+            const newLang = el.querySelector('.header__lang');
+            const newLangList = newLang.querySelectorAll('.header__lang-link');
+            const currentLang = document.querySelector('.header__lang');
+            const currentLangList = document.querySelectorAll('.header__lang-link');
+
+            document.querySelector('.header__active-item').textContent = newLang.querySelector('.header__active-item').textContent;
+
+            Array.from(currentLangList).map( (link, i) => {
+                link.setAttribute('href', newLangList[i].getAttribute('href'));
+                link.querySelector('.header__lang-item').textContent = newLangList[i].querySelector('.header__lang-item').textContent;
+            })
+
+            return originalFn.apply(Barba.Pjax.Dom, arguments);
+        };
+    }
+
     init() {
         Barba.Pjax.start();
 
@@ -116,6 +143,7 @@ export class BarbaLoader {
         this.barbaInitStateChange();
         this.disablePageNavigation('body');
         this.barbaTransitionEnd();
+        this.barbaParseResponse();
     }
 }
 

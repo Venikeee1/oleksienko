@@ -28,6 +28,11 @@
         animation-iteration-count: infinite;
         animation-duration: 4s;
 
+        @include media($break-mobile) {
+            width: 100px;
+            height: 100px;
+        }
+
         svg {
             fill: $red-color;
             width: 180px;

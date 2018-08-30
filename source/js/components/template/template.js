@@ -39,8 +39,8 @@ export class Template {
                 tl
                     .to('.rest-letters-animation', 0, {y: 2, opacity: 0}, 0)
                     .to('.first-letter-animation', 0, {y: 30, opacity: 0}, 0)
-                    .to('.slide__number', 0, {x: -30, opacity: 0},0)
                     .to('.slide__description', 0, {y: 20, opacity: 0}, 0)
+                    .to('.slide__number', 0, {x: -30, opacity: 0},0)
                     .to('.main-title', 0, {opacity: 1}, 0)
                     .staggerTo('.rest-letters-animation', 0.8, {y: 0, opacity: 1}, 0, 0)
                     .staggerTo('.first-letter-animation', 1.8, {
@@ -49,12 +49,26 @@ export class Template {
                         ease: Power2.easeOut
                     }, 0, 0)
                     .staggerTo('.slide__description', 1, {y: 0, opacity: 1},0.3, '-=1.1')
-                    .to('.slider__dots--wrapper', 1.5, {y: '0%', ease: Power3.easeOut},0)
                     .to('.slide__number', 1.2, {x: 0, opacity: 1},'-=0.5')
-                    .to('.red-square', 0, {opacity: 0, scale: 0}, 0)
-                    .to('.red-squares', 0.1, {opacity: 1}, 0)
-                    .staggerTo('.red-square', 0.5, {opacity: 1, scale: 1},0.1, 0)
-                    .to('.scroll-more', 1.8, {opacity: 1}, 1.5)
+                    
+
+                    if(window.GLOBAL_OBJECT.firstAnimation) {
+                        tl
+                            .to('.slider__dots--wrapper', 1.5, {y: '0%', ease: Power3.easeOut},0)
+                            .to('.red-square', 0, {opacity: 0, scale: 0}, 0)
+                            .to('.red-squares', 0.1, {opacity: 1}, 0)
+                            .staggerTo('.red-square', 0.5, {opacity: 1, scale: 1},0.1, 0)
+                            .to('.scroll-more', 1.8, {opacity: 1}, 1.5)
+                    } else {
+                        tl
+                            .to('.slider__dots--wrapper', 0, {opacity: 0, y: '0%'},0)
+                            .to('.slider__dots--wrapper', 0.8, {opacity: 1},0.1)
+                            .to('.scroll-more', 0, {opacity: 1}, 0)
+                            .to('.red-square', 0, {opacity: 1,scale: 1}, 0)
+                            .to('.red-squares', 0, {opacity: 1}, 0)
+                            
+                            
+                    }
 
 
                 currentTimeLine = tl;
@@ -122,7 +136,11 @@ export class Template {
         });
 
         this.hammer.on('swipeleft', () => {
-            document.querySelector('.navigation-arrows__nav-arrow--right').click();
+            const rightArrow = document.querySelector('.navigation-arrows__nav-arrow--right');
+
+            if(rightArrow.getAttribute('href')) {
+                rightArrow.click();
+            }
         });
 
         this.hammer.on('swiperight', () => {

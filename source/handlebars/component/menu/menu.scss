@@ -74,7 +74,7 @@ $menu-white-color: #fefefe;
         position: relative;
         padding-left: 30px;
 
-        &:nth-child(2n + 1) {
+        &:nth-child(2n) {
 
             .menu__link {
                 font-family: $uniSansSemiBold, $exo2SemiBold;

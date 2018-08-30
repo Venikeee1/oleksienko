@@ -30,6 +30,7 @@ const LeftTransition = Barba.BaseTransition.extend({
 
         timeline
             .to('.slide__description', 0.5, {opacity: 0, y: 20})
+            .to('.slider__dots--wrapper', 0.3, {opacity: 0},0)
             .to('.first-letter-animation', 0.5, {opacity: 0, y: 20},'-=0.3')
             .to('.rest-letters-animation', 0.5, {opacity: 0},'-=0.3')
             .to(elemContainer, swipeTransition, {x:'-100%', ease: Power2.easeOut, onComplete: () => {
@@ -69,7 +70,7 @@ const RightTransition = Barba.BaseTransition.extend({
 
         timeline
             .to('.slide__description', 0.5, {opacity: 0, y: 20})
-            
+            .to('.slider__dots--wrapper', 0.3, {opacity: 0},0)
             .to('.first-letter-animation', 0.5, {opacity: 0, y: 20},'-=0.3')
             .to('.rest-letters-animation', 0.5, {opacity: 0},'-=0.3')
             .to(elemContainer, swipeTransition, {x:'100%',ease: Power2.easeOut, onComplete: () => {
@@ -80,6 +81,38 @@ const RightTransition = Barba.BaseTransition.extend({
             timeline.to('.slide__value', 0.5,{opacity: 0},0)
         }
 
+        return deferred.promise;
+    },
+
+    showNewPage: function() {
+        let el = this.newContainer;
+        this.oldContainer.visibility = 'hidden'; 
+
+        el.style.visibility = 'visible'; 
+
+        this.done();
+    }
+});
+
+const homePageSwipe = Barba.BaseTransition.extend({
+
+    start: function() {
+        Promise.all([this.newContainerLoading, this.animate()]).then(
+            this.showNewPage.bind(this)
+        );
+    },
+
+    animate: function() {
+        const elemContainer = document.querySelector('.inner-page__slider');
+        let timeline = new TimelineMax();
+
+        let deferred = Barba.Utils.deferred();
+
+        timeline
+            .to(window.GLOBAL_OBJECT.currentSlide, 0.8, {x: '-100%', onComplete: () => {
+                deferred.resolve();
+            }})
+            
         return deferred.promise;
     },
 
@@ -135,7 +168,8 @@ const DefaultTransition = Barba.BaseTransition.extend({
 const barbaConfig = {
     leftTransition: LeftTransition,
     rightTransition: RightTransition,
-    defaultTransition: DefaultTransition
+    defaultTransition: DefaultTransition,
+    homePageSwipe: homePageSwipe
 }
 
 export default barbaConfig;

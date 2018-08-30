@@ -17,7 +17,14 @@ export const wrapFirstLetters = () => {
     }
 
     Array.from(titeles).map( (title) => {
-        const result = wrap(title.textContent.slice(0,1)) + wrapRest(title.textContent.slice(1));
+        const text = title.textContent;
+        const firstLetter = text.slice(0,1);
+        let restWord = text.slice(1);
+
+        if(text.split(' ')[0].length === 1) {
+            restWord = `&nbsp;${restWord}`;
+        }
+        const result = wrap(firstLetter) + wrapRest(restWord);
         title.innerHTML = result;
     })
 }

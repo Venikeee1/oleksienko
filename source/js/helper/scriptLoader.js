@@ -1,6 +1,7 @@
 import {Template} from '../components/template/template';
 import {HomePage} from '../pages/homepage/homepage';
-import {Video} from '../pages/videoGallery/videoGallery';
+import {VideoGallery} from '../pages/videoGallery/videoGallery';
+import {Default} from '../components/default';
 
 
 export default class ScriptLoader {
@@ -8,7 +9,8 @@ export default class ScriptLoader {
         this.scriptList = {
             'homepage': HomePage,
             'project' : Template,
-            'video': Video
+            'video': VideoGallery,
+            'default': Default
         }
     }
 
@@ -19,7 +21,12 @@ export default class ScriptLoader {
 
     setScript() {
         this.checkPage();
-        this.activeScript = new this.scriptList[this.currentPageNamespace]();
+        if(this.scriptList[this.currentPageNamespace]) {
+            this.activeScript = new this.scriptList[this.currentPageNamespace]();
+        } else {
+            this.activeScript = new this.scriptList.default();
+        }
+
         this.activeScript.init();
     }
 }

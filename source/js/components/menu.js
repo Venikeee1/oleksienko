@@ -15,11 +15,17 @@ export class Menu {
             .to('.logo', 0.5, {opacity: 1, pointerEvents: 'auto'}, 0)
             .to('.logo__svg', 0.8, {fill: '#fff'}, 0)
 
+        this.menu.classList.add('active');
+        this.burger.classList.add('active');
+
     }
 
     menuClose() {
         this.beforeClose();
         this.timeLine.clear();
+
+        this.menu.classList.remove('active');
+        this.burger.classList.remove('active');
         if(this.animationOnClose) {
             this.timeLine
                 .staggerTo('.logo__animation', 0.1, { opacity: 0, y: 30})
@@ -34,22 +40,23 @@ export class Menu {
     }
 
     addClickListeners() {
-        document.querySelector('.header__menu-button').addEventListener('click', () => {
-
-            this.menu.classList.toggle('active');
-            this.burger.classList.toggle('active');
+        this.burgerMenu.addEventListener('click', () => {
 
             if(document.querySelector('.menu').classList.contains('active')) {
-                this.menuOpen();
-            } else {
                 this.menuClose();
+            } else {
+                this.menuOpen();
             }
         })
 
         Array.from(document.querySelectorAll('.menu__link')).forEach( (link) => {
             link.addEventListener('click', () => {
-                this.menu.classList.toggle('active');
-                this.burger.classList.toggle('active');
+                this.menuClose();
+            })
+        })
+
+        Array.from(document.querySelectorAll('.menu__info-link')).forEach( (link) => {
+            link.addEventListener('click', () => {
                 this.menuClose();
             })
         })
@@ -58,6 +65,5 @@ export class Menu {
     init() {
         this.checkSettings();
         this.addClickListeners();
-
     }
 }

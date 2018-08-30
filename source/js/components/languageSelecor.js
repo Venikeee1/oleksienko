@@ -10,6 +10,12 @@ export class LanguageSelector {
             this.headerLangList.classList.toggle('active');
         });
 
+        Array.from(document.querySelectorAll('.header__lang-link')).forEach( (elem) => {
+            elem.addEventListener('click', () => {
+                this.headerLangList.classList.toggle('active');
+            })
+        })
+
         document.querySelector('body').addEventListener('click', (e) => {
             if ( !e.target.classList.contains('header__active-item')) {
                this.headerLangList.classList.remove('active');

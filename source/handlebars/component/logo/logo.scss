@@ -34,7 +34,7 @@
             fill: rgba(#fff, 0.5);
 
             @include media($break-mobile) {
-                fill: #fff;
+                fill: #fff !important;
             }
         }
 
