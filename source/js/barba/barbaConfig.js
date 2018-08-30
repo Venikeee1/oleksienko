@@ -126,6 +126,42 @@ const homePageSwipe = Barba.BaseTransition.extend({
     }
 });
 
+const projectSwipeLeft = Barba.BaseTransition.extend({
+
+    start: function() {
+        Promise.all([this.newContainerLoading, this.animate()]).then(
+            this.showNewPage.bind(this)
+        );
+    },
+
+    animate: function() {
+        const elemContainer = document.querySelector('.inner-page__slider');
+        let timeline = new TimelineMax();
+
+        let deferred = Barba.Utils.deferred();
+
+        timeline
+            .to('.slide__description', 0.5, {opacity: 0, y: 20})
+            .to('.slider__dots--wrapper', 0.3, {opacity: 0},0)
+            .to('.first-letter-animation', 0.5, {opacity: 0, y: 20},'-=0.3')
+            .to('.rest-letters-animation', 0.5, {opacity: 0},'-=0.3')
+            .to('.inner-page__slider', 0.8, {x: '100%', onComplete: () => {
+                    deferred.resolve();
+                }},0)
+
+        return deferred.promise;
+    },
+
+    showNewPage: function() {
+        let el = this.newContainer;
+        this.oldContainer.visibility = 'hidden';
+
+        el.style.visibility = 'visible';
+
+        this.done();
+    }
+});
+
 const DefaultTransition = Barba.BaseTransition.extend({
 
     start: function() {
@@ -137,8 +173,6 @@ const DefaultTransition = Barba.BaseTransition.extend({
     animate: function() {
         let deferred = Barba.Utils.deferred();
         let timeline = new TimelineMax();
-
-
 
         timeline
             .to(this.oldContainer, 0.8, {opacity: 0, ease: Linear.easeNone, onComplete: () => {
@@ -169,7 +203,8 @@ const barbaConfig = {
     leftTransition: LeftTransition,
     rightTransition: RightTransition,
     defaultTransition: DefaultTransition,
-    homePageSwipe: homePageSwipe
+    homePageSwipe: homePageSwipe,
+    projectSwipeLeft: projectSwipeLeft
 }
 
 export default barbaConfig;

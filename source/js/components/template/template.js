@@ -50,6 +50,7 @@ export class Template {
                     }, 0, 0)
                     .staggerTo('.slide__description', 1, {y: 0, opacity: 1},0.3, '-=1.1')
                     .to('.slide__number', 1.2, {x: 0, opacity: 1},'-=0.5')
+                    .to('.logo', 0.6, { opacity:1}, 0)
                     
 
                     if(window.GLOBAL_OBJECT.firstAnimation) {
@@ -74,18 +75,13 @@ export class Template {
                 currentTimeLine = tl;
             },
             animateNextSlide: (el, currentslide) => {
-                //const currentIndex = currentslide < 9 ? `0${currentslide + 1}` : currentslide + 1;
-                //const slideIndexContainer = document.querySelector('.slide__number-index');
+
                 const tl = new TimelineMax();
 
                 longListArray.forEach( (elem) => {
                     elem.nodeItem.setAttribute('href', elem.link + '#' + currentslide);
                 });
 
-                // tl.to(slideIndexContainer, 0.5, {opacity: 0, onComplete: () => {
-                //         slideIndexContainer.textContent = currentIndex;
-                //     }} )
-                //     .to(slideIndexContainer, 0.5, {opacity: 1});
 
                 if(el.getAttribute('data-section') === 'footer') {
 
@@ -149,12 +145,6 @@ export class Template {
     }
 
     showInnerPopup() {
-       /* Array.from(document.querySelectorAll('.main-title')).forEach( (elem) => {
-            elem.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.innerPopup.open();
-            })
-        })*/
 
         if(document.querySelector('.more-btn')) {
             document.querySelector('.more-btn').addEventListener('click', (e) => {

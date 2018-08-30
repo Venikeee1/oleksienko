@@ -34,6 +34,19 @@ export class BarbaLoader {
             } else if( newUrl.indexOf('#') >= 0 && newUrl.substring(0, newUrl.indexOf('#')) !== trimmedUrl) {
                 e.preventDefault();
                 e.stopPropagation();
+
+                let transitionName = e.currentTarget.getAttribute('data-transition') || 'defaultTransition';
+
+                if( !window.isMobile) {
+                    if( transitionName === 'homePageSwipe' || transitionName === 'projectSwipeLeft') {
+                        transitionName = 'defaultTransition';
+                    }
+                }
+
+                Barba.Pjax.getTransition =  () => {
+                    return BarbaConfig[transitionName];
+                };
+
                 Barba.Pjax.goTo(e.currentTarget.href);
             }
 
@@ -46,7 +59,7 @@ export class BarbaLoader {
     }
 
     linkClicked() {
-        Barba.Dispatcher.on('linkClicked', (el,e) => {
+        Barba.Dispatcher.on('linkClicked', (el) => {
 
             this.disablePageLink = true;
             this.transitionName = el.getAttribute('data-transition');
@@ -60,6 +73,12 @@ export class BarbaLoader {
             if(this.scriptLoader.activeScript.removeSwipeListeners) {
                 this.scriptLoader.activeScript.removeSwipeListeners();
                 this.scriptLoader.activeScript.wheelIndicator.turnOff();
+            }
+
+            if( !window.isMobile) {
+                if( this.transitionName === 'homePageSwipe' || this.transitionName === 'projectSwipeLeft') {
+                    this.transitionName = 'defaultTransition';
+                }
             }
 
             Barba.Pjax.getTransition =  () => {
