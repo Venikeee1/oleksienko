@@ -17,11 +17,27 @@
                 </p>
             </div>
             <section class="inner-page__slider">
-                <div class="inner-page__slider--prev"></div>
-                <div class="inner-page__slider--next"></div>
+                <div class="inner-page__slider--prev">
+                    <img class="inner-page__side-img inner-page__side-img--prev" data-mobile-img="../source/images/homepage/slide-3.jpg" data-desktop-img="../source/images/homepage/slide-3.jpg" alt="">
+                </div>
+                <div class="inner-page__slider--next">
+                    <img class="inner-page__side-img inner-page__side-img--next" data-mobile-img="../source/images/homepage/slide-3.jpg" data-desktop-img="../source/images/homepage/slide-3.jpg" alt="">
+                </div>
                 <div class="inner-page__slides">
                     {{#each slides}}
-                        <div class="inner-page__slide" data-desktop-img="{{this}}"></div>
+                        <div class="inner-page__slide" >
+                            <img class="inner-page__slide-img" data-mobile-img="{{this}}" data-desktop-img="{{this}}" alt="">
+                        </div>
+                    {{/each}}
+                    {{#each slides}}
+                        <div class="inner-page__slide" >
+                            <img class="inner-page__slide-img" data-mobile-img="{{this}}" data-desktop-img="{{this}}" alt="">
+                        </div>
+                    {{/each}}
+                    {{#each slides}}
+                        <div class="inner-page__slide" >
+                            <img class="inner-page__slide-img" data-mobile-img="{{this}}" data-desktop-img="{{this}}" alt="">
+                        </div>
                     {{/each}}
                     <div class="inner-page__slide" data-section="footer">
                         {{>component/footer/footer}}

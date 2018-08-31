@@ -108,6 +108,8 @@ const homePageSwipe = Barba.BaseTransition.extend({
 
         let deferred = Barba.Utils.deferred();
 
+        window.GLOBAL_OBJECT.currentSlide.style.overflow = 'visible';
+
         timeline
             .to(window.GLOBAL_OBJECT.currentSlide, 0.8, {x: '-100%', onComplete: () => {
                 deferred.resolve();

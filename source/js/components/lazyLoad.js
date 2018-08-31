@@ -1,8 +1,6 @@
 export class LazyLoad {
-    constructor( selector ) {
-        this.imgList = document.querySelectorAll( selector );
-
-        this.init();
+    constructor() {
+        this.imgList = null;
     }
 
     getSrc( imgContainer ) {
@@ -16,20 +14,24 @@ export class LazyLoad {
     }
 
     setSrc( elem, src ) {
-        elem.style.backgroundImage = `url(${src})`;
+        if(elem.tagName.toLowerCase() === "img") {
+            elem.setAttribute('src', src);
+        } else {
+            elem.style.backgroundImage = `url(${src})`;
+        }
+
+        elem.removeAttribute('data-desktop-img');
+        elem.removeAttribute('data-mobile-img');
     }
 
-    setLazyLoad() {
-        Array.from(this.imgList).forEach( (imgElem) => {
-            const result = this.getSrc(imgElem);
+    setLazyLoad(selector) {
 
-            if(result) {
-                this.setSrc(imgElem, result)
-            }
-        })
-    }
+        this.imgList = typeof selector === 'object' ? selector : document.querySelector( selector );
 
-    init() {
-        this.setLazyLoad();
+        const result = this.getSrc(this.imgList);
+
+        if(result) {
+            this.setSrc(this.imgList, result)
+        }
     }
 }

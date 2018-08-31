@@ -9,7 +9,7 @@ export class Template {
     constructor() {
         this.slider = {};
         this.innerPopup = new innerPageInfo('.inner-page-info__wrapper');
-
+        this.lazyLoad = new LazyLoad();
         this.hammer = new Hammer(document.querySelector('.inner-page'));
         this.hammer.get('swipe').set({ direction: Hammer.DIRECTION_ALL , pointers: 1});
     }
@@ -100,6 +100,24 @@ export class Template {
                     }
                 }
 
+                if(window.isMobile) {
+                    const nextIndex = currentslide + 1;
+                    const prevIndex = currentslide - 1;
+                    
+                    if(prevIndex >= 0) {
+                        this.lazyLoad.setLazyLoad( this.slider.slides[prevIndex].querySelector('.inner-page__slide-img') );
+                    }
+
+                    if(nextIndex < this.slider.slideCount - 1 ) {
+                        this.lazyLoad.setLazyLoad( this.slider.slides[nextIndex].querySelector('.inner-page__slide-img'));
+                    }
+
+                    if(currentslide < this.slider.slideCount - 1) {
+                        this.lazyLoad.setLazyLoad( this.slider.slides[currentslide].querySelector('.inner-page__slide-img') );
+                    }
+
+                }
+
             },
             afterAnimationEnd: (el) => {
                 const tl = new TimelineMax();
@@ -160,9 +178,44 @@ export class Template {
         }
     }
 
+    lazyInit() {
+        const firstSlide = document.querySelectorAll('.inner-page__slide-img')[0];
+        const slides = document.querySelectorAll('.inner-page__slide-img');
+        
+        firstSlide.onload = () => {
+            const rightImg = document.querySelector('.inner-page__side-img--prev');
+            const leftImg = document.querySelector('.inner-page__side-img--next');
+
+            if(window.isMobile) {
+                
+                const nextSlide = this.slider.slides[this.slider.currentIndex + 1];
+                console.log(nextSlide)
+
+                if(nextSlide) {
+                    this.lazyLoad.setLazyLoad(nextSlide.querySelector('.inner-page__slide-img'));
+                }
+            } else {
+                Array.from(slides).forEach( ( slide ) => {
+                    this.lazyLoad.setLazyLoad(slide);
+                })
+            }
+
+            if(leftImg) {
+                this.lazyLoad.setLazyLoad(leftImg);
+            }
+
+            if(rightImg) {
+                this.lazyLoad.setLazyLoad(rightImg);
+            }
+            
+        };
+
+        this.lazyLoad.setLazyLoad(firstSlide);
+    }
+
     init() {
         wrapFirstLetters();
-        new LazyLoad('.inner-page__slide');
+        this.lazyInit();
         this.initSlider();
         this.addSwipe();
         this.showInnerPopup();
