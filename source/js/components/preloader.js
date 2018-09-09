@@ -18,14 +18,9 @@ export class Prelaoder {
 
     close() {
         this.timeLine
-            .to(this.logo, 0.5, {scale: '0', onStart:() => {
-
-                    this.logo.style.animationName = 'lol';
-                    this.logo.style.transform = 'scale(1.2)';
-                }})
-            .to(this.preloaderContainer, 0.4, {opacity: 0, pointerEvents: 'none', onComplete: () => {
+            .to(this.preloaderContainer, 0.6, {opacity: 0, pointerEvents: 'none', onComplete: () => {
                     this.preloaderContainer.parentNode.removeChild(this.preloaderContainer);
-                }})
+                }},1)
     }
 
     interval() {
