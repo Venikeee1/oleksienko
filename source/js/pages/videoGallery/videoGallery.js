@@ -75,42 +75,43 @@ export class VideoGallery {
         const tl =
 
         this.videoSlider.on('transitionStart', (swiper) => {
-            /*if(this.visibleElemAmount !== swiper.slides.length) {
-                const swiperLastVisibleItem =  swiper.slides[this.visibleElemAmount];
 
-                if( swiperLastVisibleItem.classList.contains('swiper-slide-visible') ) {
-                    swiperLastVisibleItem.style.opacity = 1;
 
-                    animateVissibleContent( swiperLastVisibleItem.querySelectorAll('.video-gallery__item-wrap'), swiperLastVisibleItem.querySelectorAll('.video-gallery__video-name'))
-
-                    this.visibleElemAmount++;
-                }
-            }*/
-
-            const visibleVideoContainer = document.querySelectorAll('.video-gallery__item');
+            //const visibleVideoContainer = document.querySelectorAll('.video-gallery__item');
+            const visibleVideoContainer = document.querySelectorAll('.swiper-slide-visible');
             const visibleContentLength = visibleVideoContainer.length;
             let scaleSize = 1;
             let increment = 1;
 
-            Array.from(visibleVideoContainer).forEach(( visibleContent, index ) => {
+            //
 
-                //const tl = new TimelineMax();
-                //                 // if(index >= visibleContentLength / 2) {
-                //                 //     increment = -1;
-                //                 // }
-                //                 //
-                //                 // scaleSize = scaleSize + increment;
-                //                 // let scale = 1 + scaleSize / visibleContentLength / 3;
-                //                 //
-                //                 // console.log(scale)
-                //                 //
-                //                 // if(scale > 1.2) {
-                //                 //     scale = 1.2;
-                //                 // }
-
-                //tl.to(visibleContent, 0.6, {y: 0, opacity: 1})
-                //visibleContent
+            Array.from(visibleVideoContainer).forEach(( visibleItem, index ) => {
+                const windowWidth = window.innerWidth;
+                const itemCoordX = visibleItem.getBoundingClientRect().left;
                 const tl = new TimelineMax();
+
+                let direaction = this.videoSlider.activeIndex - this.videoSlider.previousIndex;
+
+                const containerWidth = visibleItem.clientWidth;
+                const x = (itemCoordX + direaction * containerWidth) / windowWidth * 10 + '%';
+                console.log(x)
+
+                // if( itemCoordX > windowWidth / 2) {
+                //     if(direaction > 0) {
+                //
+                //     }
+                // }
+
+                // previousIndex  activeIndex
+
+                if( visibleItem.querySelector('.video-gallery__img')) {
+
+
+                    tl.to(visibleItem.querySelector('.video-gallery__img'), 0.8, {x: x})
+                }
+
+
+                /*const tl = new TimelineMax();
                 const videoWrapper = visibleContent.querySelector('.video-gallery__item-wrap');
 
                 if(visibleContent.classList.contains('swiper-slide-visible') && !videoWrapper.classList.contains('is-visible')) {
@@ -119,7 +120,7 @@ export class VideoGallery {
                                 videoWrapper.classList.add('is-visible');
                             }})
 
-                }
+                }*/
             })
 
         });

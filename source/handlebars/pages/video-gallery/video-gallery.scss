@@ -40,6 +40,28 @@
         width: 28vw;
         height: 100%;
 
+        &:nth-child(3n) {
+            .video-gallery__item-wrap{
+                height: 40%;
+                margin-top: 20vh;
+            }
+        }
+
+        &:nth-child(3n - 1) {
+            .video-gallery__item-wrap{
+                height: 40%;
+                margin-top: 48vh;
+            }
+        }
+
+        &:nth-child(3n - 2) {
+            //width: 15vw;
+            .video-gallery__item-wrap{
+                margin-top: 30vh;
+                height: 40%;
+            }
+        }
+
         @include media($desk-middle) {
             width: 40vw;
         }
@@ -58,16 +80,15 @@
 
     &__item-wrap {
         width: 100%;
-        height: 50%;
-        max-height: 300px;
         position: relative;
         background-size: cover;
         background-position: 50% 50%;
-        transform: translateY(30px);
-        opacity: 0;
+        //transform: translateY(30px);
+        opacity: 1;
         pointer-events: none;
-        margin: auto;
         overflow: hidden;
+
+
 
         &::before, &::after {
             content: '';
@@ -106,7 +127,7 @@
             }
 
             .video-gallery__img {
-                transform: scale(1.1);
+                //transform: scale(1.1);
             }
 
 
@@ -143,12 +164,12 @@
 
     &__img {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        top: -5%;
+        left: -10%;
+        width: 120%;
+        height: 110%;
         object-fit: cover;
-        transition: 8s transform;
+        //transition: 8s transform;
     }
 
     @keyframes zoom-in-out {
