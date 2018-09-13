@@ -9,31 +9,32 @@ export class VideoGallery {
     }
 
     initSlider() {
+        const sliderSpeed = 550;
         this.videoSlider = new Swiper('.video-gallery__list', {
             mousewheelControl: true,
             keyboardControl: true,
             //parallax: true,
-            speed: 550,
+            speed: sliderSpeed,
             //init: false,
             slidesPerView: 'auto',
             runCallbacksOnInit: true,
             watchSlidesVisibility: true,
-            mousewheel:{
+            mousewheel: {
                 enabled: true,
                 eventsTarged: '.swiper-container'
             },
-            keyboard:{
+            keyboard: {
                 enabled: true,
             },
             loop: false,
         });
 
-        function animateVissibleContent( vissibleVideoContainer) {
+        function animateVissibleContent(vissibleVideoContainer) {
             const tl = new TimelineMax();
 
             tl
-                .to(vissibleVideoContainer,0 , {y: 20,opacity: 0},0)
-                .staggerTo(vissibleVideoContainer, 1.9, {y: 0, opacity: 1, pointerEvents: 'auto'},0.3)
+                .to(vissibleVideoContainer, 0, {y: 20, opacity: 0}, 0)
+                .staggerTo(vissibleVideoContainer, 1.9, {y: 0, opacity: 1, pointerEvents: 'auto'}, 0.3)
         }
 
         this.videoSlider.on('init', () => {
@@ -69,58 +70,40 @@ export class VideoGallery {
             // })
 
 
-            animateVissibleContent( visibleVideoContainer);
+            animateVissibleContent(visibleVideoContainer);
         });
-
-        const tl =
 
         this.videoSlider.on('transitionStart', (swiper) => {
 
-
-            //const visibleVideoContainer = document.querySelectorAll('.video-gallery__item');
             const visibleVideoContainer = document.querySelectorAll('.swiper-slide-visible');
-            const visibleContentLength = visibleVideoContainer.length;
-            let scaleSize = 1;
-            let increment = 1;
+            const transfromLimit = 22;
 
-            //
-
-            Array.from(visibleVideoContainer).forEach(( visibleItem, index ) => {
+            Array.from(visibleVideoContainer).forEach((visibleItem, index) => {
                 const windowWidth = window.innerWidth;
-                const itemCoordX = visibleItem.getBoundingClientRect().left;
                 const tl = new TimelineMax();
-
-                let direaction = this.videoSlider.activeIndex - this.videoSlider.previousIndex;
-
                 const containerWidth = visibleItem.clientWidth;
-                const x = (itemCoordX + direaction * containerWidth) / windowWidth * 10 + '%';
-                console.log(x)
-
-                // if( itemCoordX > windowWidth / 2) {
-                //     if(direaction > 0) {
-                //
-                //     }
-                // }
-
-                // previousIndex  activeIndex
-
-                if( visibleItem.querySelector('.video-gallery__img')) {
+                const windowHalfWidth = windowWidth / 2;
+                const imageContainer = visibleItem.querySelector('.video-gallery__img');
 
 
-                    tl.to(visibleItem.querySelector('.video-gallery__img'), 0.8, {x: x})
+                if (imageContainer) {
+                    tl.to(imageContainer, sliderSpeed / 1000, {
+                        opacity: 1, onUpdate: () => {
+
+                            const elemX = visibleItem.getBoundingClientRect().left;
+                            const x = elemX + containerWidth / 2 - windowHalfWidth;
+
+                            let percent = x / windowHalfWidth ;
+                            if (percent > 1 ) {
+                                percent = 1
+                            } else if (percent < -1) {
+                                percent = -1;
+                            }
+
+                            visibleItem.querySelector('.video-gallery__img').style.transform = `translateX(${transfromLimit * percent}%)`;
+                        }
+                    })
                 }
-
-
-                /*const tl = new TimelineMax();
-                const videoWrapper = visibleContent.querySelector('.video-gallery__item-wrap');
-
-                if(visibleContent.classList.contains('swiper-slide-visible') && !videoWrapper.classList.contains('is-visible')) {
-                    tl
-                        .to( videoWrapper, 4, {y: 0,opacity: 1, pointerEvents: 'auto', onComplete: () => {
-                                videoWrapper.classList.add('is-visible');
-                            }})
-
-                }*/
             })
 
         });
@@ -140,7 +123,7 @@ export class VideoGallery {
     }
 
     playButtonListener() {
-        Array.from(this.videoItems).forEach( elem => {
+        Array.from(this.videoItems).forEach(elem => {
             elem.addEventListener('click', (e) => {
                 e.preventDefault();
 
