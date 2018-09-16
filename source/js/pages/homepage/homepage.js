@@ -9,6 +9,7 @@ export class HomePage {
         this.letters = document.querySelectorAll('.dila__letter-container');
         this.letterAnimationTimeLine = new TimelineMax();
         this.globalObj = globalObj;
+        this.isFirstCallback = true;
     }
 
     initSlider() {
@@ -68,7 +69,14 @@ export class HomePage {
                    
                     this.letterShowAnimation();
                     this.sliderDotsAnimation();
-                    this.logoAnimationShow();
+
+                    if(window.GLOBAL_OBJECT.isPreviousProjectPage) {
+                        document.querySelector('.logo').style.opacity = 1;
+                        window.GLOBAL_OBJECT.isPreviousProjectPage = false;
+                    } else {
+                        this.logoAnimationShow();
+                    }
+
                     this.firstScreenSlider.autoPlayDisable();
 
                 } else if( currentIndex === 0) {

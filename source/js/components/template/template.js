@@ -33,6 +33,7 @@ export class Template {
             touch: false,
             afterInit: () => {
                 const tl = new TimelineMax();
+                window.GLOBAL_OBJECT.transitionPageTimeline = tl;
 
                 currentTimeLine.clear();
 
@@ -220,5 +221,6 @@ export class Template {
         this.addSwipe();
         this.showInnerPopup();
         this.customizeScrollBar();
+        window.GLOBAL_OBJECT.isPreviousProjectPage = false;
     }
 }

@@ -23,6 +23,8 @@ const LeftTransition = Barba.BaseTransition.extend({
 
     animate: function() {
 
+        window.GLOBAL_OBJECT.transitionPageTimeline.clear();
+
         const elemContainer = document.querySelector('.inner-page__slider');
         let timeline = new TimelineMax();
 
@@ -33,7 +35,7 @@ const LeftTransition = Barba.BaseTransition.extend({
             .to('.slider__dots--wrapper', 0.3, {opacity: 0},0)
             .to('.first-letter-animation', 0.5, {opacity: 0, y: 20},'-=0.3')
             .to('.rest-letters-animation', 0.5, {opacity: 0},'-=0.3')
-            .to(elemContainer, swipeTransition, {x:'-100%', ease: Power2.easeOut, onComplete: () => {
+            .to(elemContainer, swipeTransition, {x:'-100%', ease: Power2.easeInOut, onComplete: () => {
                 deferred.resolve();
             }},0)
 
@@ -56,6 +58,8 @@ const LeftTransition = Barba.BaseTransition.extend({
 
 const RightTransition = Barba.BaseTransition.extend({
 
+
+
     start: function() {
         Promise.all([this.newContainerLoading, this.animate()]).then(
             this.showNewPage.bind(this)
@@ -63,17 +67,19 @@ const RightTransition = Barba.BaseTransition.extend({
     },
 
     animate: function() {
+        window.GLOBAL_OBJECT.transitionPageTimeline.clear();
+
         const elemContainer = document.querySelector('.inner-page__slider');
         let timeline = new TimelineMax();
-
         let deferred = Barba.Utils.deferred();
+
 
         timeline
             .to('.slide__description', 0.5, {opacity: 0, y: 20})
             .to('.slider__dots--wrapper', 0.3, {opacity: 0},0)
             .to('.first-letter-animation', 0.5, {opacity: 0, y: 20},'-=0.3')
             .to('.rest-letters-animation', 0.5, {opacity: 0},'-=0.3')
-            .to(elemContainer, swipeTransition, {x:'100%',ease: Power2.easeOut, onComplete: () => {
+            .to(elemContainer, swipeTransition, {x:'100%',ease: Power2.easeInOut, onComplete: () => {
                 deferred.resolve();
             }},0)
 
@@ -103,7 +109,6 @@ const homePageSwipe = Barba.BaseTransition.extend({
     },
 
     animate: function() {
-        const elemContainer = document.querySelector('.inner-page__slider');
         let timeline = new TimelineMax();
 
         let deferred = Barba.Utils.deferred();
@@ -111,7 +116,7 @@ const homePageSwipe = Barba.BaseTransition.extend({
         window.GLOBAL_OBJECT.currentSlide.style.overflow = 'visible';
 
         timeline
-            .to(window.GLOBAL_OBJECT.currentSlide, 0.8, {x: '-100%', onComplete: () => {
+            .to(window.GLOBAL_OBJECT.currentSlide, swipeTransition, {x: '-100%', ease: Power2.easeInOut, onComplete: () => {
                 deferred.resolve();
             }})
             
@@ -137,17 +142,21 @@ const projectSwipeLeft = Barba.BaseTransition.extend({
     },
 
     animate: function() {
+        window.GLOBAL_OBJECT.transitionPageTimeline.clear();
+        window.GLOBAL_OBJECT.isPreviousProjectPage = true;
+
         const elemContainer = document.querySelector('.inner-page__slider');
         let timeline = new TimelineMax();
 
         let deferred = Barba.Utils.deferred();
 
+
         timeline
-            .to('.slide__description', 0.5, {opacity: 0, y: 20})
-            .to('.slider__dots--wrapper', 0.3, {opacity: 0},0)
-            .to('.first-letter-animation', 0.5, {opacity: 0, y: 20},'-=0.3')
-            .to('.rest-letters-animation', 0.5, {opacity: 0},'-=0.3')
-            .to('.inner-page__slider', 0.8, {x: '100%', onComplete: () => {
+            //.to('.slide__description', 0.5, {opacity: 0, y: 20})
+            //.to('.slider__dots--wrapper', 0.3, {opacity: 0},0)
+            //.to('.first-letter-animation', 0.5, {opacity: 0, y: 20},'-=0.3')
+            //.to('.rest-letters-animation', 0.5, {opacity: 0},'-=0.3')
+            .to('.inner-page', swipeTransition, {x: '100%', ease: Power2.easeInOut, onComplete: () => {
                     deferred.resolve();
                 }},0)
 
@@ -180,7 +189,8 @@ const DefaultTransition = Barba.BaseTransition.extend({
             .to(this.oldContainer, 0.8, {opacity: 0, ease: Linear.easeNone, onComplete: () => {
                     deferred.resolve();
                 }
-            });
+            })
+            .to('.logo', 0.8, {opacity: 1}, 0);
 
         return deferred.promise;
     },

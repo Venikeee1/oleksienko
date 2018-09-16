@@ -1,16 +1,23 @@
 <div id="barba-wrapper">
   <div class="barba-container" data-namespace="video">
-        <div class="video-gallery" style="background-image: url('../source/images/homepage/slide-8.jpg')">
+        <div class="video-gallery">
+            <div class="video-gallery__bg" style="background-image: url('../source/images/homepage/slide-8.jpg')"></div>
             <div class="video-gallery__list swiper-container">
                 {{>component/navigation-arrows/navigation-arrows videoGallery.navigation}}
                 <div class="swiper-wrapper">
                     {{#each videoGallery.list}}
                         <div class="swiper-slide video-gallery__item"  >
                             <div class="video-gallery__item-wrap"  style="background-image: url('{{videoBg}}')">
+
                                 <img class="video-gallery__img" data-swiper-parallax="30" src="{{videoHoverBg}}" alt="">
                                 <div class="video-gallery__item-inner">
                                     <h2 class="video-gallery__title">hello world</h2>
                                     <div class="video-gallery__play-btn">
+                                    </div>
+                                    <div class="video__lines">
+                                        <div class="video__line video__line--1"></div>
+                                        <div class="video__line video__line--2"></div>
+                                        <div class="video__line video__line--3"></div>
                                     </div>
                                     <a href="#" class="video-gallery__link" data-frame="{{link}}"></a>
                                 </div>
