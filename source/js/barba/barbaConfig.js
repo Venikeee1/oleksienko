@@ -116,9 +116,10 @@ const homePageSwipe = Barba.BaseTransition.extend({
         window.GLOBAL_OBJECT.currentSlide.style.overflow = 'visible';
 
         timeline
+            .to('.dila__letters', 0.5, {opacity: 0})
             .to(window.GLOBAL_OBJECT.currentSlide, swipeTransition, {x: '-100%', ease: Power2.easeInOut, onComplete: () => {
                 deferred.resolve();
-            }})
+            }},0)
             
         return deferred.promise;
     },

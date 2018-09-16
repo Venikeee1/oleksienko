@@ -20,7 +20,7 @@ export class Prelaoder {
         this.timeLine
             .to(this.preloaderContainer, 0.6, {opacity: 0, pointerEvents: 'none', onComplete: () => {
                     this.preloaderContainer.parentNode.removeChild(this.preloaderContainer);
-                }},1)
+                }},0)
     }
 
     interval() {

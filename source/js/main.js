@@ -15,23 +15,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('load', () => {
 
-    const preloader = new Prelaoder();
+    const Preloader = new Prelaoder();
     const PopupMenu = new Menu('.menu');
 
     new LanguageSelector();
 
-    preloader.init();
+    Preloader.init();
 
     if(window.innerWidth < 768) {
         window.isMobile = true;
     }
 
     window.GLOBAL_OBJECT.menu = PopupMenu;
+    window.GLOBAL_OBJECT.preloader = Preloader;
     PopupMenu.animationOnClose = true;
 
     PopupMenu.init();
     const barba = new BarbaLoader();
 
-    preloader.disable();
+    if(window.GLOBAL_OBJECT.preloader) {
+        Preloader.disable();
+    }
+
     window.GLOBAL_OBJECT.firstAnimation = false;
 });

@@ -21,7 +21,7 @@ export class VideoGallery {
 
             tl
                 .to(visibleImages, 0, {y: '-10%'}, 0)
-                .to(visibleVideoContainer, 0, {y: 20, opacity: 0}, 0)
+                .to(visibleVideoContainer, 0, {y: 50, opacity: 0}, 0)
                 .staggerTo(visibleVideoContainer, 1.2, {y: 0, opacity: 1, pointerEvents: 'auto'}, 0.2)
                 .staggerTo(visibleImages, 1.2, {y: '0%'}, 0.2, 0)
 
@@ -83,6 +83,7 @@ export class VideoGallery {
         this.videoSlider.on('init', () => {
             const visibleVideoContainer = document.querySelectorAll('.swiper-slide-visible .video-gallery__item-wrap');
             this.visibleElemAmount = visibleVideoContainer.length;
+
 
             Array.from(this.videoSlider.slides).forEach( (elem) => {
                 setIndention(elem);
@@ -160,6 +161,10 @@ export class VideoGallery {
     }
 
     init() {
+        if( window.GLOBAL_OBJECT.preloader) {
+            window.GLOBAL_OBJECT.preloader.close();
+            window.GLOBAL_OBJECT.preloader = null;
+        }
         this.initSlider();
         this.playButtonListener();
     }
