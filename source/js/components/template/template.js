@@ -51,7 +51,7 @@ export class Template {
                     }, 0, 0)
                     .staggerTo('.slide__description', 1, {y: 0, opacity: 1},0.3, '-=1.1')
                     .to('.slide__number', 1.2, {x: 0, opacity: 1},'-=0.5')
-                    .to('.logo', 0.6, { opacity:1}, 0)
+                    //.to('.logo', 0.6, { opacity:1}, 0)
                     
 
                     if(window.GLOBAL_OBJECT.firstAnimation) {
@@ -68,8 +68,8 @@ export class Template {
                             .to('.scroll-more', 0, {opacity: 1}, 0)
                             .to('.red-square', 0, {opacity: 1,scale: 1}, 0)
                             .to('.red-squares', 0, {opacity: 1}, 0)
-                            
-                            
+
+
                     }
 
 
