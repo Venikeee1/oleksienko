@@ -51,7 +51,7 @@ export class Template {
                     }, 0, 0)
                     .staggerTo('.slide__description', 1, {y: 0, opacity: 1},0.3, '-=1.1')
                     .to('.slide__number', 1.2, {x: 0, opacity: 1},'-=0.5')
-                    //.to('.logo', 0.6, { opacity:1}, 0)
+                    .to('.logo', 0.6, { opacity:1}, 0)
                     
 
                     if(window.GLOBAL_OBJECT.firstAnimation) {
@@ -91,6 +91,7 @@ export class Template {
                         .to('.navigation-arrows__nav', 0.2, {opacity: 0, pointerEvents: 'none'},0)
                         .to('.slide__number', 0.5, {opacity: 0},0)
                         .to('.logo__svg', 0.8, {fill: '#fff'}, 0.3)
+                        .to('.inner-page__mobile-nav', 0.3, {opacity: 0},0)
 
 
                     document.querySelector('.scroll-more--down').classList.remove('active');
@@ -128,6 +129,7 @@ export class Template {
                         .to('.main__text', 0.6, {opacity: 1, pointerEvents: 'auto'},0)
                         .to('.navigation-arrows__nav', 0.6, {opacity: 1,pointerEvents: 'auto'},0)
                         .to('.navigation-arrows__nav', 0.6, {opacity: 1,pointerEvents: 'auto'},0)
+                        .to('.inner-page__mobile-nav', 0.3, {opacity: 1},0)
                         .to('.slide__number', 0.5, {opacity: 1},0);
 
                     document.querySelector('.scroll-more--down').classList.add('active');
