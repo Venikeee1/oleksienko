@@ -27,9 +27,12 @@ export class Menu {
         this.menu.classList.remove('active');
         this.burger.classList.remove('active');
         if(this.animationOnClose) {
-            this.timeLine
-                .staggerTo('.logo__animation', 0.1, { opacity: 0, y: 30})
-                .to('.logo__svg', 0.8, {fill: 'rgba(255, 255, 255, 0.5)'}, 0)
+            if(!window.GLOBAL_OBJECT.header.logoTextIsShown) {
+                this.timeLine
+                    .staggerTo('.logo__animation', 0.1, { opacity: 0, y: 30})
+                    .to('.logo__svg', 0.8, {fill: 'rgba(255, 255, 255, 0.5)'}, 0)
+            }
+
         }
     }
 

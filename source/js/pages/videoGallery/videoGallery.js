@@ -95,7 +95,7 @@ export class VideoGallery {
         this.videoSlider.on('transitionStart', () => {
 
             const visibleVideoContainer = document.querySelectorAll('.swiper-slide-visible');
-            const transfromLimit = 22;
+            const transfromLimit = 30;
             const galleryBg = document.querySelector('.video-gallery__bg');
             const galleryWidth = this.videoSlider.virtualSize;
             const windowWidth = window.innerWidth;
@@ -105,18 +105,19 @@ export class VideoGallery {
                 const tl = new TimelineMax();
                 const containerWidth = visibleItem.clientWidth;
                 const imageContainer = visibleItem.querySelector('.video-gallery__img');
+                const stepCoeficient = 0.1;
 
                 if (imageContainer) {
                     tl.to(imageContainer, sliderSpeed / 1000, {
-                        opacity: 1, onUpdate: () => {
+                        opacity: 1, ease: Power2.easeIn, onUpdate: () => {
 
                             const swiperPosition = this.videoSlider.wrapper[0].getBoundingClientRect().left;
-                            const elemX = visibleItem.getBoundingClientRect().left;
-                            const x = elemX + containerWidth / 2 - windowHalfWidth;
-                            const stepCoeficient = 0.03;
+                            const elemRectX = visibleItem.getBoundingClientRect().left;
+                            const elemSlideValue = elemRectX + containerWidth / 2 - windowHalfWidth;
+
                             const delta = Math.abs(swiperPosition) / galleryWidth * 100 * stepCoeficient;
 
-                            let percent = x / windowHalfWidth ;
+                            let percent = elemSlideValue / windowHalfWidth ;
                             if (percent > 1 ) {
                                 percent = 1
                             } else if (percent < -1) {

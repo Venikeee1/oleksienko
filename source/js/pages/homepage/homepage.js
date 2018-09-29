@@ -131,6 +131,8 @@ export class HomePage {
                     if(!window.isMobile) {
                         tl.to('.logo__svg', 0.8, {fill: 'rgba(255, 255, 255, 0.5)'}, 0.3)
                     }
+
+                    window.GLOBAL_OBJECT.header.hideLogoText();
                 }
 
 
@@ -149,6 +151,8 @@ export class HomePage {
                     document.querySelector('.scroll-more--down').classList.add('active');
                     document.querySelector('.scroll-more--up').classList.remove('active');
 
+                } else {
+                    window.GLOBAL_OBJECT.header.showLogoText();
                 }
 
                 if( currentSlide.getAttribute('data-section') === 'achievement' ) {

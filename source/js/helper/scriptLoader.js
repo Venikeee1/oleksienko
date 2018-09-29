@@ -2,6 +2,7 @@ import {Template} from '../components/template/template';
 import {HomePage} from '../pages/homepage/homepage';
 import {VideoGallery} from '../pages/videoGallery/videoGallery';
 import {Default} from '../components/default';
+import {Contacts} from "../pages/contacts/contacts";
 
 
 export default class ScriptLoader {
@@ -10,6 +11,7 @@ export default class ScriptLoader {
             'homepage': HomePage,
             'project' : Template,
             'video': VideoGallery,
+            'contacts' : Contacts,
             'default': Default
         }
     }

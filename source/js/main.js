@@ -4,6 +4,7 @@ import { LanguageSelector } from "./components/languageSelecor";
 import { BarbaLoader } from "./barba/barbaBootstrap";
 import { Prelaoder } from "./components/preloader";
 import { Settings } from "./global-settings/settings";
+import {Header} from "./components/header";
 
 
 window.GLOBAL_OBJECT = Settings;
@@ -16,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('load', () => {
 
     const Preloader = new Prelaoder();
-    const PopupMenu = new Menu('.menu');
+    const PopupMenu = new Menu('.menu')
+    const pageHeader = new Header();
 
     new LanguageSelector();
 
@@ -28,6 +30,7 @@ window.addEventListener('load', () => {
 
     window.GLOBAL_OBJECT.menu = PopupMenu;
     window.GLOBAL_OBJECT.preloader = Preloader;
+    window.GLOBAL_OBJECT.header = pageHeader;
     PopupMenu.animationOnClose = true;
 
     PopupMenu.init();
