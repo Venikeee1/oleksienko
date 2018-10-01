@@ -61,6 +61,7 @@ export class HomePage {
                 longListArray.forEach( (elem) => {
                     elem.nodeItem.setAttribute('href', elem.link + '#' + currentIndex);
                 });
+                console.log(longListArray)
 
                 currentTimeLine.clear();
                 currentTimeLine = tl;
@@ -333,6 +334,10 @@ export class HomePage {
         }
 
 
+    }
+
+    destroy() {
+        this.slider.destroy();
     }
 
     resizeWindow() {

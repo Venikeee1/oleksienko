@@ -22,6 +22,7 @@ export class Slider {
         this.duration = 1.1;
         this.externalTimeLine = null;
         this.timeline = new TimelineMax();
+        this.wheelIndicator = null;
         if(this.settings) {
             this.sliderStyle = this.settings.sliderStyle;
         }
@@ -289,7 +290,7 @@ export class Slider {
     }
 
     addMouseWheelIndicator() {
-        const wheelIndicator = new WheelIndicator({
+        this.wheelIndicator = new WheelIndicator({
             elem: this.sliderContainer,
             callback: (e)=> {
 
@@ -320,6 +321,11 @@ export class Slider {
                 this.setSlideHeight(slide);
             })
         })
+    }
+
+    destroy() {
+        this.wheelIndicator.turnOff();
+        this.hammer.destroy();
     }
 
     init(){
