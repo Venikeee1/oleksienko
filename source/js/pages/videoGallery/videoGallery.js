@@ -65,72 +65,72 @@ export class VideoGallery {
         });
 
         this.videoSlider.on('touchMove', () => {
-            const visibleVideoContainer = document.querySelectorAll('.swiper-slide-visible');
-            const galleryWidth = this.videoSlider.virtualSize;
+            // const visibleVideoContainer = document.querySelectorAll('.swiper-slide-visible');
+            // const galleryWidth = this.videoSlider.virtualSize;
 
-            Array.from(visibleVideoContainer).forEach((visibleItem, index) => {
-                const galleryBg = document.querySelector('.video-gallery__bg');
-                const stepCoeficient = 0.03;
-                const swiperPosition = this.videoSlider.wrapper[0].getBoundingClientRect().left;
-                const delta = Math.abs(swiperPosition) / galleryWidth * 100 * stepCoeficient;
+            // Array.from(visibleVideoContainer).forEach((visibleItem, index) => {
+            //     const galleryBg = document.querySelector('.video-gallery__bg');
+            //     const stepCoeficient = 0.03;
+            //     const swiperPosition = this.videoSlider.wrapper[0].getBoundingClientRect().left;
+            //     const delta = Math.abs(swiperPosition) / galleryWidth * 100 * stepCoeficient;
 
-                galleryBg.style.transform = `translateX(${-delta}%)`;
-                setIndention(visibleItem);
+            //     galleryBg.style.transform = `translateX(${-delta}%)`;
+            //     setIndention(visibleItem);
 
-            })
+            // })
         });
 
         this.videoSlider.on('init', () => {
-            const visibleVideoContainer = document.querySelectorAll('.swiper-slide-visible .video-gallery__item-wrap');
-            this.visibleElemAmount = visibleVideoContainer.length;
+            // const visibleVideoContainer = document.querySelectorAll('.swiper-slide-visible .video-gallery__item-wrap');
+            // this.visibleElemAmount = visibleVideoContainer.length;
 
 
-            Array.from(this.videoSlider.slides).forEach( (elem) => {
-                setIndention(elem);
-            });
+            // Array.from(this.videoSlider.slides).forEach( (elem) => {
+            //     setIndention(elem);
+            // });
 
-            animateVissibleContent(visibleVideoContainer);
+            // animateVissibleContent(visibleVideoContainer);
         });
 
         this.videoSlider.on('transitionStart', () => {
 
-            const visibleVideoContainer = document.querySelectorAll('.swiper-slide-visible');
-            const transfromLimit = 30;
-            const galleryBg = document.querySelector('.video-gallery__bg');
-            const galleryWidth = this.videoSlider.virtualSize;
-            const windowWidth = window.innerWidth;
-            const windowHalfWidth = windowWidth / 2;
+            // const visibleVideoContainer = document.querySelectorAll('.swiper-slide-visible');
+            // const transfromLimit = 30;
+            // const galleryBg = document.querySelector('.video-gallery__bg');
+            // const galleryWidth = this.videoSlider.virtualSize;
+            // const windowWidth = window.innerWidth;
+            // const windowHalfWidth = windowWidth / 2;
 
-            Array.from(visibleVideoContainer).forEach((visibleItem, index) => {
-                const tl = new TimelineMax();
-                const containerWidth = visibleItem.clientWidth;
-                const imageContainer = visibleItem.querySelector('.video-gallery__img');
-                const stepCoeficient = 0.1;
+            // Array.from(visibleVideoContainer).forEach((visibleItem, index) => {
+            //     const tl = new TimelineMax();
+            //     const containerWidth = visibleItem.clientWidth;
+            //     const imageContainer = visibleItem.querySelector('.video-gallery__img');
+            //     const stepCoeficient = 0.1;
 
-                if (imageContainer) {
-                    tl.to(imageContainer, sliderSpeed / 1000, {
-                        opacity: 1, ease: Power2.easeIn, onUpdate: () => {
+            //     if (imageContainer) {
+            //         tl.to(imageContainer, sliderSpeed / 1000, {
+            //             opacity: 1, ease: Power2.easeIn, onUpdate: () => {
 
-                            const swiperPosition = this.videoSlider.wrapper[0].getBoundingClientRect().left;
-                            const elemRectX = visibleItem.getBoundingClientRect().left;
-                            const elemSlideValue = elemRectX + containerWidth / 2 - windowHalfWidth;
+            //                 const swiperPosition = this.videoSlider.wrapper[0].getBoundingClientRect().left;
+            //                 const elemRectX = visibleItem.getBoundingClientRect().left;
+            //                 const elemSlideValue = elemRectX + containerWidth / 2 - windowHalfWidth;
 
-                            const delta = Math.abs(swiperPosition) / galleryWidth * 100 * stepCoeficient;
+            //                 const delta = Math.abs(swiperPosition) / galleryWidth * 100 * stepCoeficient;
 
-                            let percent = elemSlideValue / windowHalfWidth ;
-                            if (percent > 1 ) {
-                                percent = 1
-                            } else if (percent < -1) {
-                                percent = -1;
-                            }
-                            visibleItem.querySelector('.video-gallery__img').style.transform = `translateX(${transfromLimit * percent}%)`;
-                            // visibleItem.querySelector('.video-gallery__title').style.transform = `translateX(${transfromLimit * percent * 0.5}%)`;
-                            galleryBg.style.transform = `translateX(${-delta}%)`;
+            //                 let percent = elemSlideValue / windowHalfWidth ;
+            //                 if (percent > 1 ) {
+            //                     percent = 1
+            //                 } else if (percent < -1) {
+            //                     percent = -1;
+            //                 }
+            //                 visibleItem.querySelector('.video-gallery__img').style.transform = `translateX(${transfromLimit * percent}%)`;
+            //                 // visibleItem.querySelector('.video-gallery__title').style.transform = `translateX(${transfromLimit * percent * 0.5}%)`;
+            //                 galleryBg.style.transform = `translateX(${-delta}%)`;
 
-                        }
-                    })
-                }
-            })
+            //             }
+            //         })
+            //     }
+            // })
 
         });
 

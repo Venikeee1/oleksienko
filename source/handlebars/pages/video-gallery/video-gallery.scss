@@ -228,6 +228,15 @@
         }
     }
 
+    &__video {
+        position: absolute;
+        width: calc(100% + 5px);
+        height: calc(100% + 5px);
+        top: -2px;
+        left: -2px;
+        object-fit: cover
+    }
+
     &__img {
         position: absolute;
         top: -15%;
