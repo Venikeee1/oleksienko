@@ -90,7 +90,7 @@ export class Template {
                         .to('.main__text', 0.2, {opacity: 0, pointerEvents: 'none'},0)
                         .to('.navigation-arrows__nav', 0.2, {opacity: 0, pointerEvents: 'none'},0)
                         .to('.slide__number', 0.5, {opacity: 0},0)
-                        .to('.logo__svg', 0.8, {fill: '#fff'}, 0.3)
+                        .to('.logo__svg', 0.8, {opacity: 1}, 0.3)
                         .to('.inner-page__mobile-nav', 0.3, {opacity: 0},0)
 
 
@@ -98,7 +98,7 @@ export class Template {
                     document.querySelector('.scroll-more--up').classList.add('active');
                 } else {
                     if(!window.isMobile) {
-                        tl.to('.logo__svg', 0.8, {fill: 'rgba(255, 255, 255, 0.5)'}, 0.3)
+                        tl.to('.logo__svg', 0.8, {opacity: 0.5}, 0.3)
                     }
 
                     window.GLOBAL_OBJECT.header.hideLogoText();

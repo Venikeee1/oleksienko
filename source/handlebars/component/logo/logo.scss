@@ -31,7 +31,8 @@
         svg {
             height: 100%;
             width: 100%;
-            fill: rgba(#fff, 0.5);
+            fill: #fff;
+            opacity: 0.5;
 
             @include media($break-mobile) {
                 fill: #fff !important;

@@ -99,7 +99,7 @@ export class HomePage {
                     document.querySelector('.scroll-more--down').classList.remove('active');
                     document.querySelector('.scroll-more--up').classList.add('active');
 
-                    tl.to('.logo__svg', 0.8, {fill: '#fff'}, 0.3);
+                    tl.to('.logo__svg', 0.8, {opacity: 1}, 0.3);
                 }
 
                 if( currentIndex > 0 && currentSlide.querySelectorAll('.rest-letters-animation')) {
@@ -130,7 +130,7 @@ export class HomePage {
                 if( currentSlide.getAttribute('data-section') !== 'footer') {
                     tl.to(currentSlide.querySelector('.slide__number'), 0, {x: -45, opacity: 0},0)
                     if(!window.isMobile) {
-                        tl.to('.logo__svg', 0.8, {fill: 'rgba(255, 255, 255, 0.5)'}, 0.3)
+                        tl.to('.logo__svg', 0.8, {opacity: 0.5}, 0.3)
                     }
 
                     window.GLOBAL_OBJECT.header.hideLogoText();
@@ -227,7 +227,6 @@ export class HomePage {
         const tl = new TimelineMax();
 
         tl.to('.logo', 2, {opacity: 1}, 1)
-            //.to('.logo__svg', 0.5, { fill: '#fff',  opacity: 0.5}, 0);
     }
 
     logoAnimationHide() {

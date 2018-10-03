@@ -13,7 +13,7 @@ export class Menu {
         this.timeLine.clear();
         this.timeLine.staggerTo('.logo__animation', 0.5, { opacity: 1, y: 0}, 0.2)
             .to('.logo', 0.5, {opacity: 1, pointerEvents: 'auto'}, 0)
-            .to('.logo__svg', 0.8, {fill: '#fff'}, 0)
+            .to('.logo__svg', 0.8, {opacity: 1}, 0)
 
         this.menu.classList.add('active');
         this.burger.classList.add('active');
@@ -30,7 +30,7 @@ export class Menu {
             if(!window.GLOBAL_OBJECT.header.logoTextIsShown) {
                 this.timeLine
                     .staggerTo('.logo__animation', 0.1, { opacity: 0, y: 30})
-                    .to('.logo__svg', 0.8, {fill: 'rgba(255, 255, 255, 0.5)'}, 0)
+                    .to('.logo__svg', 0.8, {opacity: 0.5}, 0)
             }
 
         }
