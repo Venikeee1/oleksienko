@@ -12,7 +12,7 @@ export class Menu {
     menuOpen() {
         this.timeLine.clear();
         this.timeLine.staggerTo('.logo__animation', 0.5, { opacity: 1, y: 0}, 0.2)
-            .to('.logo', 0.5, {opacity: 1, pointerEvents: 'auto'}, 0)
+            .to('.logo', 0.5, {opacity: 1}, 0)
             .to('.logo__svg', 0.8, {opacity: 1}, 0)
 
         this.menu.classList.add('active');

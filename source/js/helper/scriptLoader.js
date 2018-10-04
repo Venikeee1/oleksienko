@@ -3,6 +3,7 @@ import {HomePage} from '../pages/homepage/homepage';
 import {VideoGallery} from '../pages/videoGallery/videoGallery';
 import {Default} from '../components/default';
 import {Contacts} from "../pages/contacts/contacts";
+import {AllProjects} from "../pages/all-projects/allProjects";
 
 
 export default class ScriptLoader {
@@ -12,6 +13,7 @@ export default class ScriptLoader {
             'project' : Template,
             'video': VideoGallery,
             'contacts' : Contacts,
+            'all_projects': AllProjects,
             'default': Default
         }
     }

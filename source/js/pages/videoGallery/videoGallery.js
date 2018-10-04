@@ -81,7 +81,26 @@ export class VideoGallery {
         });
 
         this.videoSlider.on('init', () => {
-            // const visibleVideoContainer = document.querySelectorAll('.swiper-slide-visible .video-gallery__item-wrap');
+            const visibleVideoContainer = document.querySelectorAll('.swiper-slide-visible .video-gallery__video-body');
+            const visibleVideoParent = document.querySelectorAll('.swiper-slide-visible .video-gallery__item-wrap');
+            const tl = new TimelineMax();
+
+            Array.from(visibleVideoContainer).forEach( (elem) => {
+                elem.style.width = elem.parentNode.clientWidth + 'px';
+                elem.parentNode.style.width = 0;
+            })
+
+            tl
+                .staggerTo(visibleVideoParent, 0.5, {
+                    x: -120,
+                })
+                .staggerTo(visibleVideoParent, 1, {
+                    width: '100%',
+                    x: 0 ,
+                    ease: Power2.easeOut
+                }, 0.4)
+
+
             // this.visibleElemAmount = visibleVideoContainer.length;
 
 

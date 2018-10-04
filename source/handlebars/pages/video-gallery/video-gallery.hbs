@@ -7,16 +7,23 @@
                 <div class="swiper-wrapper">
                     {{#each videoGallery.list}}
                     <div class="swiper-slide video-gallery__item">
-                        <div class="video-gallery__item-wrap" style="background-image: url('{{videoBg}}')">
-                            <!--<img class="video-gallery__img" data-swiper-parallax="30" src="{{videoHoverBg}}" alt="">-->
-                            <video playsinline="" autoplay="" muted="" loop="" class="video-gallery__video video-gallery__img" id="bgvideo">
-                                <source src="{{video}}" type="video/mp4;">
-                            </video>
-                            <div class="video-gallery__item-inner">
-                                <h2 class="video-gallery__title">hello world</h2>
-                                <div class="video-gallery__play-btn">
+                        <div class="video-gallery__video-container">
+                            <div class="video-gallery__item-wrap">
+                                <div class="video-gallery__video-body">
+                                <!--<img class="video-gallery__img" data-swiper-parallax="30" src="{{videoHoverBg}}" alt="">-->
+                                    <video playsinline="" autoplay="" muted="" loop="" class="video-gallery__video" id="bgvideo">
+                                        <source src="{{video}}" type="video/mp4;">
+                                    </video>
+                                    <div class="video-gallery__item-inner">
+
+                                        <div class="video-gallery__play-btn">
+                                        </div>
+                                        <a href="#" class="video-gallery__link" data-frame="{{link}}"></a>
+                                    </div>
                                 </div>
-                                <a href="#" class="video-gallery__link" data-frame="{{link}}"></a>
+                            </div>
+                            <div class="video-gallery__title-wrapper">
+                                <h2 class="video-gallery__title">hello world</h2>
                             </div>
                         </div>
                     </div>
