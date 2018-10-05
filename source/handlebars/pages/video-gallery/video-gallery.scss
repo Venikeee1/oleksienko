@@ -32,7 +32,7 @@
     .navigation-arrows__nav {
         display: block;
 
-        @include media($desk-middle) {
+        @include media(1240px) {
             width: 100%;
             right: auto;
             display: flex;
@@ -105,11 +105,6 @@
                 opacity: 1;
             }
 
-            .video-gallery__title {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
             .video-gallery__img {
                 //transform: scale(1.1);
             }
@@ -168,7 +163,7 @@
         @include media($break-mobile) {
             box-sizing: border-box;
             margin: 0;
-            padding: 30px;
+            padding: 30px 0;
             width: 100%;
 
             &:nth-child(n) {
@@ -182,10 +177,12 @@
 
     &__item-wrap {
         width: 100%;
-        position: relative;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
         background-size: cover;
         background-position: 50% 50%;
-        height: 100%;
         opacity: 1;
         overflow: hidden;
     }
@@ -218,13 +215,12 @@
         }
     }
 
-
-
     &__title-wrapper {
         overflow: hidden;
         position: absolute;
-        top: calc(100% + 8px);
+        top: calc(100% + 3px);
         left: 0;
+        line-height: 1;
     }
 
     &__title {
@@ -233,9 +229,8 @@
         font-family: $exo2Light;
         line-height: 1.3;
         text-transform: uppercase;
-        transform: translateY(-100%);
         letter-spacing: 0.02em;
-        transition: transform 0.5s, opacity 0.6s;
+        transition: opacity 0.6s;
 
     }
 

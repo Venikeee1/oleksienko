@@ -6,6 +6,7 @@ export class VideoGallery {
         this.videoSlider = {};
         this.videoItems = document.querySelectorAll('.video-gallery__link');
         this.visibleElemAmount = 0;
+        this.videoContainer = document.querySelectorAll('.video-gallery__video');
     }
 
     initSlider() {
@@ -84,6 +85,7 @@ export class VideoGallery {
             const visibleVideoContainer = document.querySelectorAll('.swiper-slide-visible .video-gallery__video-body');
             const visibleVideoParent = document.querySelectorAll('.swiper-slide-visible .video-gallery__item-wrap');
             const tl = new TimelineMax();
+            const visibleTitle = Array.from(visibleVideoParent).map( elem => elem.parentNode.querySelector('.video-gallery__title'));
 
             Array.from(visibleVideoContainer).forEach( (elem) => {
                 elem.style.width = elem.parentNode.clientWidth + 'px';
@@ -91,14 +93,22 @@ export class VideoGallery {
             })
 
             tl
+                .to(visibleTitle, 0, {
+                    x: '-100%' ,
+                    ease: Power2.easeOut
+                })
                 .staggerTo(visibleVideoParent, 0.5, {
-                    x: -120,
+                    x: 120,
                 })
                 .staggerTo(visibleVideoParent, 1, {
                     width: '100%',
                     x: 0 ,
                     ease: Power2.easeOut
-                }, 0.4)
+                }, -0.4)
+                .staggerTo(visibleTitle, 1, {
+                    x: '0%' ,
+                    ease: Power2.easeOut
+                }, 0.2, '-=0.2')
 
 
             // this.visibleElemAmount = visibleVideoContainer.length;
@@ -113,7 +123,11 @@ export class VideoGallery {
 
         this.videoSlider.on('transitionStart', () => {
 
-            // const visibleVideoContainer = document.querySelectorAll('.swiper-slide-visible');
+            const visibleVideoContainer = document.querySelectorAll('.swiper-slide-visible .video-gallery__video');
+
+            this.pauseVideo(this.videoContainer);
+            this.playVideo(visibleVideoContainer);
+
             // const transfromLimit = 30;
             // const galleryBg = document.querySelector('.video-gallery__bg');
             // const galleryWidth = this.videoSlider.virtualSize;
@@ -165,6 +179,18 @@ export class VideoGallery {
 
         this.videoSlider.init();
 
+    }
+
+    pauseVideo(videos) {
+        Array.from(videos).forEach( video => {
+            video.pause();
+        });
+    }
+
+    playVideo(videos) {
+        Array.from(videos).forEach( video => {
+            video.play();
+        });
     }
 
     playButtonListener() {
