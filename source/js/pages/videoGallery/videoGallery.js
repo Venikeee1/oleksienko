@@ -7,6 +7,8 @@ export class VideoGallery {
         this.videoItems = document.querySelectorAll('.video-gallery__link');
         this.visibleElemAmount = 0;
         this.videoContainer = document.querySelectorAll('.video-gallery__video');
+        this.buttonNext = document.querySelector('.navigation-arrows__nav-arrow--right');
+        this.buttonPrev = document.querySelector('.navigation-arrows__nav-arrow--left');
     }
 
     initSlider() {
@@ -110,61 +112,34 @@ export class VideoGallery {
                     ease: Power2.easeOut
                 }, 0.2, '-=0.2')
 
-
-            // this.visibleElemAmount = visibleVideoContainer.length;
-
-
-            // Array.from(this.videoSlider.slides).forEach( (elem) => {
-            //     setIndention(elem);
-            // });
-
-            // animateVissibleContent(visibleVideoContainer);
         });
 
         this.videoSlider.on('transitionStart', () => {
 
+            const tl = new TimelineMax();
             const visibleVideoContainer = document.querySelectorAll('.swiper-slide-visible .video-gallery__video');
 
             this.pauseVideo(this.videoContainer);
             this.playVideo(visibleVideoContainer);
 
-            // const transfromLimit = 30;
-            // const galleryBg = document.querySelector('.video-gallery__bg');
-            // const galleryWidth = this.videoSlider.virtualSize;
-            // const windowWidth = window.innerWidth;
-            // const windowHalfWidth = windowWidth / 2;
+            if(this.videoSlider.isEnd) {
+                tl.to(this.buttonNext, 0.4, {opacity: 0.3, pointerEvents: 'none'});
+            } else if(this.videoSlider.isBeginning) {
+                tl.to(this.buttonPrev, 0.4, {opacity: 0.3, pointerEvents: 'none'});
+            } else {
+                tl.to( [ this.buttonPrev, this.buttonNext ], 0.4, {opacity: 1, pointerEvents: 'auto'});
+            }
 
-            // Array.from(visibleVideoContainer).forEach((visibleItem, index) => {
-            //     const tl = new TimelineMax();
-            //     const containerWidth = visibleItem.clientWidth;
-            //     const imageContainer = visibleItem.querySelector('.video-gallery__img');
-            //     const stepCoeficient = 0.1;
+        });
 
-            //     if (imageContainer) {
-            //         tl.to(imageContainer, sliderSpeed / 1000, {
-            //             opacity: 1, ease: Power2.easeIn, onUpdate: () => {
+        this.videoSlider.on('reachEnd', () => {
+            const tl = new TimelineMax();
 
-            //                 const swiperPosition = this.videoSlider.wrapper[0].getBoundingClientRect().left;
-            //                 const elemRectX = visibleItem.getBoundingClientRect().left;
-            //                 const elemSlideValue = elemRectX + containerWidth / 2 - windowHalfWidth;
+        });
 
-            //                 const delta = Math.abs(swiperPosition) / galleryWidth * 100 * stepCoeficient;
+        this.videoSlider.on('fromEdge', () => {
 
-            //                 let percent = elemSlideValue / windowHalfWidth ;
-            //                 if (percent > 1 ) {
-            //                     percent = 1
-            //                 } else if (percent < -1) {
-            //                     percent = -1;
-            //                 }
-            //                 visibleItem.querySelector('.video-gallery__img').style.transform = `translateX(${transfromLimit * percent}%)`;
-            //                 // visibleItem.querySelector('.video-gallery__title').style.transform = `translateX(${transfromLimit * percent * 0.5}%)`;
-            //                 galleryBg.style.transform = `translateX(${-delta}%)`;
-
-            //             }
-            //         })
-            //     }
-            // })
-
+            tl.to(this.buttonNext, 0.4, {opacity: 1});
         });
 
         document.querySelector('.navigation-arrows__nav-arrow--left').addEventListener('click', (e) => {
