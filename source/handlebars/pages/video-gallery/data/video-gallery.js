@@ -27,13 +27,6 @@ videoGallery: {
             videoBg: '../source/images/video-gallery/video-bg.jpg',
             videoHoverBg: '../source/images/homepage/slide-6.jpg',
             video: './video/hair.mp4'
-        },
-        {
-            link: 'https://www.youtube.com/embed/xXgUTw0jieA?autoplay=1&auotplay=1&showinfo=0&rel=0',
-            name: 'Video 5',
-            videoBg: '../source/images/video-gallery/video-bg.jpg',
-            videoHoverBg: '../source/images/homepage/slide-6.jpg',
-            video: './video/house.mp4'
         }
     ],
     videoBg: '../source/images/video-gallery/video-bg.jpg',
