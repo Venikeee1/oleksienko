@@ -6,10 +6,12 @@ export class Header {
         this.logoSvg = document.querySelector('.logo__svg');
         this.timeline = new TimelineMax();
         this.logoTextIsShown = false;
+        this.isFullyVisible = false;
     }
 
     fillWhite() {
-        this.logoSvg.style.fill = '#fff';
+        this.logoSvg.style.opacity = 1;
+        this.logoTextIsShown = true;
     }
 
     showLogoText() {
@@ -30,7 +32,8 @@ export class Header {
 
         if(this.logoTextIsShown) {
             const logoTextSettings = {
-                opacity: 0
+                opacity: 0,
+                y: 30
             };
 
             this.timeline.clear();
