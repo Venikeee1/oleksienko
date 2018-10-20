@@ -4,8 +4,8 @@
     display: flex;
 
     &__list {
-        width: 100vmin;
-        margin: 0 auto;
+        width: 80vmin;
+        margin: 10vmin auto 0;
     }
 
     &__item {
@@ -16,12 +16,16 @@
         display: flex;
         flex-wrap: wrap;
         margin: auto;
+
     }
 
     &__img {
-        width: 33.333vmin;
-        height: 33.333vmin;
+        width: 26.6667vmin;
+        height: 26.6667vmin;
         background: purple;
         border: 1px solid #fff;
+        background-size: cover;
+        transform: scale(0.3);
+        opacity: 0;
     }
 }

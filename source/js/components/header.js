@@ -6,7 +6,12 @@ export class Header {
         this.logoSvg = document.querySelector('.logo__svg');
         this.timeline = new TimelineMax();
         this.logoTextIsShown = false;
-        this.isFullyVisible = false;
+
+        this.prevSettings = {
+            logoOpacity: 0.5,
+            x: 30,
+
+        };
     }
 
     fillWhite() {
@@ -15,17 +20,22 @@ export class Header {
     }
 
     showLogoText() {
+
         const logoTextSettings = {
             opacity: 1,
             y: 0
         }
+
         this.timeline.clear();
 
         this.timeline
             .staggerTo(this.logoText, 0.4, logoTextSettings, 0.1 )
-            .to(this.logoSvg, 0.4, {fill: '#fff'},0);
+            .to(this.logoSvg, 0.4, {opacity: 1},0);
 
-        this.logoTextIsShown = true;
+        //this.logoTextIsShown = true;
+        this.prevSettings.logoOpacity = this.logoSvg.style.opacity;
+
+        console.log()
     }
 
     hideLogoText() {
@@ -37,10 +47,16 @@ export class Header {
             };
 
             this.timeline.clear();
-            this.timeline.staggerTo(this.logoText, 0.2, logoTextSettings );
-            this.logoTextIsShown = false;
+
+            this.timeline
+                .staggerTo(this.logoText, 0.2, logoTextSettings, -0.1 )
+                .to(this.logoSvg, 0.4, {opacity: this.prevSettings.logoOpacity},0);
+
+            //this.logoTextIsShown = false;
 
         }
+
+        //this.logoTextIsShown = false;
 
     }
 }

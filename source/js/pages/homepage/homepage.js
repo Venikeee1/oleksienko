@@ -56,12 +56,10 @@ export class HomePage {
                 window.GLOBAL_OBJECT.currentSlide = currentSlide;
 
                 const tl = new TimelineMax();
-                const redColor = '#df2032';
 
                 longListArray.forEach( (elem) => {
                     elem.nodeItem.setAttribute('href', elem.link + '#' + currentIndex);
                 });
-                console.log(longListArray)
 
                 currentTimeLine.clear();
                 currentTimeLine = tl;
@@ -134,6 +132,7 @@ export class HomePage {
                     }
 
                     window.GLOBAL_OBJECT.header.hideLogoText();
+                    window.GLOBAL_OBJECT.header.logoTextIsShown = false;
                 }
 
 
@@ -154,6 +153,7 @@ export class HomePage {
 
                 } else {
                     window.GLOBAL_OBJECT.header.showLogoText();
+                    window.GLOBAL_OBJECT.header.logoTextIsShown = true;
                 }
 
                 if( currentSlide.getAttribute('data-section') === 'achievement' ) {

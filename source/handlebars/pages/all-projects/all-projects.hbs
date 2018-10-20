@@ -1,68 +1,19 @@
 <div id="barba-wrapper">
     <div class="barba-container" data-namespace="all_projects">
-        <section class="all-projects">
-            <div class="all-projects__list swiper-wrapper">
-                <div class="swiper-slide all-projects__item">
-                    <ul class="all-projects__img-list">
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                    </ul>
-                    <ul class="all-projects__img-list">
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                    </ul>
-                    <ul class="all-projects__img-list">
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                        <li class="all-projects__img">
-                        </li>
-                    </ul>
+        <section class="all-projects" style="background-image: url('../source/images/homepage/slide-8.jpg')">
+            {{>component/navigation-arrows/navigation-arrows videoGallery.navigation}}
+            <div class="all-projects__list swiper-container">
+                <div class="swiper-wrapper">
+                    {{#each allProjects}}
+                        <div class="swiper-slide all-projects__item">
+                            <ul class="all-projects__img-list">
+                                {{#each this}}
+                                    <li class="all-projects__img" style="background-image: url('{{bg}}');">
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    {{/each}}
                 </div>
             </div>
         </section>

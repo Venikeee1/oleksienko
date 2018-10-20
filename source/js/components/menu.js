@@ -11,9 +11,7 @@ export class Menu {
 
     menuOpen() {
         this.timeLine.clear();
-        this.timeLine.staggerTo('.logo__animation', 0.5, { opacity: 1, y: 0}, 0.2)
-            .to('.logo', 0.5, {opacity: 1}, 0)
-            .to('.logo__svg', 0.8, {opacity: 1}, 0)
+        window.GLOBAL_OBJECT.header.showLogoText();
 
         this.menu.classList.add('active');
         this.burger.classList.add('active');
@@ -28,9 +26,8 @@ export class Menu {
         this.burger.classList.remove('active');
         if(this.animationOnClose) {
             if(!window.GLOBAL_OBJECT.header.logoTextIsShown) {
-                this.timeLine
-                    .staggerTo('.logo__animation', 0.1, { opacity: 0, y: 30})
-                    .to('.logo__svg', 0.8, {opacity: 0.5}, 0)
+                console.log('sds')
+                window.GLOBAL_OBJECT.header.hideLogoText();
             }
 
         }
