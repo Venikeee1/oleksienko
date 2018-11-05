@@ -54,7 +54,7 @@
     &__subtitle {
         padding-left: 45px;
         margin-top: -10px;
-        font-family: $uniSans, $exo2Regular;
+        font-family: $uniSans, sans-serif;
 
         @include media($desk-middle){
             margin-top: -7px;
@@ -306,7 +306,7 @@
         padding-left: 45px;
         margin-top: 10px;
         font-family: $exo2Light;
-        color: #dddddd;
+        color: #fff;
         min-height: 46px;
         text-decoration: none;
         display: block;

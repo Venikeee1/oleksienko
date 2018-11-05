@@ -24,10 +24,12 @@
   }
 
   &--semibold {
-    font-family: $uniSansSemiBold, $exo2SemiBold;
+    font-family: $uniSansSemiBold, sans-serif;
+    font-weight: bold;
 
     @include media($break-mobile) {
-      font-family: $uniSans, $exo2Regular;
+      font-family: $uniSans, sans-serif;
+      font-weight: 400;
     }
   }
 
@@ -42,7 +44,8 @@
 
 .main-subtitle {
   font-size: 36px;
-  font-family: $uniSansBold;
+  font-family: $uniSansBold, sans-serif;
+  font-weight: bold;
   text-transform: uppercase;
   margin-top: 10px;
 

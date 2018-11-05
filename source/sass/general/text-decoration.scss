@@ -1,15 +1,17 @@
 .exo {
 
   &--bold {
-    font-family: $exo2Bold;
+    font-family: $exo2Bold, sans-serif;
+    font-weight: bold;
   }
 
   &--thin {
-    font-family: $exo2Thin;
+    font-family: $exo2Thin, sans-serif;
   }
 
   &--light {
-    font-family: $exo2Light;
+    font-family: $exo2Light, sans-serif;
+    font-weight: 300;
   }
 }
 
