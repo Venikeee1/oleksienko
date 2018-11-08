@@ -5,13 +5,29 @@
             <div class="all-projects__list swiper-container">
                 <div class="swiper-wrapper">
                     {{#each allProjects}}
-                        <div class="swiper-slide all-projects__item">
-                            <ul class="all-projects__img-list">
-                                {{#each this}}
-                                    <li class="all-projects__img" style="background-image: url('{{bg}}');">
-                                    </li>
-                                {{/each}}
-                            </ul>
+                        <!--<div class="swiper-slide all-projects__item">
+
+                        </div>-->
+                        <div class="swiper-slide video-gallery__item">
+                            <div class="video-gallery__video-container">
+                                <div class="video-gallery__item-wrap">
+                                    <div class="video-gallery__video-body">
+                                        <img class="video-gallery__img" data-swiper-parallax="30" src="{{bg}}" alt="">
+
+                                        <div class="video-gallery__item-inner">
+                                            <a href="#" class="video-gallery__link" data-frame="{{link}}"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="all-projects__title-wrapper">
+                                    <div class="all-projects__heading">
+                                        <h2 class="all-projects__title">
+                                            <span class="all-projects__line all-projects__first-line">Hello world</span>
+                                            <span class="all-projects__line all-projects__second-line">Best world</span>
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     {{/each}}
                 </div>

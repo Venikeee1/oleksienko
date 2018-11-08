@@ -14,15 +14,9 @@ export class AllProjects {
             mousewheelControl: true,
             keyboardControl: true,
             speed: sliderSpeed,
-            slidesPerView: 1,
+            slidesPerView: 'auto',
             runCallbacksOnInit: true,
-            init: true,
-            allowTouchMove: true,
-            slidesPerGroup: 1,
-            effect: 'fade',
-            fadeEffect: {
-                crossFade: true
-            },
+            watchSlidesVisibility: true,
             mousewheel: {
                 enabled: true,
                 eventsTarged: '.swiper-container'
@@ -30,7 +24,7 @@ export class AllProjects {
             keyboard: {
                 enabled: true,
             },
-            loop: false,
+            loop: false
         });
 
         this.videoSlider.on('touchMove', () => {
@@ -38,13 +32,29 @@ export class AllProjects {
         });
 
         this.videoSlider.on('init', () => {
-            // const visibleVideoContainer = document.querySelectorAll('.swiper-slide-visible .video-gallery__item-wrap');
-            // console.log(visibleVideoContainer[0])
-            console.log('init')
+            const visibleVideoContainer = document.querySelectorAll('.swiper-slide-visible .video-gallery__video-body');
+            const visibleVideoParent = document.querySelectorAll('.swiper-slide-visible .video-gallery__item-wrap');
+            const tl = new TimelineMax();
+            const visibleTitle = Array.from(visibleVideoParent).map( elem => elem.parentNode.querySelector('.video-gallery__title'));
+            const visibleTimestamp = Array.from(visibleVideoParent).map( elem => elem.parentNode.querySelector('.video-gallery__timestamp'));
+
+
+            Array.from(visibleVideoContainer).forEach( (elem) => {
+                elem.style.width = elem.parentNode.clientWidth + 'px';
+                elem.parentNode.style.width = 0;
+            })
+
+            tl
+                .staggerTo(visibleVideoParent, 1, {
+                    width: '100%',
+                    x: 0 ,
+                    ease: Power2.easeOut
+                }, -0.4)
+
         });
 
         this.videoSlider.on('transitionStart', () => {
-            console.log(this.videoSlider)
+            /*console.log(this.videoSlider)
             const activeSlide = document.querySelector('.swiper-slide-active');
             const activeSlideImages = activeSlide.querySelectorAll('.all-projects__img');
 
@@ -64,7 +74,7 @@ export class AllProjects {
                 .to( activeSlideImages[8], 0.8, {scale: 1, opacity: 1}, '-=0.6' );
 
             t2
-                .to( prevSlideImages, 0.3, {scale: 0.3, opacity: 0} )
+                .to( prevSlideImages, 0.3, {scale: 0.3, opacity: 0} )*/
 
 
             //slides

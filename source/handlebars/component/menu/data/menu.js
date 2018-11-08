@@ -34,7 +34,7 @@ menu: {
     projects: [
         {
             name: 'All  project',
-            link: '/projects.html',
+            link: '/all-projects.html',
         },
         {
             name: 'Contact',

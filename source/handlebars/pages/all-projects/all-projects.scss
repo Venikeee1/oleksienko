@@ -1,11 +1,8 @@
 .all-projects {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
+    height: 100%;
 
     &__list {
-        width: 80vmin;
-        margin: 10vmin auto 0;
+        height: 100%;
     }
 
     &__item {
@@ -27,5 +24,27 @@
         background-size: cover;
         transform: scale(0.3);
         opacity: 0;
+    }
+
+    &__title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 25px;
+    }
+
+    &__line {
+        display: block;
+        line-height: 1;
+        font-size: 36px;
+    }
+
+    &__first-line {
+        font-family: $uniSansThin, $exo2Thin;
+    }
+
+    &__second-line {
+        font-family: $uniSans, $exo2Regular;
+        padding-left: 0.6em;
     }
 }

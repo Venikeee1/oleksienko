@@ -134,20 +134,26 @@ export class BarbaLoader {
         var originalFn = Barba.Pjax.Dom.parseResponse;
 
         Barba.Pjax.Dom.parseResponse = function(response) {
-        // do your stuff with the response
+        // Reasine header links when page language changed
 
-            var parser = new DOMParser()
-            var el = parser.parseFromString(response, "text/html");
+            const parser = new DOMParser()
+            const el = parser.parseFromString(response, "text/html");
             const newLang = el.querySelector('.header__lang');
             const newLangList = newLang.querySelectorAll('.header__lang-link');
-            const currentLang = document.querySelector('.header__lang');
             const currentLangList = document.querySelectorAll('.header__lang-link');
+            const newMenuLinks = el.querySelectorAll('.menu a');
+            const currentMenuLinks = document.querySelectorAll('.menu a');
 
             document.querySelector('.header__active-item').textContent = newLang.querySelector('.header__active-item').textContent;
 
             Array.from(currentLangList).map( (link, i) => {
                 link.setAttribute('href', newLangList[i].getAttribute('href'));
                 link.querySelector('.header__lang-item').textContent = newLangList[i].querySelector('.header__lang-item').textContent;
+            })
+
+            Array.from(currentMenuLinks).map( (link, i) => {
+                link.setAttribute('href', newMenuLinks[i].getAttribute('href'));
+                link.textContent = newMenuLinks[i].textContent;
             })
 
             return originalFn.apply(Barba.Pjax.Dom, arguments);
