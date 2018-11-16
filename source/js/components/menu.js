@@ -25,11 +25,7 @@ export class Menu {
         this.menu.classList.remove('active');
         this.burger.classList.remove('active');
         if(this.animationOnClose) {
-            if(!window.GLOBAL_OBJECT.header.logoTextIsShown) {
-                console.log('sds')
-                window.GLOBAL_OBJECT.header.hideLogoText();
-            }
-
+            window.GLOBAL_OBJECT.header.hideLogoText();
         }
     }
 

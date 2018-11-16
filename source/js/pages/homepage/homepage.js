@@ -69,16 +69,21 @@ export class HomePage {
                     this.letterShowAnimation();
                     this.sliderDotsAnimation();
 
-                    if(window.GLOBAL_OBJECT.isPreviousProjectPage) {
+                    /*if(window.GLOBAL_OBJECT.isPreviousProjectPage) {
                         document.querySelector('.logo').style.opacity = 1;
                         window.GLOBAL_OBJECT.isPreviousProjectPage = false;
                     } else {
-                        this.logoAnimationShow();
-                    }
+
+                    }*/
+                    this.logoAnimationShow();
+                    //window.GLOBAL_OBJECT.header.showLogoText();
+                    window.GLOBAL_OBJECT.header.isHidden = false;
 
                     this.firstScreenSlider.autoPlayDisable();
 
                 } else if( currentIndex === 0) {
+
+                    window.GLOBAL_OBJECT.header.isHidden = true;
 
                     tl
                         .to('.slider__dots--wrapper', 0.9, {y: '105%', ease: Quad.easeOut, onComplete: () => {
@@ -97,7 +102,8 @@ export class HomePage {
                     document.querySelector('.scroll-more--down').classList.remove('active');
                     document.querySelector('.scroll-more--up').classList.add('active');
 
-                    tl.to('.logo__svg', 0.8, {opacity: 1}, 0.3);
+                    window.GLOBAL_OBJECT.header.textAniamtaionAloud = false;
+
                 }
 
                 if( currentIndex > 0 && currentSlide.querySelectorAll('.rest-letters-animation')) {
@@ -126,13 +132,15 @@ export class HomePage {
                 }
 
                 if( currentSlide.getAttribute('data-section') !== 'footer') {
+                    window.GLOBAL_OBJECT.header.textAniamtaionAloud = true;
+                    window.GLOBAL_OBJECT.header.opacityAniamtaionAloud = true;
+
                     tl.to(currentSlide.querySelector('.slide__number'), 0, {x: -45, opacity: 0},0)
                     if(!window.isMobile) {
                         tl.to('.logo__svg', 0.8, {opacity: 0.5}, 0.3)
                     }
 
                     window.GLOBAL_OBJECT.header.hideLogoText();
-                    window.GLOBAL_OBJECT.header.logoTextIsShown = false;
                 }
 
 
@@ -141,6 +149,8 @@ export class HomePage {
             },
             afterAnimationEnd: (currentSlide, currentIndex, prevIndex) => {
                 const tl = new TimelineMax();
+
+
 
                 if( currentIndex > 0 && currentSlide.getAttribute('data-section') !== 'footer') {
 
@@ -151,9 +161,10 @@ export class HomePage {
                     document.querySelector('.scroll-more--down').classList.add('active');
                     document.querySelector('.scroll-more--up').classList.remove('active');
 
-                } else {
+                } else if(currentSlide.getAttribute('data-section') === 'footer') {
+
                     window.GLOBAL_OBJECT.header.showLogoText();
-                    window.GLOBAL_OBJECT.header.logoTextIsShown = true;
+                    window.GLOBAL_OBJECT.header.opacityAniamtaionAloud = false;
                 }
 
                 if( currentSlide.getAttribute('data-section') === 'achievement' ) {
@@ -226,13 +237,13 @@ export class HomePage {
     logoAnimationShow() {
         const tl = new TimelineMax();
 
-        tl.to('.logo', 2, {opacity: 1}, 1)
+        tl.to('.logo', 2, {opacity: 1}, 1);
     }
 
     logoAnimationHide() {
-        const tl = new TimelineMax();
+        /*const tl = new TimelineMax();
 
-        tl.to('.logo', 0.5, {opacity: 0, pointerEvents: 'none'}, 0)
+        tl.to('.logo', 0.5, {opacity: 0, pointerEvents: 'none'}, 0)*/
     }
 
     checkActiveLetter( index ) {
@@ -307,19 +318,8 @@ export class HomePage {
 
             videoPopup.openPopup();
         })
-
-
     }
 
-    callBackForMenu() {
-        window.GLOBAL_OBJECT.menu.beforeClose = () => {
-            const tl = new TimelineMax();
-
-            if( this.slider.currentIndex === 0 ) {
-                tl.to('.logo', 0.5, {opacity: 0, pointerEvents: 'none'}, 0)
-            }
-        }
-    }
 
     checkForDisablingHover() {
         if(window.innerWidth < 1040) {
@@ -331,12 +331,13 @@ export class HomePage {
                 elem.classList.remove('nohover');
             })
         }
-
-
     }
 
     destroy() {
         this.slider.destroy();
+        window.GLOBAL_OBJECT.header.textAniamtaionAloud = true;
+        window.GLOBAL_OBJECT.header.opacityAniamtaionAloud = true;
+        window.GLOBAL_OBJECT.header.isHidden = false;
     }
 
     resizeWindow() {
@@ -346,6 +347,7 @@ export class HomePage {
     }
 
     init() {
+        window.GLOBAL_OBJECT.header.isHidden = true;
         this.initFirstScreenSlider();
         this.wrapFirstLetters();
         this.initVideoPopup();
@@ -353,7 +355,6 @@ export class HomePage {
         this.resizeWindow();
         this.addEventListenersToLetters();
         this.addSwipe();
-        this.callBackForMenu();
         this.initSlider();
     }
 }

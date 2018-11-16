@@ -74,9 +74,6 @@
     &__list {
         display: flex;
 
-        @include media($break-mobile) {
-            display: none;
-        }
     }
 
     &__item {
@@ -84,6 +81,9 @@
 
         @include media($desk-middle) {
             padding: 0 20px;
+        }
+        @include media($break-mobile) {
+            padding: 0 0 0 20px;
         }
     }
 
@@ -113,7 +113,7 @@
         pointer-events: auto;
 
         @include media($break-mobile) {
-            margin-right: 25px;
+            margin-right: 15px;
             font-family: $exo2SemiBold;
         }
 

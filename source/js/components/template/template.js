@@ -96,11 +96,15 @@ export class Template {
 
                     document.querySelector('.scroll-more--down').classList.remove('active');
                     document.querySelector('.scroll-more--up').classList.add('active');
+
+                    window.GLOBAL_OBJECT.header.textAniamtaionAloud = false;
                 } else {
                     if(!window.isMobile) {
                         tl.to('.logo__svg', 0.8, {opacity: 0.5}, 0.3)
                     }
 
+                    window.GLOBAL_OBJECT.header.textAniamtaionAloud = true;
+                    window.GLOBAL_OBJECT.header.opacityAniamtaionAloud = true;
                     window.GLOBAL_OBJECT.header.hideLogoText();
                 }
 
@@ -141,6 +145,7 @@ export class Template {
                     document.querySelector('.scroll-more--up').classList.remove('active');
                 } else {
                     window.GLOBAL_OBJECT.header.showLogoText();
+                    window.GLOBAL_OBJECT.header.opacityAniamtaionAloud = false;
                 }
             }
         };
@@ -223,7 +228,14 @@ export class Template {
         this.lazyLoad.setLazyLoad(firstSlide);
     }
 
+    destroy() {
+        this.slider.destroy();
+        window.GLOBAL_OBJECT.header.textAniamtaionAloud = true;
+        window.GLOBAL_OBJECT.header.opacityAniamtaionAloud = true;
+    }
+
     init() {
+        window.GLOBAL_OBJECT.header.hideLogoText();
         wrapFirstLetters();
         this.lazyInit();
         this.initSlider();

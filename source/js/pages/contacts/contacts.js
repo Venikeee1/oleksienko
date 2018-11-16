@@ -17,12 +17,16 @@ export class Contacts {
 
     onInit() {
         window.GLOBAL_OBJECT.header.showLogoText();
-        window.GLOBAL_OBJECT.header.fillWhite();
+        window.GLOBAL_OBJECT.header.textAniamtaionAloud = false;
+        window.GLOBAL_OBJECT.header.opacityAniamtaionAloud = false;
     }
 
     destroy() {
+        window.GLOBAL_OBJECT.header.textAniamtaionAloud = true;
+        window.GLOBAL_OBJECT.header.opacityAniamtaionAloud = true;
         window.GLOBAL_OBJECT.header.hideLogoText();
         document.removeEventListener('keydown', this.onEscPress);
+
     }
 
 

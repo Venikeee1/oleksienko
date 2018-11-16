@@ -1,17 +1,31 @@
 export class Header {
     constructor() {
         this.container = document.querySelector('.header');
-        this.logo = document.querySelector('.header');
+        this.logo = document.querySelector('.header .logo');
         this.logoText = this.container.querySelectorAll('.logo__animation');
         this.logoSvg = document.querySelector('.logo__svg');
         this.timeline = new TimelineMax();
+        this.logoTimeLine = new TimelineMax();
         this.logoTextIsShown = false;
+        this.opacityAniamtaionAloud = true;
+        this.textAniamtaionAloud = true;
+        this.isHidden = false;
+        this.openLogoParams = {
+            opacity: 1,
+            y: 0
+        };
+
+        this.closeLogoParams = {
+            opacity: 0,
+            y: 30
+        };
 
         this.prevSettings = {
             logoOpacity: 0.5,
             x: 30,
-
         };
+
+        this.logoOpacity = 0.5;
     }
 
     fillWhite() {
@@ -19,44 +33,43 @@ export class Header {
         this.logoTextIsShown = true;
     }
 
+    hideLogo() {
+        this.logoTimeLine.clear();
+        this.logoTimeLine.to(this.logo, 0.6, {opacity: 0});
+    }
+
+    showLogo() {
+        this.logoTimeLine.clear()
+        this.logoTimeLine.to(this.logo, 0.6, {opacity: 1});
+    }
+
     showLogoText() {
 
-        const logoTextSettings = {
-            opacity: 1,
-            y: 0
+        if(this.isHidden) {
+            this.showLogo();
         }
-
         this.timeline.clear();
 
-        this.timeline
-            .staggerTo(this.logoText, 0.4, logoTextSettings, 0.1 )
-            .to(this.logoSvg, 0.4, {opacity: 1},0);
+        this.timeline.staggerTo(this.logoText, 0.4, this.openLogoParams, 0.1)
 
-        //this.logoTextIsShown = true;
-        this.prevSettings.logoOpacity = this.logoSvg.style.opacity;
+        this.timeline.to(this.logoSvg, 0.4, {opacity: 1}, 0);
 
-        console.log()
     }
 
     hideLogoText() {
 
-        if(this.logoTextIsShown) {
-            const logoTextSettings = {
-                opacity: 0,
-                y: 30
-            };
+        this.timeline.clear();
 
-            this.timeline.clear();
-
-            this.timeline
-                .staggerTo(this.logoText, 0.2, logoTextSettings, -0.1 )
-                .to(this.logoSvg, 0.4, {opacity: this.prevSettings.logoOpacity},0);
-
-            //this.logoTextIsShown = false;
-
+        if(this.isHidden) {
+            this.hideLogo();
         }
 
-        //this.logoTextIsShown = false;
+        if (this.textAniamtaionAloud) {
+            this.timeline.staggerTo(this.logoText, 0.2, this.closeLogoParams, -0.1)
+        }
+        if(this.opacityAniamtaionAloud) {
+            this.timeline.to(this.logoSvg, 0.4, {opacity: this.logoOpacity}, 0);
+        }
 
     }
 }

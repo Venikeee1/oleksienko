@@ -179,6 +179,7 @@ export class VideoGallery {
     }
 
     init() {
+        window.GLOBAL_OBJECT.header.hideLogoText();
         if( window.GLOBAL_OBJECT.preloader) {
             window.GLOBAL_OBJECT.preloader.close();
             window.GLOBAL_OBJECT.preloader = null;
