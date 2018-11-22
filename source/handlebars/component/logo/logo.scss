@@ -36,6 +36,7 @@
 
             @include media($break-mobile) {
                 fill: #fff !important;
+                opacity: 1 !important;
             }
         }
 

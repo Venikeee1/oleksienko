@@ -136,25 +136,29 @@ export class BarbaLoader {
         Barba.Pjax.Dom.parseResponse = function(response) {
         // Reasine header links when page language changed
 
-            const parser = new DOMParser()
+            const parser = new DOMParser();
             const el = parser.parseFromString(response, "text/html");
             const newLang = el.querySelector('.header__lang');
             const newLangList = newLang.querySelectorAll('.header__lang-link');
             const currentLangList = document.querySelectorAll('.header__lang-link');
             const newMenuLinks = el.querySelectorAll('.menu a');
             const currentMenuLinks = document.querySelectorAll('.menu a');
+            const newLogo = el.querySelector('.logo__link');
+            const currentLogo = document.querySelector('.logo__link');
 
             document.querySelector('.header__active-item').textContent = newLang.querySelector('.header__active-item').textContent;
 
             Array.from(currentLangList).map( (link, i) => {
                 link.setAttribute('href', newLangList[i].getAttribute('href'));
                 link.querySelector('.header__lang-item').textContent = newLangList[i].querySelector('.header__lang-item').textContent;
-            })
+            });
 
             Array.from(currentMenuLinks).map( (link, i) => {
                 link.setAttribute('href', newMenuLinks[i].getAttribute('href'));
                 link.textContent = newMenuLinks[i].textContent;
-            })
+            });
+
+            currentLogo.setAttribute('href', newLogo.getAttribute('href'));
 
             return originalFn.apply(Barba.Pjax.Dom, arguments);
         };
