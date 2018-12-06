@@ -54,6 +54,15 @@ select {
     width: 100%;
 }
 
+.h-content-seo {
+    overflow: hidden;
+    width: 1px !important;
+    height: 1px !important;
+    margin-left: -1px !important;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
 /* Import general styles*/
 @import "general/headings";
 @import "general/text-decoration";

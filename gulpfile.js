@@ -9,6 +9,7 @@ const file = require('gulp-file');
 const inject = require('gulp-inject-string');
 const plugins = require('gulp-load-plugins')();
 const rename = require("gulp-rename");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const SOURCE = `source`;
 const HANDLEBARS = `handlebars`;
 const PAGES = `pages`;
@@ -27,8 +28,11 @@ const STATIC__DEV = require('./gulp/frontendPath.js');
 const STATIC__BUILD = require('./gulp/backendPath.js');
 const STATIC__CMS = require('./gulp/backendPath.js');
 const BUILD = `build`;
+
+
 let DATE = new Date().toUTCString().replace(/[ :]+/g, '_').replace(/[TZtz,]+|_GM+|GM+/g, '');
 let isBuild, cms = false;
+
 
 const PARAMS = {
     hash: Math.random().toString(36).substring(7),
@@ -283,7 +287,7 @@ gulp.task(commands.js, function () {
             publicPath: `${DEV}/${SOURCE}/${JS}`,
             filename: name
         },
-        devtool: 'cheap-module-inline-source-map',
+        devtool: isBuild ? null : 'cheap-module-inline-source-map',
         module: {
             loaders:[
                 {
@@ -298,24 +302,24 @@ gulp.task(commands.js, function () {
                 }
             ]
         },
+        optimization: {
+            minimizer: [new UglifyJsPlugin({
+                test: /\.js(\?.*)?$/i
+            })]
+        },
         plugins: [
 
             new packages.webpack.NoErrorsPlugin(),
-            /*new packages.webpack.ProvidePlugin({
-                IScroll: "fullpage.js/vendors/scrolloverflow"
-            }),*/
-
             new packages.webpack.optimize.CommonsChunkPlugin({
                 name: 'common',
                 minChunks: 2
             })
-
-
         ]
     };
     if(cms == true) {
         Object.assign(webpackParams, {externals: {jquery: 'jQuery'}});
     }
+    console.log(isBuild)
     return gulp.src(`${PARAMS.src.js}/*.js`)
         .pipe(packages.webpackStream(webpackParams, packages.webpack))
         .pipe( packages.replace({
