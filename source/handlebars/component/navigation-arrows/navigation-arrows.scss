@@ -1,20 +1,20 @@
 .navigation-arrows {
     &__nav {
         position: absolute;
-        top: 45px;
+        bottom: 18px;
         width: 100%;
         text-align: center;
         z-index: 55;
 
-        @media only screen and (max-height: $maxHeight) {
+        /*@media only screen and (max-height: $maxHeight) {
             top: 4vh;
         }
 
         @include media($desk-middle) {
             top: 25px;
-        }
+        }*/
 
-        @include media(1240px) {
+        @include media($break-mobile) {
             display: none;
         }
     }

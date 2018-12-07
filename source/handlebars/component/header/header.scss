@@ -84,6 +84,7 @@
         }
         @include media($break-mobile) {
             padding: 0 0 0 20px;
+            font-family: $exo2SemiBold;
         }
     }
 

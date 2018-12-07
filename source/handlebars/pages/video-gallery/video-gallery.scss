@@ -31,6 +31,8 @@
 
     .navigation-arrows__nav {
         display: block;
+        top: 45px;
+        bottom: auto;
 
         @include media(1240px) {
             width: 100%;
@@ -38,7 +40,7 @@
             display: flex;
             justify-content: center;
             top: auto;
-            bottom: 30px;
+            bottom: 18px;
             left: 0;
         }
     }
