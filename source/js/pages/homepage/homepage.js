@@ -308,16 +308,16 @@ export class HomePage {
 
     initVideoPopup() {
 
-        const playBtn = document.querySelector('.homepage__play-btn');
-        const iframeSrc = playBtn.getAttribute('data-iframe')
-
-        playBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-
-            const videoPopup = new VideoPopup(iframeSrc);
-
-            videoPopup.openPopup();
-        })
+        // const playBtn = document.querySelector('.homepage__play-btn');
+        // const iframeSrc = playBtn.getAttribute('data-iframe')
+        //
+        // playBtn.addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //
+        //     const videoPopup = new VideoPopup(iframeSrc);
+        //
+        //     videoPopup.openPopup();
+        // })
     }
 
 

@@ -20,7 +20,8 @@
                     </div>
                 </section>
                 {{#each homepage.items}}
-                    <section class="homepage__item homepage__swiped-blocks" style="background-image: url('{{background}}')">
+                    <section class="homepage__item homepage__swiped-blocks">
+                        <img class="img-fit-absolute" src="{{background}}" alt="">
                         <div class="main__text">
                             {{#if title}}
                                 <a href="{{link}}" class="main-title main-title--light">{{title}}</a>
