@@ -22,6 +22,7 @@
 
     @include media($break-mobile) {
         background: rgba(#000, 0.8);
+        padding: 70px 30px 50px;
     }
 
     &__wrapper {
@@ -75,6 +76,16 @@
             @include media($break-mobile) {
                 transform: translateX(-25%);
             }
+        }
+    }
+
+    &__img {
+        display: none;
+        max-width: 100%;
+        margin: 35px auto;
+
+        @include media($break-mobile) {
+            display: block;
         }
     }
 
