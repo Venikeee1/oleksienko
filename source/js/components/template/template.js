@@ -68,8 +68,6 @@ export class Template {
                             .to('.scroll-more', 0, {opacity: 1}, 0)
                             .to('.red-square', 0, {opacity: 1,scale: 1}, 0)
                             .to('.red-squares', 0, {opacity: 1}, 0)
-
-
                     }
 
 
@@ -137,7 +135,7 @@ export class Template {
                         .to('.navigation-arrows__nav', 0.6, {opacity: 1,pointerEvents: 'auto'},0)
                         .to('.slide__number', 0.5, {opacity: 1},0);
 
-                    if(window.innerWidth <= 1240) {
+                    if(window.innerWidth <= 767) {
                         tl.to('.inner-page__mobile-nav', 0.3, {opacity: 1},0)
                     }
 

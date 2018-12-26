@@ -193,13 +193,13 @@
         width: 100%;
         left: 0;
         right: 0;
-        display: flex;
         bottom: 25px;
         font-family: $exo2Light;
         font-size: 16px;
         padding: 0 0 0 18%;
         pointer-events: none;
         opacity: 0;
+        display: none;
         max-width: 500px;
         z-index: 5;
 
@@ -208,6 +208,7 @@
         }
 
         @include media($break-mobile) {
+            display: flex;
             padding: 0 10% 0 14%;
             font-size: 12px;
             opacity: 1;
