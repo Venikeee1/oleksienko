@@ -68,3 +68,26 @@
     margin-left: 3px;
   }
 }
+
+.middle-scroll-more {
+  position: fixed;
+  z-index: 5;
+  left: 50%;
+  bottom: 0;
+  width: 1px;
+  height: 60px;
+  background: #fff;
+  animation: scroll-animation 3s alternate infinite;
+}
+
+@keyframes scroll-animation {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(70%);
+  }
+}
+
+
