@@ -10,6 +10,7 @@ export class HomePage {
         this.letterAnimationTimeLine = new TimelineMax();
         this.globalObj = globalObj;
         this.isFirstCallback = true;
+        this.middleScrollMore = document.querySelector('.middle-scroll-more');
     }
 
     initSlider() {
@@ -23,17 +24,17 @@ export class HomePage {
                 nodeItem: elem,
                 link: elem.getAttribute('href')
             };
-            
+
             longListArray.push(langItem);
         });
 
 
         const sliderSettings = {
-            afterInit: () => { 
+            afterInit: () => {
                 const logo = document.querySelector('.preloader__logo');
                 const logoCircle = logo.querySelector('.preloader__circle');
                 const timeLine = new TimelineMax();
-        
+
                 timeLine
                     .to(logo, 1.3,{scale: 0.8})
                     .to(logoCircle, 1.2,{width: 0})
@@ -65,18 +66,10 @@ export class HomePage {
                 currentTimeLine = tl;
 
                 if( currentIndex > 0 && prevIndex === 0) {
-                   
+
                     this.letterShowAnimation();
                     this.sliderDotsAnimation();
-
-                    /*if(window.GLOBAL_OBJECT.isPreviousProjectPage) {
-                        document.querySelector('.logo').style.opacity = 1;
-                        window.GLOBAL_OBJECT.isPreviousProjectPage = false;
-                    } else {
-
-                    }*/
                     this.logoAnimationShow();
-                    //window.GLOBAL_OBJECT.header.showLogoText();
                     window.GLOBAL_OBJECT.header.isHidden = false;
 
                     this.firstScreenSlider.autoPlayDisable();
@@ -95,14 +88,6 @@ export class HomePage {
                     this.letterHideAnimation();
                     this.logoAnimationHide();
                     this.firstScreenSlider.autoPlayEnable();
-
-                }
-
-                if( currentSlide.getAttribute('data-section') === 'footer') {
-                    document.querySelector('.scroll-more--down').classList.remove('active');
-                    document.querySelector('.scroll-more--up').classList.add('active');
-
-                    window.GLOBAL_OBJECT.header.textAniamtaionAloud = false;
 
                 }
 
@@ -131,6 +116,15 @@ export class HomePage {
                     })
                 }
 
+                if( currentSlide.getAttribute('data-section') === 'footer') {
+                    document.querySelector('.scroll-more--down').classList.remove('active');
+                    document.querySelector('.scroll-more--up').classList.add('active');
+                    this.middleScrollMore.classList.add('middle-scroll-more--hidden');
+
+                    window.GLOBAL_OBJECT.header.textAniamtaionAloud = false;
+
+                }
+
                 if( currentSlide.getAttribute('data-section') !== 'footer') {
                     window.GLOBAL_OBJECT.header.textAniamtaionAloud = true;
                     window.GLOBAL_OBJECT.header.opacityAniamtaionAloud = true;
@@ -150,16 +144,15 @@ export class HomePage {
             afterAnimationEnd: (currentSlide, currentIndex, prevIndex) => {
                 const tl = new TimelineMax();
 
-
-
                 if( currentIndex > 0 && currentSlide.getAttribute('data-section') !== 'footer') {
 
                     tl.staggerTo(currentSlide.querySelectorAll('.rest-letters-animation'), 0.8, {y: 0, opacity: 1}, 0)
-                        
+
                         .staggerTo(currentSlide.querySelectorAll('.animation-title'), 1, {y: 0, opacity: 1},0.3, '-=0.8')
 
                     document.querySelector('.scroll-more--down').classList.add('active');
                     document.querySelector('.scroll-more--up').classList.remove('active');
+                    this.middleScrollMore.classList.remove('middle-scroll-more--hidden');
 
                 } else if(currentSlide.getAttribute('data-section') === 'footer') {
 
@@ -176,9 +169,6 @@ export class HomePage {
                 if( currentSlide.querySelector('.slide__number')) {
                     tl.to(currentSlide.querySelector('.slide__number'), 1.2, {x: 0, opacity: 1},'-=0.5');
                 }
-
-
-
             }
         };
 
@@ -241,9 +231,7 @@ export class HomePage {
     }
 
     logoAnimationHide() {
-        /*const tl = new TimelineMax();
 
-        tl.to('.logo', 0.5, {opacity: 0, pointerEvents: 'none'}, 0)*/
     }
 
     checkActiveLetter( index ) {

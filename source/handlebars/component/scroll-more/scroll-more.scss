@@ -78,6 +78,12 @@
   height: 35px;
   background: #fff;
   animation: scroll-animation 3s alternate infinite;
+  pointer-events: none;
+  transition: opacity 0.4s;
+
+  &--hidden {
+    opacity: 0;
+  }
 }
 
 @keyframes scroll-animation {

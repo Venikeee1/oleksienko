@@ -10,6 +10,7 @@ export class Template {
         this.slider = {};
         this.innerPopup = new innerPageInfo('.inner-page-info__wrapper');
         this.lazyLoad = new LazyLoad();
+        this.middleScrollMore = document.querySelector('.middle-scroll-more');
         this.hammer = new Hammer(document.querySelector('.inner-page'));
         this.hammer.get('swipe').set({ direction: Hammer.DIRECTION_ALL , pointers: 1});
     }
@@ -25,7 +26,7 @@ export class Template {
                 nodeItem: elem,
                 link: elem.getAttribute('href')
             };
-            
+
             longListArray.push(langItem);
         });
 
@@ -52,7 +53,7 @@ export class Template {
                     .staggerTo('.slide__description', 1, {y: 0, opacity: 1},0.3, '-=1.1')
                     .to('.slide__number', 1.2, {x: 0, opacity: 1},'-=0.5')
                     .to('.logo', 0.6, { opacity:1}, 0)
-                    
+
 
                     if(window.GLOBAL_OBJECT.firstAnimation) {
                         tl
@@ -94,6 +95,7 @@ export class Template {
 
                     document.querySelector('.scroll-more--down').classList.remove('active');
                     document.querySelector('.scroll-more--up').classList.add('active');
+                    this.middleScrollMore.classList.add('middle-scroll-more--hidden');
 
                     window.GLOBAL_OBJECT.header.textAniamtaionAloud = false;
                 } else {
@@ -109,7 +111,7 @@ export class Template {
                 if(window.isMobile) {
                     const nextIndex = currentslide + 1;
                     const prevIndex = currentslide - 1;
-                    
+
                     if(prevIndex >= 0) {
                         this.lazyLoad.setLazyLoad( this.slider.slides[prevIndex].querySelector('.inner-page__slide-img') );
                     }
@@ -141,6 +143,7 @@ export class Template {
 
                     document.querySelector('.scroll-more--down').classList.add('active');
                     document.querySelector('.scroll-more--up').classList.remove('active');
+                    this.middleScrollMore.classList.remove('middle-scroll-more--hidden');
                 } else {
                     window.GLOBAL_OBJECT.header.showLogoText();
                     window.GLOBAL_OBJECT.header.opacityAniamtaionAloud = false;
@@ -194,13 +197,13 @@ export class Template {
     lazyInit() {
         const firstSlide = document.querySelectorAll('.inner-page__slide-img')[0];
         const slides = document.querySelectorAll('.inner-page__slide-img');
-        
+
         firstSlide.onload = () => {
             const rightImg = document.querySelector('.inner-page__side-img--prev');
             const leftImg = document.querySelector('.inner-page__side-img--next');
 
             if(window.isMobile) {
-                
+
                 const nextSlide = this.slider.slides[this.slider.currentIndex + 1];
                 console.log(nextSlide)
 
@@ -220,7 +223,7 @@ export class Template {
             if(rightImg) {
                 this.lazyLoad.setLazyLoad(rightImg);
             }
-            
+
         };
 
         this.lazyLoad.setLazyLoad(firstSlide);
