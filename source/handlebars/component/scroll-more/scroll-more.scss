@@ -72,9 +72,9 @@
     z-index: 5;
     left: 50%;
     bottom: 0;
-    width: 1px;
+    width: 2px;
     height: 35px;
-    background: #fff;
+    background: rgba(#fff, 0.8);
     animation: scroll-animation 3s alternate infinite;
     pointer-events: none;
     transition: opacity 0.4s;
