@@ -26,7 +26,6 @@ export class Contacts {
         window.GLOBAL_OBJECT.header.opacityAniamtaionAloud = true;
         window.GLOBAL_OBJECT.header.hideLogoText();
         document.removeEventListener('keydown', this.onEscPress);
-
     }
 
 

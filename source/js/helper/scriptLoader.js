@@ -4,6 +4,7 @@ import {VideoGallery} from '../pages/videoGallery/videoGallery';
 import {Default} from '../components/default';
 import {Contacts} from "../pages/contacts/contacts";
 import {AllProjects} from "../pages/all-projects/allProjects";
+import {Vacancy} from "../pages/vacancy/vacancy";
 
 
 export default class ScriptLoader {
@@ -14,6 +15,7 @@ export default class ScriptLoader {
             'video': VideoGallery,
             'contacts' : Contacts,
             'all_projects': AllProjects,
+            'vacancy': Vacancy,
             'default': Default
         }
     }

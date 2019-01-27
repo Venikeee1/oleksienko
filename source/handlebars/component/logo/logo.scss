@@ -44,12 +44,14 @@
 
     &__text {
         pointer-events: none;
+        margin-top: -50px;
+        margin-left: 141px;
 
-        @include media(900px) {
-            margin-top: -15px;
+        @include media($desk-middle) {
+            margin-left: 110px;
         }
 
-        @include media(1200px) {
+        @include media(1250px) {
             display: none;
         }
 
@@ -58,6 +60,10 @@
             fill: #fff;
             overflow: visible;
             width: 500px;
+
+            @include media(1500px) {
+                width: 400px;
+            }
 
             @include media($desk-middle) {
                 width: 330px;
