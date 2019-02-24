@@ -25,13 +25,13 @@ export class Prelaoder {
 
     interval() {
         this.interval = setInterval(() => {
-            if( !this.animationAloud ) {
-                if(this.onDisableCallBack) {
-                    this.onDisableCallBack();
-                }
-                clearInterval(this.interval);
-                this.close();
+            if( this.animationAloud ) return;
+
+            if(this.onDisableCallBack) {
+                this.onDisableCallBack();
             }
+            clearInterval(this.interval);
+            this.close();
         }, 2000)
     }
 

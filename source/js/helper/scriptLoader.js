@@ -5,6 +5,7 @@ import {Default} from '../components/default';
 import {Contacts} from "../pages/contacts/contacts";
 import {AllProjects} from "../pages/all-projects/allProjects";
 import {Vacancy} from "../pages/vacancy/vacancy";
+import {Blog} from "../pages/blog/blog";
 
 
 export default class ScriptLoader {
@@ -16,7 +17,8 @@ export default class ScriptLoader {
             'contacts' : Contacts,
             'all_projects': AllProjects,
             'vacancy': Vacancy,
-            'default': Default
+            'default': Default,
+            'blog': Blog
         }
     }
 

@@ -1,8 +1,42 @@
+$vacancy-tablet: 850px;
+
 .vacancy {
     width: 100%;
     height: 100%;
     background: #000;
-    overflow: auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+
+    &__wrapper {
+        width: 100%;
+        height: 100%;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 20px;
+            z-index: 2;
+            width: 100%;
+            height: 15vh;
+            background: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.7));
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 20px;
+            z-index: 2;
+            width: 100%;
+            height: 15vh;
+            background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.3));
+        }
+    }
+
+    @include media($break-tablet) {
+        overflow-y: auto;
+    }
 
     &__container {
         height: 100%;
@@ -11,19 +45,19 @@
     &__inner {
         position: relative;
         display: flex;
-        width: 45%;
-        min-width: 800px;
+        width: 39%;
+        min-width: 400px;
         padding-top: 150px;
         padding-bottom: 150px;
         margin-left: auto;
         font-family: $uniSansSemiLight, sans-serif;
         min-height: 100%;
 
-        @include media(1500px) {
-            min-width: 700px;
+        @include media($desk-middle) {
+            padding-top: 140px;
         }
 
-        @include media(850px) {
+        @include media($vacancy-tablet) {
             padding-top: 220px;
             width: 100%;
             min-width: 0;
@@ -51,20 +85,39 @@
     }
 
     &__additional-info {
-        position: relative;
-        padding-right: 50px;
+        position: fixed;
+        z-index: 10;
+        top: 0;
+
+        right: 38%;
+        height: 100%;
+        padding-top: calc(98px + 5vh);
+        padding-bottom: 50px;
+        padding-right: 70px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
 
-        @include media($break-small-mobile) {
-            position: fixed;
-            top: 160px;
+        @include media($desk-middle) {
+            padding-top: 110px;
+        }
+
+        @include media(1200px) {
+            right: 40%;
+        }
+
+        @include media($break-tablet) {
+            right: calc(40% + 30px);
+        }
+
+        @include media($vacancy-tablet) {
             left: 30px;
+            right: auto;
+            padding-top: 150px;
         }
 
         @include media($break-extra-small) {
-            top: 130px;
+            padding-top: 120px;
             left: 15px;
         }
     }
@@ -102,38 +155,47 @@
         }
     }
 
-    &__x {
+    &__arrow {
         position: absolute;
         pointer-events: none;
         top: 0;
         right: 0;
         display: inline-block;
-        width: 30px;
-        height: 30px;
+        width: 20px;
+        height: 20px;
         transition: opacity 0.4s, background-color 0.4s;
-        opacity: 0;
 
         &::before, &::after {
             content: '';
             position: absolute;
             width: 1px;
-            height: 20px;
+            height: 14px;
             background: #fff;
-            top: 0;
-            right: 15px;
+            top: 10px;
+            transition: all 0.4s;
         }
 
         &::before {
-            transform: rotate(45deg);
+            transform: rotate(-44deg);
+            transform-origin: 0 0;
+            left: 0;
         }
 
         &::after {
-            transform: rotate(-45deg);
+            transform: rotate(44deg);
+            transform-origin: 100% 0;
+            right: 0;
         }
     }
 
     &__img {
         max-width: 110px;
+        width: 15vh;
+
+        @include media($desk-middle) {
+            width: 90px;
+        }
+
 
         @include media($break-small-mobile) {
             max-width: 80px;
@@ -145,7 +207,7 @@
         line-height: 1.35;
 
         @include media(1500px) {
-            padding-right: 5vw;
+            padding-right: 3vw;
         }
 
         @include media($break-small-mobile) {
@@ -191,11 +253,24 @@
         &.is-opened {
             color: $red-color;
 
-            .vacancy__x {
+            .vacancy__arrow {
                 opacity: 1;
 
                 &::before, &::after {
                     background: $red-color;
+                    top: 15px;
+                }
+
+                &::before {
+                    transform: rotate(-134deg);
+                    transform-origin: 0 0;
+                    left: 0;
+                }
+
+                &::after {
+                    transform: rotate(134deg);
+                    transform-origin: 100% 0;
+                    right: 0;
                 }
             }
         }
