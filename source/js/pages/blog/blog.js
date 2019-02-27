@@ -18,6 +18,6 @@ export class Blog {
         this.onInit();
         setTimeout(()=>{
             window.GLOBAL_OBJECT.preloader.disable()
-        },500)
+        },200)
     }
 }
