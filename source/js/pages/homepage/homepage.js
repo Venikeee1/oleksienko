@@ -11,6 +11,7 @@ export class HomePage {
         this.globalObj = globalObj;
         this.isFirstCallback = true;
         this.middleScrollMore = document.querySelector('.middle-scroll-more');
+        this.videoBG = document.querySelector('.homepage__bg-video');
     }
 
     initSlider() {
@@ -108,6 +109,10 @@ export class HomePage {
                         .to('.homepage__play-triangle', 0.3, {x: '50%'})
                         .to('.homepage__play-triangle', 0.3, {x: '0%'})
 
+                    this.videoBG.play();
+
+                } else {
+                    this.videoBG.pause();
                 }
 
                 if( currentSlide.getAttribute('data-section') === 'achievement' ) {
@@ -183,7 +188,7 @@ export class HomePage {
         const sliderSettings = {
             sliderStyle: 'fadeIn',
             autoplay: true,
-            delay: 7000,
+            delay: 5000,
             animationTime: 4,
             touch: false,
             afterInit: (currentSlide)  => {
@@ -264,13 +269,15 @@ export class HomePage {
     }
 
     addEventListenersToLetters() {
-        let activeLetter;
+        let activeLetter = document.querySelector('.dila__letter-container.active');
 
         Array.from(this.letters).forEach( (letter) => {
 
             letter.addEventListener('click', (e) => {
                 e.preventDefault();
                 const index = letter.getAttribute('data-index');
+
+                if ( +index === +this.slider.currentIndex) return;
 
                 if(activeLetter) {
                     activeLetter.classList.remove('active');

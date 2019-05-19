@@ -214,6 +214,10 @@ $menu-white-color: #fefefe;
         &:last-child {
             margin-bottom: 0;
         }
+
+        @include media(600px) {
+            margin-bottom: 20px;
+        }
     }
 
     &__info-link {

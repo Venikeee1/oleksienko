@@ -20,7 +20,6 @@
         @include media($break-mobile) {
             right: 25px;
             font-size: 16px;
-            display: none;
         }
     }
 
@@ -29,7 +28,7 @@
         position: relative;
 
         &.active {
-            pointer-events: none;
+            // pointer-events: none;
             .dila__word {
                 transform: translateX(0);
                 opacity: 1;
@@ -66,10 +65,6 @@
             .dila__letter {
                 opacity: 0;
             }
-        }
-
-        @include media($break-mobile) {
-            pointer-events: none;
         }
     }
 

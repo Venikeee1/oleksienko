@@ -67,6 +67,10 @@
                     </div>
                 </section>
                 <section class="homepage__item" style="background-image: url('{{homepage.video.background}}')" data-section="video">
+                    <video playsinline muted loop class="homepage__bg-video" id="bgvideo">
+                        <source src="https://oleksienko.ua/site/assets/files/1070/converted.mp4" type="video/mp4;">
+                    </video>
+                    <!--<img class="img-fit-absolute" src="<?php echo $video->section_image->width(1600)->url; ?>">-->
                     <div class="main__text">
                         <a href="{{link}}" class="main-title main-title--light homepage__animation-title">{{homepage.video.title}}</a>
                         <a href="{{link}}" class="homepage__subtitle main-title main-title--semibold homepage__animation-title">{{homepage.video.titleBold}}</a>
