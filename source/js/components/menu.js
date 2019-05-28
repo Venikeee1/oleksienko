@@ -1,3 +1,5 @@
+import { showTel } from "../helper/helper";
+
 export class Menu {
     constructor( selector, settings ) {
         this.menu = document.querySelector(selector);
@@ -16,6 +18,9 @@ export class Menu {
         this.menu.classList.add('active');
         this.burger.classList.add('active');
 
+        if (typeof ga === 'function') {
+            ga('send', 'screenview', {screenName: 'Menu'});
+        }
     }
 
     menuClose() {
@@ -61,5 +66,6 @@ export class Menu {
     init() {
         this.checkSettings();
         this.addClickListeners();
+        showTel('.menu__tel-item');
     }
 }

@@ -3,6 +3,7 @@ export class innerPageInfo {
         this.pageInfoContainer = document.querySelector(selector);
         this.tl = new TimelineMax();
         this.header = document.querySelector('.header__inner');
+        this.awardsLinks = document.querySelectorAll('.inner-page-info__attribute-list a');
 
         this.init();
     }

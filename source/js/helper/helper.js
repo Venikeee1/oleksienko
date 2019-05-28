@@ -29,3 +29,17 @@ export const wrapFirstLetters = () => {
     })
 }
 
+export function showTel(anchor) {
+    const anchorElems = document.querySelectorAll(anchor);
+
+    Array.from(anchorElems).forEach(elem => {
+        const tel = elem.getAttribute('data-tel');
+        elem.addEventListener('click', (e) => {
+            if (window.innerWidth > 1024) e.preventDefault();
+            e.stopPropagation();
+
+            elem.textContent = tel;
+        })
+    })
+}
+

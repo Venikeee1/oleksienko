@@ -1,6 +1,7 @@
 import {Slider} from "../../components/slider";
 import {VideoPopup} from "../../components/videoPopup";
 import Hammer from 'hammerjs';
+import {showTel} from "../../helper/helper";
 
 export class HomePage {
     constructor( globalObj) {
@@ -128,6 +129,9 @@ export class HomePage {
 
                     window.GLOBAL_OBJECT.header.textAniamtaionAloud = false;
 
+                    if (typeof ga === 'function') {
+                        ga('send', 'screenview', {screenName: 'Footer'});
+                    }
                 }
 
                 if( currentSlide.getAttribute('data-section') !== 'footer') {
@@ -301,21 +305,6 @@ export class HomePage {
         })
     }
 
-    initVideoPopup() {
-
-        // const playBtn = document.querySelector('.homepage__play-btn');
-        // const iframeSrc = playBtn.getAttribute('data-iframe')
-        //
-        // playBtn.addEventListener('click', (e) => {
-        //     e.preventDefault();
-        //
-        //     const videoPopup = new VideoPopup(iframeSrc);
-        //
-        //     videoPopup.openPopup();
-        // })
-    }
-
-
     checkForDisablingHover() {
         if(window.innerWidth < 1040) {
             Array.from(document.querySelectorAll('.dila__letter-container')).forEach( (elem) => {
@@ -345,11 +334,11 @@ export class HomePage {
         window.GLOBAL_OBJECT.header.isHidden = true;
         this.initFirstScreenSlider();
         this.wrapFirstLetters();
-        this.initVideoPopup();
         this.checkForDisablingHover();
         this.resizeWindow();
         this.addEventListenersToLetters();
         this.addSwipe();
         this.initSlider();
+        showTel('.footer__phone-link');
     }
 }

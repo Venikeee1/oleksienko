@@ -1,5 +1,5 @@
 import {Slider} from "../slider";
-import {wrapFirstLetters} from "../../helper/helper";
+import { showTel, wrapFirstLetters } from "../../helper/helper";
 import {innerPageInfo} from "../innerPageInfo/innerPageInfo";
 import SimpleBar from 'simplebar';
 import Hammer from 'hammerjs';
@@ -98,6 +98,10 @@ export class Template {
                     this.middleScrollMore.classList.add('middle-scroll-more--hidden');
 
                     window.GLOBAL_OBJECT.header.textAniamtaionAloud = false;
+
+                    if (typeof ga === 'function') {
+                        ga('send', 'screenview', {screenName: 'Footer'});
+                    }
                 } else {
                     if(!window.isMobile) {
                         tl.to('.logo__svg', 0.8, {opacity: 0.5}, 0.3)
@@ -235,6 +239,13 @@ export class Template {
         window.GLOBAL_OBJECT.header.opacityAniamtaionAloud = true;
     }
 
+    showHeaderIfItIsTransparent() {
+        const header = document.querySelector('.header__inner');
+        if(header.style.opacity === '0') {
+            new TimelineMax().to(header, 0.25, {opacity: 1})
+        }
+    }
+
     init() {
         window.GLOBAL_OBJECT.header.hideLogoText();
         wrapFirstLetters();
@@ -243,6 +254,8 @@ export class Template {
         this.addSwipe();
         this.showInnerPopup();
         this.customizeScrollBar();
+        this.showHeaderIfItIsTransparent();
         window.GLOBAL_OBJECT.isPreviousProjectPage = false;
+        showTel('.footer__phone-link');
     }
 }

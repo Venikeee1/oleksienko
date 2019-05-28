@@ -16,7 +16,7 @@ export class BarbaLoader {
     /* disable refreshing page when link to the same page*/
     disablePageNavigation( container ) {
 
-        const links = document.querySelector(container).querySelectorAll('a[href]');
+        const links = document.querySelector(container).querySelectorAll('a[href]:not(.menu__tel-item)');
 
         const checkCurrentLink = (e) => {
             const url = window.location.href;
