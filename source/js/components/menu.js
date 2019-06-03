@@ -19,7 +19,11 @@ export class Menu {
         this.burger.classList.add('active');
 
         if (typeof ga === 'function') {
-            ga('send', 'screenview', {screenName: 'Menu'});
+            ga('send', 'event', {
+                'eventCategory': 'Пользователь открыл меню',
+                'eventAction': 'menu_open',
+                'eventLabel': 'User open menu'
+            });
         }
     }
 

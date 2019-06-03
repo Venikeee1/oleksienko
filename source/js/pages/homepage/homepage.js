@@ -13,6 +13,7 @@ export class HomePage {
         this.isFirstCallback = true;
         this.middleScrollMore = document.querySelector('.middle-scroll-more');
         this.videoBG = document.querySelector('.homepage__bg-video');
+        this.doesScrollToFooterFirstTime = true;
     }
 
     initSlider() {
@@ -129,8 +130,14 @@ export class HomePage {
 
                     window.GLOBAL_OBJECT.header.textAniamtaionAloud = false;
 
-                    if (typeof ga === 'function') {
-                        ga('send', 'screenview', {screenName: 'Footer'});
+                    if (typeof ga === 'function' && this.doesScrollToFooterFirstTime) {
+                        ga('send', 'event', {
+                            'eventCategory': 'Пользователь дошел до футера',
+                            'eventAction': 'scroll_to_footer',
+                            'eventLabel': 'User rich footer'
+                        });
+
+                        this.doesScrollToFooterFirstTime = false
                     }
                 }
 
