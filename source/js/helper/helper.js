@@ -38,6 +38,10 @@ export function showTel(anchor) {
             if (window.innerWidth > 1024) e.preventDefault();
             e.stopPropagation();
 
+            if (typeof ga === 'function') {
+                ga('send', 'event', 'Contact', 'Phone', 'Click');
+            }
+
             elem.textContent = tel;
         })
     })

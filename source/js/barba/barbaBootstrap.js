@@ -64,10 +64,10 @@ export class BarbaLoader {
             this.disablePageLink = true;
             this.transitionName = el.getAttribute('data-transition');
             this.transitionName = this.transitionName || 'defaultTransition';
-            
+
             const url = el.getAttribute('href');
             let trimmedUrl = url;
-           
+
             el.setAttribute('href', trimmedUrl);
 
             if(this.scriptLoader.activeScript.removeSwipeListeners) {
@@ -106,8 +106,11 @@ export class BarbaLoader {
     barbaTransitionEnd() {
 
         Barba.Dispatcher.on('initStateChange', (e) => {
-            if (typeof ga === 'function') {
-                ga('send', 'pageview', location.pathname);
+            if ("ga" in window) {
+                let tracker = ga.getAll()[0];
+                if (tracker) {
+                    tracker.send("event", 'pageview', location.pathname );
+                }
             }
         })
 

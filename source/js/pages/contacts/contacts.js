@@ -1,3 +1,5 @@
+import { showTel } from "../../helper/helper";
+
 export class Contacts {
     constructor() {
 
@@ -37,5 +39,6 @@ export class Contacts {
             document.querySelector('.site-preloader').style.display = 'none';
         }
 
+        showTel('.footer__phone-link');
     }
 }

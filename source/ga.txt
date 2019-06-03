@@ -1,0 +1,11 @@
+<meta name="google-site-verification" content="MoOFjaAkTesEiJJJp9Qkeq0Vtm2DlgvrSb1ftcfpxaw" />
+<meta name="google-site-verification" content="n4sjF6kBle1vnLSdDYXpe1Qo98tQW_KPqFhRlzQAqhA" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121292739-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121292739-1');
+</script>
