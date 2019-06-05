@@ -100,11 +100,10 @@ export class Template {
 
                     window.GLOBAL_OBJECT.header.textAniamtaionAloud = false;
 
-                    if (typeof ga === 'function' && this.doesScrollToFooterFirstTime) {
-                        ga('send', 'event', {
-                            'eventCategory': 'Пользователь дошел до футера',
-                            'eventAction': 'scroll-to-footer',
-                            'eventLabel': 'User rich footer'
+                    if ( this.doesScrollToFooterFirstTime) {
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({
+                            'event': 'scroll_to_footer'
                         });
 
                         this.doesScrollToFooterFirstTime = false
