@@ -13,6 +13,7 @@ export class Template {
         this.middleScrollMore = document.querySelector('.middle-scroll-more');
         this.hammer = new Hammer(document.querySelector('.inner-page'));
         this.hammer.get('swipe').set({ direction: Hammer.DIRECTION_ALL , pointers: 1});
+        this.doesScrollToFooterFirstTime = true;
     }
 
     initSlider() {
@@ -99,8 +100,13 @@ export class Template {
 
                     window.GLOBAL_OBJECT.header.textAniamtaionAloud = false;
 
-                    if (typeof ga === 'function') {
-                        ga('send', 'screenview', {screenName: 'Footer'});
+                    if ( this.doesScrollToFooterFirstTime) {
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({
+                            'event': 'scroll_to_footer'
+                        });
+
+                        this.doesScrollToFooterFirstTime = false
                     }
                 } else {
                     if(!window.isMobile) {

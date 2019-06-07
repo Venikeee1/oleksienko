@@ -13,6 +13,7 @@ export class HomePage {
         this.isFirstCallback = true;
         this.middleScrollMore = document.querySelector('.middle-scroll-more');
         this.videoBG = document.querySelector('.homepage__bg-video');
+        this.doesScrollToFooterFirstTime = true;
     }
 
     initSlider() {
@@ -129,8 +130,13 @@ export class HomePage {
 
                     window.GLOBAL_OBJECT.header.textAniamtaionAloud = false;
 
-                    if (typeof ga === 'function') {
-                        ga('send', 'screenview', {screenName: 'Footer'});
+                    if ( this.doesScrollToFooterFirstTime) {
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({
+                            'event': 'scroll_to_footer'
+                        });
+
+                        this.doesScrollToFooterFirstTime = false
                     }
                 }
 
