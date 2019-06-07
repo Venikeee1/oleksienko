@@ -1,6 +1,7 @@
 import Barba from 'barba.js';
 import BarbaConfig from './barbaConfig';
 import ScriptLoader from '../helper/scriptLoader';
+import { addQueryParameterToLinkUrl } from "../helper/helper";
 
 
 export class BarbaLoader {
@@ -104,19 +105,10 @@ export class BarbaLoader {
     }
 
     barbaTransitionEnd() {
-
-        Barba.Dispatcher.on('initStateChange', (e) => {
-            if ("ga" in window) {
-                let tracker = ga.getAll()[0];
-                if (tracker) {
-                    tracker.send("event", 'pageview', location.pathname );
-                }
-            }
-        })
-
         Barba.Dispatcher.on('transitionCompleted', () => {
             this.disablePageLink = false;
 
+            addQueryParameterToLinkUrl();
 
             if( this.scriptLoader.activeScript.destroy ) {
                 this.scriptLoader.activeScript.destroy();
@@ -134,7 +126,7 @@ export class BarbaLoader {
     }
 
     barbaParseResponse() {
-        var originalFn = Barba.Pjax.Dom.parseResponse;
+        let originalFn = Barba.Pjax.Dom.parseResponse;
 
         Barba.Pjax.Dom.parseResponse = function(response) {
         // Reasine header links when page language changed
@@ -162,6 +154,8 @@ export class BarbaLoader {
             });
 
             currentLogo.setAttribute('href', newLogo.getAttribute('href'));
+
+            addQueryParameterToLinkUrl();
 
             return originalFn.apply(Barba.Pjax.Dom, arguments);
         };

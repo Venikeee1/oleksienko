@@ -4,7 +4,8 @@ import { LanguageSelector } from "./components/languageSelecor";
 import { BarbaLoader } from "./barba/barbaBootstrap";
 import { Prelaoder } from "./components/preloader";
 import { Settings } from "./global-settings/settings";
-import {Header} from "./components/header";
+import { Header } from "./components/header";
+import { addQueryParameterToLinkUrl } from "./helper/helper";
 
 
 window.GLOBAL_OBJECT = Settings;
@@ -31,7 +32,10 @@ window.addEventListener('load', () => {
     window.GLOBAL_OBJECT.menu = PopupMenu;
     window.GLOBAL_OBJECT.preloader = Preloader;
     window.GLOBAL_OBJECT.header = pageHeader;
+    window.GLOBAL_OBJECT.queryString = window.location.search.replace('?','');
     PopupMenu.animationOnClose = true;
+
+    addQueryParameterToLinkUrl();
 
     PopupMenu.init();
     const barba = new BarbaLoader();

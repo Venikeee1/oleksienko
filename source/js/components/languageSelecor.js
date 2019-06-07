@@ -6,7 +6,8 @@ export class LanguageSelector {
     }
 
     addListeners() {
-        this.langChoose.addEventListener('click', () => {
+        this.langChoose.addEventListener('click', (e) => {
+            e.preventDefault();
             this.headerLangList.classList.toggle('active');
         });
 

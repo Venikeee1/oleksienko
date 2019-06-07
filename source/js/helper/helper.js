@@ -47,3 +47,26 @@ export function showTel(anchor) {
     })
 }
 
+export function addQueryParameterToLinkUrl() {
+    let links = document.getElementsByTagName("a");
+
+    for (let index = 0; index < links.length; index += 1) {
+        let tempLink = links[index].href, tempParts;
+
+        if (tempLink.indexOf(window.GLOBAL_OBJECT.queryString) === -1) { // The script is looking for all links with the utmInheritingDomain
+
+            tempParts = tempLink.split("#");
+
+            if (tempParts[0].indexOf("?") < 0 ) {
+                tempParts[0] += "?" + window.GLOBAL_OBJECT.queryString; // The script adds UTM parameters to all links with the domain you've defined
+            } else {
+                tempParts[0] += "&" + window.GLOBAL_OBJECT.queryString;
+            }
+
+            tempLink = tempParts.join("#");
+        }
+
+        links[index].href = tempLink;
+    }
+};
+

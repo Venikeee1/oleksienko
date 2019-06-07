@@ -159,6 +159,7 @@
         padding: 0;
         line-height: 1;
         outline: none;
+        text-decoration: none;
     }
 
     &__active-item {
@@ -354,7 +355,7 @@
 }
 
 .fb-customerchat {
-    
+
     iframe {
         @include media($break-mobile) {
             width: 280pt !important;
