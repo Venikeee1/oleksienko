@@ -215,7 +215,6 @@ export class Template {
             if(window.isMobile) {
 
                 const nextSlide = this.slider.slides[this.slider.currentIndex + 1];
-                console.log(nextSlide)
 
                 if(nextSlide) {
                     this.lazyLoad.setLazyLoad(nextSlide.querySelector('.inner-page__slide-img'));

@@ -1,6 +1,8 @@
 import Hammer from 'hammerjs';
 import WheelIndicator from 'wheel-indicator';
 
+let popstateCallback = null
+
 export class Slider {
     constructor(selector, settings){
         this.sliderContainer = document.querySelector( selector );
@@ -324,8 +326,9 @@ export class Slider {
     }
 
     destroy() {
-        this.wheelIndicator.turnOff();
+        this.wheelIndicator.destroy();
         this.hammer.destroy();
+        window.removeEventListener('popstate', popstateCallback)
     }
 
     init(){
@@ -344,9 +347,8 @@ export class Slider {
 
         if(this.hashNavigation) {
             this.checkHash(true);
-            window.addEventListener('popstate', () => {
-                this.checkHash();
-            })
+            popstateCallback = () => this.checkHash();
+            window.addEventListener('popstate', popstateCallback)
         }
     }
 }

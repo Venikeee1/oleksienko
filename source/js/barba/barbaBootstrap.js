@@ -25,6 +25,18 @@ export class BarbaLoader {
             let trimmedUrl = url;
             let newUrl = e.currentTarget.href;
 
+            let transitionName = e.currentTarget.getAttribute('data-transition') || 'defaultTransition';
+
+            if( !window.isMobile) {
+                if( transitionName === 'homePageSwipe' || transitionName === 'projectSwipeLeft') {
+                    transitionName = 'defaultTransition';
+                }
+            }
+
+            Barba.Pjax.getTransition =  () => {
+                return BarbaConfig[transitionName];
+            };
+
             if ( url.indexOf('#') >= 0) {
                 trimmedUrl = window.location.href.substring(0, window.location.href.indexOf('#'));
             }
@@ -35,18 +47,6 @@ export class BarbaLoader {
             } else if( newUrl.indexOf('#') >= 0 && newUrl.substring(0, newUrl.indexOf('#')) !== trimmedUrl) {
                 e.preventDefault();
                 e.stopPropagation();
-
-                let transitionName = e.currentTarget.getAttribute('data-transition') || 'defaultTransition';
-
-                if( !window.isMobile) {
-                    if( transitionName === 'homePageSwipe' || transitionName === 'projectSwipeLeft') {
-                        transitionName = 'defaultTransition';
-                    }
-                }
-
-                Barba.Pjax.getTransition =  () => {
-                    return BarbaConfig[transitionName];
-                };
 
                 Barba.Pjax.goTo(e.currentTarget.href);
             }

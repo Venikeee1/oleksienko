@@ -33,6 +33,7 @@ export class HomePage {
 
 
         const sliderSettings = {
+            touch: true,
             afterInit: () => {
                 const logo = document.querySelector('.preloader__logo');
                 const logoCircle = logo.querySelector('.preloader__circle');
@@ -54,7 +55,6 @@ export class HomePage {
                         .to('.red-squares', 0,{opacity: 0},0)
                 }
             },
-            touch: true,
             animateNextSlide: (currentSlide, currentIndex, prevIndex) => {
 
                 window.GLOBAL_OBJECT.currentSlide = currentSlide;
@@ -325,9 +325,11 @@ export class HomePage {
 
     destroy() {
         this.slider.destroy();
+        this.firstScreenSlider.destroy();
         window.GLOBAL_OBJECT.header.textAniamtaionAloud = true;
         window.GLOBAL_OBJECT.header.opacityAniamtaionAloud = true;
         window.GLOBAL_OBJECT.header.isHidden = false;
+        window.GLOBAL_OBJECT.currentSlide = null;
     }
 
     resizeWindow() {
