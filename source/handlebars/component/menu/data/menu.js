@@ -26,9 +26,14 @@ menu: {
             number: '05'
         },
         {
-            name: 'Design',
+            name: 'Urban',
             link: '/architect.html',
             number: '06'
+        },
+        {
+            name: 'Design',
+            link: '/architect.html',
+            number: '07'
         }
     ],
     projects: [

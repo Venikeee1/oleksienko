@@ -65,6 +65,10 @@ $menu-white-color: #fefefe;
         font-family: $uniSansLight, $exo2Light;
         font-size: 19px;
 
+        @media (max-height: 700px) {
+            font-size: 18px;
+        }
+
         @include media(600px) {
             font-size: 14px;
         }
@@ -123,6 +127,10 @@ $menu-white-color: #fefefe;
         @include media($break-tablet) {
             padding-top: 15px;
             padding-bottom: 5px;
+        }
+
+        @media (max-height: 700px) {
+            padding-top: 10px;
         }
 
         @include media(600px) {
