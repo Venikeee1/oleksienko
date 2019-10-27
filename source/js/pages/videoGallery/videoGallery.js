@@ -1,5 +1,5 @@
 import Swiper from 'swiper/dist/js/swiper';
-import {VideoPopup} from "../../components/videoPopup";
+import { VideoPopup } from "../../components/videoPopup";
 
 export class VideoGallery {
     constructor() {
@@ -171,7 +171,8 @@ export class VideoGallery {
                 e.preventDefault();
 
                 const iframeSrc = elem.getAttribute('data-frame');
-                const videoPopup = new VideoPopup(iframeSrc);
+                const videoSrc = elem.getAttribute('data-video');
+                const videoPopup = new VideoPopup(iframeSrc, './video/cat.mp4');
 
                 videoPopup.openPopup();
             })

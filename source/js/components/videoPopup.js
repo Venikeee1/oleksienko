@@ -1,10 +1,13 @@
 import {createElement} from "../helper/helper";
 
 export class VideoPopup {
-    constructor( iframeSrc ) {
+    constructor( iframeSrc, videoSrc ) {
         this.videoContainer = {};
         this.iframeSrc = iframeSrc;
+        this.videoSrc = videoSrc;
+        this.isIframe = iframeSrc;
         this.iframe = {};
+        this.videoPlayerSource = {};
         this.keyListener = {};
 
         this.init();
@@ -16,25 +19,48 @@ export class VideoPopup {
         const videoPopupInner = createElement('div','video-popup__inner');
         const videoPopupBg = createElement('div','video-popup__bg');
         const videoPopupBtn = createElement('button','video-popup__close')
-        const iframe = createElement('iframe','video-popup__iframe')
-        iframe.setAttribute('frameborder', 0);
-        iframe.setAttribute('allowfullscreen', '');
 
         videoPopup.appendChild(videoPopupContainer);
         videoPopup.appendChild(videoPopupBtn);
         videoPopup.appendChild(videoPopupBg);
         videoPopupContainer.appendChild(videoPopupInner);
-        videoPopupInner.appendChild(iframe);
+
+        this.isIframe
+            ? this.appendIframe(videoPopupInner)
+            : this.appendVideoPlayer(videoPopupInner)
+
 
         this.videoContainer = videoPopup;
-        this.iframe = iframe;
 
         document.querySelector('body').appendChild(videoPopup);
+    }
 
+    appendIframe(HTMLelement) {
+        const iframe = createElement('iframe','video-popup__iframe')
+        iframe.setAttribute('frameborder', 0);
+        iframe.setAttribute('allowfullscreen', '');
+
+        this.iframe = iframe;
+        HTMLelement.appendChild(iframe);
+    }
+
+    appendVideoPlayer(HTMLelement) {
+        const videoPlayer = createElement('video','video-popup__player')
+        const source = createElement('source','video-popup__source')
+        source.setAttribute('type', 'video/mp4');
+        videoPlayer.setAttribute('controls', 'true');
+        videoPlayer.setAttribute('autoplay', false);
+
+        videoPlayer.appendChild(source);
+        HTMLelement.appendChild(videoPlayer);
+
+        this.videoPlayerSource = source
     }
 
     openPopup() {
-        this.setIframe();
+        this.isIframe
+            ? this.setIframe()
+            : this.setVideoSource()
         this.videoContainer.classList.add('active');
     }
 
@@ -45,6 +71,10 @@ export class VideoPopup {
 
     setIframe() {
         this.iframe.setAttribute('src', this.iframeSrc);
+    }
+
+    setVideoSource() {
+        this.videoPlayerSource.setAttribute('src', this.videoSrc);
     }
 
     addClickListeners() {
@@ -60,8 +90,6 @@ export class VideoPopup {
             this.closePopup();
         })
     }
-
-
 
     addKeyListener() {
 
