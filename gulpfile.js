@@ -239,7 +239,7 @@ gulp.task(commands.css, function () {
     name = `main.css`;
     if(isBuild === true){
         name = `main.css`;
-        dist = `${BUILD}s/${SOURCE}/css`;
+        dist = `${BUILD}s/styles`;
         static = STATIC__BUILD.css
 
     } else if (cms === true) {
@@ -270,7 +270,7 @@ gulp.task(commands.js, function () {
     var name, webpackParams, dist, static;
     if(isBuild === true){
         name = `[name].js`;
-        dist = `${BUILD}s/${SOURCE}/${JS}`;
+        dist = `${BUILD}s/scripts`;
         static = STATIC__BUILD.js;
 
     } else if (cms === true) {
@@ -319,7 +319,7 @@ gulp.task(commands.js, function () {
     if(cms == true) {
         Object.assign(webpackParams, {externals: {jquery: 'jQuery'}});
     }
-    console.log(isBuild)
+
     return gulp.src(`${PARAMS.src.js}/*.js`)
         .pipe(packages.webpackStream(webpackParams, packages.webpack))
         .pipe( packages.replace({

@@ -1,5 +1,5 @@
 import {Slider} from "../../components/slider";
-import {VideoPopup} from "../../components/videoPopup";
+import {LazyLoad} from "../../components/lazyLoad";
 import Hammer from 'hammerjs';
 import {showTel} from "../../helper/helper";
 
@@ -14,6 +14,7 @@ export class HomePage {
         this.middleScrollMore = document.querySelector('.middle-scroll-more');
         this.videoBG = document.querySelector('.homepage__bg-video');
         this.doesScrollToFooterFirstTime = true;
+        this.lazyLoad = new LazyLoad();
     }
 
     initSlider() {
@@ -56,6 +57,8 @@ export class HomePage {
                 }
             },
             animateNextSlide: (currentSlide, currentIndex, prevIndex) => {
+                const rightImage = currentSlide.querySelector('.homepage__item--right img');
+                this.lazyLoad.setLazyLoad(rightImage)
 
                 window.GLOBAL_OBJECT.currentSlide = currentSlide;
 

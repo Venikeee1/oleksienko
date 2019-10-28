@@ -4,6 +4,8 @@ export class LazyLoad {
     }
 
     getSrc( imgContainer ) {
+        if(!imgContainer) return;
+
         if(window.isMobile) {
             if(imgContainer.getAttribute('data-mobile-img') !== '') {
                 return imgContainer.getAttribute('data-mobile-img');
@@ -14,6 +16,8 @@ export class LazyLoad {
     }
 
     setSrc( elem, src ) {
+        if(!elem) return;
+
         if(elem.tagName.toLowerCase() === "img") {
             elem.setAttribute('src', src);
         } else {
