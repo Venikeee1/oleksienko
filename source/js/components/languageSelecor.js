@@ -1,14 +1,17 @@
 export class LanguageSelector {
     constructor(  ) {
-        this.langChoose = document.querySelector('.header__lang-btn');
+        this.langChoose = document.querySelector('.header');
         this.headerLangList = document.querySelector('.header__lang-list');
         this.init();
     }
 
     addListeners() {
         this.langChoose.addEventListener('click', (e) => {
-            e.preventDefault();
-            this.headerLangList.classList.toggle('active');
+            if(e.target.closest('.header__lang-btn')) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.headerLangList.classList.toggle('active');
+            }
         });
 
         Array.from(document.querySelectorAll('.header__lang-link')).forEach( (elem) => {
