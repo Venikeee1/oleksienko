@@ -50,7 +50,6 @@ function createModule(name, path) {
             <html>
             {{> component/head/head }}
             <body>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                 <div class="wrapper">
                     {{> pages/${fileName}/${fileName}}}
                 </div>

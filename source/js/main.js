@@ -38,7 +38,7 @@ window.addEventListener('load', () => {
     addQueryParameterToLinkUrl();
 
     PopupMenu.init();
-    const barba = new BarbaLoader();
+     new BarbaLoader();
 
     if(window.GLOBAL_OBJECT.preloader) {
         Preloader.disable();
