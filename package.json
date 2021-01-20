@@ -38,7 +38,7 @@
     "del": "^2.2.2",
     "es6-promise": "^4.1.0",
     "fs": "0.0.1-security",
-    "gsap": "^1.19.1",
+    "gsap": "^3.6.0",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-babel": "^6.1.2",
     "gulp-chokidar": "0.0.5",
